@@ -21,6 +21,8 @@ public class MoveAvatar : MonoBehaviour {
 	};
 	public GOAvatarAnimationStateEvent OnAnimationStateChanged;
 
+	public event Action<bool> OnMove = (isMoving) => { };
+
 	// Use this for initialization
 	void Start () {
 
@@ -84,6 +86,7 @@ public class MoveAvatar : MonoBehaviour {
 
 	void moveAvatar (Vector3 lastPosition, Vector3 currentPosition) {
 
+		OnMove(true);
 		StartCoroutine (move (lastPosition,currentPosition,0.5f));
 	}
 
@@ -119,7 +122,7 @@ public class MoveAvatar : MonoBehaviour {
 
 		animationState = AvatarAnimationState.Idle;
 		OnAnimationStateChanged.Invoke(animationState);
-
+		OnMove(false);
 	}
 		
 	void rotateAvatar(Vector3 lastPosition) {

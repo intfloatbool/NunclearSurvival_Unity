@@ -15,8 +15,18 @@ public class SceneLoader : UnitySingletonBase<SceneLoader>
     public float CurrentProgress { get; private set; }
     protected override SceneLoader GetInstance() => this;
 
-    public void LoadScene(SceneType sceneType)
+    public float? CurrentDelay { get; set; }
+    public void LoadScene(SceneType sceneType, float? delay = null)
     {
+        if(delay.HasValue)
+        {
+            CurrentDelay = delay.Value;
+        }
+        else
+        {
+            CurrentDelay = null;
+        }
+
         if (_currentSceneLoadingCoroutine == null)
         {
             _currentSceneLoadingCoroutine = StartCoroutine(LoadSceneCoroutine(sceneType));

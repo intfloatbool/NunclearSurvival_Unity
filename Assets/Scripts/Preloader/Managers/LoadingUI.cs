@@ -35,7 +35,16 @@ public class LoadingUI : UnitySingletonBase<LoadingUI>
             StopCoroutine(_finishingCoroutine);
         }
 
-        _finishingCoroutine = StartCoroutine(FinishingCoroutine());
+        var loaderDelay = SceneLoader.Instance.CurrentDelay;
+        if(loaderDelay != null)
+        {
+            _finishingCoroutine = StartCoroutine(FinishingCoroutine(loaderDelay.Value));
+        }
+        else
+        {
+            _finishingCoroutine = StartCoroutine(FinishingCoroutine(_delayAfterLoading));
+        }
+        
     }
 
     private void SetActiveTransforom(bool isActive)
@@ -44,9 +53,9 @@ public class LoadingUI : UnitySingletonBase<LoadingUI>
         _loadingBar.fillAmount = 0f;
     }
 
-    private IEnumerator FinishingCoroutine()
+    private IEnumerator FinishingCoroutine(float delay)
     {
-        yield return new WaitForSeconds(_delayAfterLoading);
+        yield return new WaitForSeconds(delay);
         SetActiveTransforom(false);
         _finishingCoroutine = null;
     }
