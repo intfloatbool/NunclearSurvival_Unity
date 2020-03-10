@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3763478905663737649
+--- !u!1 &7143663329114839917
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3763478905663737648}
-  - component: {fileID: 3763478905663737663}
+  - component: {fileID: 7143663329114839919}
+  - component: {fileID: 7143663329114839916}
   m_Layer: 0
-  m_Name: Preloader
+  m_Name: ItemHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3763478905663737648
+--- !u!4 &7143663329114839919
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3763478905663737649}
+  m_GameObject: {fileID: 7143663329114839917}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3763478905663737663
+--- !u!114 &7143663329114839916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3763478905663737649}
+  m_GameObject: {fileID: 7143663329114839917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57fed27cc979f844492ec7695354643f, type: 3}
+  m_Script: {fileID: 11500000, guid: 461b2d2a6ce469443bec5fac062a6208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _managerPrefabs:
-  - {fileID: 5988583287667586247, guid: 62f64ae4f81f6de4db72a5b2b40cfc23, type: 3}
-  - {fileID: 8118968057662050010, guid: 9011972c8f9fded45aab6d7a7e0d5ff0, type: 3}
-  - {fileID: 4427678890963432305, guid: 63ccef45f5dae9945b783b23bc2ada46, type: 3}
-  - {fileID: 7143663329114839917, guid: 66ce739dd7b7b5046ae2222c86154328, type: 3}
-  _delayAfterPreload: 2
+  _itemInfos:
+  - _itemViewNameKey: Apple
+    _itemName: 0
+    _itemType: 0
+    _itemIcon: {fileID: 21300000, guid: d68d3639bddbabe4da7435ff642ce594, type: 3}
+  - _itemViewNameKey: Chicken
+    _itemName: 1
+    _itemType: 0
+    _itemIcon: {fileID: 21300000, guid: 98151fe5ee04b564d8579c49b818c163, type: 3}
+  - _itemViewNameKey: Water
+    _itemName: 2
+    _itemType: 1
+    _itemIcon: {fileID: 21300000, guid: 91d9fea438820754da7f3ff2d60084f3, type: 3}
