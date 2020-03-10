@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BonfireScene.unity
     guid: 7c209943d461f5343b5bae3b341f3410
+  - enabled: 1
+    path: Assets/Scenes/GlobalMap.unity
+    guid: e3c82982354454f438b5237512d27cad
   m_configObjects: {}
