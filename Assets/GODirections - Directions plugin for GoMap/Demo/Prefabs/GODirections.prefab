@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &124582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 427838}
+  - component: {fileID: 11426062}
+  - component: {fileID: 11450084}
+  m_Layer: 0
+  m_Name: GODirections
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &427838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -116.74598, y: 5.828051, z: 46.7565}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11426062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536340f9c1847428e8a41f8bede930ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goMap: {fileID: 0}
+  directionsApi: 0
+  googleAPIkey: 
+  mapboxAPIkey: 
+  language: 
+  useSubsteps: 0
+  useColliders: 0
+  automaticallyRemoveRoutes: 1
+  startPrefab: {fileID: 135680, guid: 655f35b4a1ccd4dd98403966dc008f76, type: 3}
+  destinationPrefab: {fileID: 135680, guid: e46d9b19823304654945908e5bc5465c, type: 3}
+  waypointPrefab: {fileID: 135680, guid: 6c61eb65fd8ec43a0910568974e90d3e, type: 3}
+  transitStopsPrefab: {fileID: 195116, guid: 3a2509f123bb2481788a4ca71dbf9f34, type: 3}
+  renderingOptions:
+  - travelMode: 0
+    material: {fileID: 2100000, guid: 3e32577f550ea43a7a16105f719624f2, type: 2}
+    sidesMaterial: {fileID: 0}
+    width: 3
+    height: 2
+    distanceFromFloor: 5
+    curved: 0
+  - travelMode: 1
+    material: {fileID: 2100000, guid: 33339811cf220413681d3e98b83519b8, type: 2}
+    sidesMaterial: {fileID: 0}
+    width: 2
+    height: 2
+    distanceFromFloor: 2.5
+    curved: 0
+  - travelMode: 2
+    material: {fileID: 2100000, guid: d9a3d7189b7a74b1a9bc4bffc52684aa, type: 2}
+    sidesMaterial: {fileID: 0}
+    width: 2
+    height: 2
+    distanceFromFloor: 2.5
+    curved: 0
+  - travelMode: 3
+    material: {fileID: 2100000, guid: c11b4bd93661b444db4ac4fbe23c704c, type: 2}
+    sidesMaterial: {fileID: 0}
+    width: 2
+    height: 2
+    distanceFromFloor: 2.5
+    curved: 0
+  IsReady: 1
+  OnRouteCreated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRouteError:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &11450084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c45f8e496d44cce876e849fff9812b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  demo_start:
+    latitude: 0
+    longitude: 0
+    altitude: 0
+    timestampLastUpdate: 0
+  demo_end:
+    latitude: 0
+    longitude: 0
+    altitude: 0
+    timestampLastUpdate: 0
+  demo_waypoints: []
+  demo_travelMode: 0
+  startFromUserLocation: 1
+  useRandomDestination: 1
+  randomizeWaypoints: 0
