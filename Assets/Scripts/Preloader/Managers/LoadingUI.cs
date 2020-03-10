@@ -21,14 +21,14 @@ public class LoadingUI : UnitySingletonBase<LoadingUI>
 
     private void OnSceneBeginLoading(SceneType sceneType)
     {
+        _loadingBar.fillAmount = 0f;
         _isSceneLoading = true;
         _currentProgress = _basicProgress;
         SetActiveTransforom(true);
     }
 
     private void OnSceneFinishDownloading(SceneType sceneType)
-    {
-        _currentProgress = 0f;
+    {       
         _isSceneLoading = false;
         if(_finishingCoroutine != null)
         {
@@ -41,6 +41,7 @@ public class LoadingUI : UnitySingletonBase<LoadingUI>
     private void SetActiveTransforom(bool isActive)
     {      
         _loadingTransform.gameObject.SetActive(isActive);
+        _loadingBar.fillAmount = 0f;
     }
 
     private IEnumerator FinishingCoroutine()
@@ -53,8 +54,12 @@ public class LoadingUI : UnitySingletonBase<LoadingUI>
     private void Update()
     {
         if (!_isSceneLoading)
+        {
+            _currentProgress = 0f;
             return;
-        _currentProgress = Mathf.Clamp(SceneLoader.Instance.CurrentProgress, _basicProgress, 1f);
+        }
+            
+        _currentProgress = SceneLoader.Instance.CurrentProgress;
         _loadingBar.fillAmount = Mathf.Clamp(Mathf.Lerp(_loadingBar.fillAmount, _currentProgress, _loadingSpeed * Time.deltaTime), 0, 1f);
     }
 
