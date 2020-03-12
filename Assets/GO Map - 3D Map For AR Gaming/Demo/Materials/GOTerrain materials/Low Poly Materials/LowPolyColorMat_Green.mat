@@ -92,6 +92,6 @@ Material:
     - _WaveSpeed: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.047577854, g: 0.997, b: 0.1930623, a: 1}
+    - _Color: {r: 0.99607843, g: 0.47396746, b: 0.047058802, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.34255913, g: 0.45588237, b: 0.26481402, a: 1}
