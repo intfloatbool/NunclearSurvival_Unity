@@ -1,63 +1,34 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GlobalPlayer : UnitySingletonBase<GlobalPlayer>
+namespace Player
 {
-    [SerializeField] private List<InventoryItem> _currentItems;
-    public List<InventoryItem> InventoryItems => _currentItems;
-    protected override GlobalPlayer GetInstance() => this;
-
-    protected override void Awake()
+    public class GlobalPlayer : UnitySingletonBase<GlobalPlayer>
     {
-        base.Awake();
-        LoadExistingItems();
-    }
+        [Header("All player data will be load from here")]
+        [SerializeField] private PlayerInfoProviderBase _playerInfoProvider;
+        public PlayerInfoProviderBase PlayerInfoProvider => _playerInfoProvider;
+        
+        [Header("Player loaded info:")] 
+        [SerializeField]
+        private string _playerNickName;
+        public string PlayerNickName => _playerNickName;
+    
+        [SerializeField] private PlayerInventory _playerInventory;
+        public PlayerInventory PlayerInventory => _playerInventory;
+    
+        protected override GlobalPlayer GetInstance() => this;
 
-    private void LoadExistingItems()
-    {
-        //TODO: Realize loading items from internal store...
-        //Fake store
-        AddItem(ItemName.FOOD_APPLE);
-        AddItem(ItemName.FOOD_APPLE);
-        AddItem(ItemName.FOOD_CHICKEN);
-        AddItem(ItemName.WATER_WATER);
-        AddItem(ItemName.WATER_WATER);
-        AddItem(ItemName.WATER_WATER);
-    }
+        protected override void Awake()
+        {
+            base.Awake();
+            InitializeDataFromLoader();
+        }
 
-    public void AddItem(ItemName itemName)
-    {
-        var sameItem = _currentItems.FirstOrDefault(c => c.ItemName == itemName);
-        if(sameItem != null)
+        private void InitializeDataFromLoader()
         {
-            sameItem.Amount++;
+            _playerNickName = _playerInfoProvider.LoadPlayerName();
+            _playerInventory = _playerInfoProvider.LoadInventory();
         }
-        else
-        {
-            _currentItems.Add(new InventoryItem()
-            {
-                ItemName = itemName,
-                Amount = 1
-            });
-        }
-    }
-
-    public void RemoveItem(ItemName itemName)
-    {
-        var sameItem = _currentItems.FirstOrDefault(c => c.ItemName == itemName);
-        if (sameItem != null)
-        {
-            sameItem.Amount--;
-            if (sameItem.Amount <= 0)
-            {
-                _currentItems.Remove(sameItem);
-            }
-               
-        }
-        else
-        {
-            Debug.LogError($"Cannot delete item from player inventory with key {itemName} ! Not exist!");
-        }
+    
     }
 }

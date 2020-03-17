@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 public class MapResource : MonoBehaviour
@@ -19,7 +20,7 @@ public class MapResource : MonoBehaviour
         {
             for(int i = 0; i < _amount; i++)
             {
-                GlobalPlayer.Instance.AddItem(_resourceName);
+                GlobalPlayer.Instance.PlayerInventory.AddItem(_resourceName);
             }
         }
 

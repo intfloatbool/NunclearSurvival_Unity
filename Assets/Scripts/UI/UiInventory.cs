@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 public class UiInventory : MonoBehaviour
@@ -17,7 +18,7 @@ public class UiInventory : MonoBehaviour
     {
         _currentItems.ForEach(i => Destroy(i.gameObject));
         _currentItems.Clear();
-        var playerItems = GlobalPlayer.Instance.InventoryItems;
+        var playerItems = GlobalPlayer.Instance.PlayerInventory.GetCurrentItems();
         foreach(var playerItem in playerItems)
         {
             var itemInfo = ItemHolder.Instance.GetItemInfoByKey(playerItem.ItemName);

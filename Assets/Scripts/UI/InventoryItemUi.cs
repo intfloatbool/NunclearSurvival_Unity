@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Player;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ public class InventoryItemUi : GameButtonBase
     protected override void OnClick()
     {
         var globalPlayer = GlobalPlayer.Instance;
-        globalPlayer.RemoveItem(_currentItemInfo.ItemName);
+        globalPlayer.PlayerInventory.RemoveItem(_currentItemInfo.ItemName);
         _inventory.UpdateItems();
     }
 }

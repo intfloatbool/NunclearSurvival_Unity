@@ -12,6 +12,13 @@
             <e p="SwitchView.cs" t="Include" />
           </e>
         </e>
+        <e p="Editor" t="Include">
+          <e p="GameEditorHelpers" t="Include">
+            <e p="Player" t="Include">
+              <e p="InventoryManagerEditor.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="EffectExamples" t="Include">
           <e p="Editor" t="Include">
             <e p="PackageManagerAssembly" t="Include">
@@ -708,7 +715,12 @@
           </e>
           <e p="Player" t="Include">
             <e p="GlobalPlayer.cs" t="Include" />
+            <e p="InfoProviders" t="Include">
+              <e p="PlayerPrefsInfoProvider.cs" t="Include" />
+            </e>
             <e p="InventoryItem.cs" t="Include" />
+            <e p="PlayerInfoProviderBase.cs" t="Include" />
+            <e p="PlayerInventory.cs" t="Include" />
           </e>
           <e p="Preloader" t="Include">
             <e p="Managers" t="Include">
