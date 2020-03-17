@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 namespace GoShared {
@@ -117,8 +118,15 @@ namespace GoShared {
 
 		private void UpdateRect()
 		{
-			rectTransform.sizeDelta = currentSizeDelta;
-			rectTransform.localScale = currentScale;
+			try
+			{
+				rectTransform.sizeDelta = currentSizeDelta;
+				rectTransform.localScale = currentScale;
+			}
+			catch (Exception ex)
+			{
+				Debug.LogError(ex);
+			}
 		}
 		#endif
 	}

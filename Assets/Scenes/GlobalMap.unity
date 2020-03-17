@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.32
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.98499566, g: 0.5565477, b: 0.20035186, a: 0.32}
+  m_IndirectSpecularColor: {r: 0.98496765, g: 0.55653954, b: 0.2003482, a: 0.32}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -395,7 +395,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 60}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 60}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &97163144
 MonoBehaviour:
@@ -1635,6 +1635,7 @@ MonoBehaviour:
   _minResourcesCount: 5
   _maxResourcesCount: 15
   _goMap: {fileID: 1494708371}
+  _lootParent: {fileID: 0}
 --- !u!1001 &1900701288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1723,7 +1724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1955776653
 RectTransform:
   m_ObjectHideFlags: 0
