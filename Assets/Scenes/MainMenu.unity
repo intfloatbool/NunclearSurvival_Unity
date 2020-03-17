@@ -273,6 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneToGo: 2
+  _isExternalDelay: 0
+  _externalDelay: 0
 --- !u!114 &537449873
 MonoBehaviour:
   m_ObjectHideFlags: 0

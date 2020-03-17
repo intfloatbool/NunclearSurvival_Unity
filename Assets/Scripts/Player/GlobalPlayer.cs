@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Player
 {
@@ -11,7 +12,27 @@ namespace Player
         [Header("Player loaded info:")] 
         [SerializeField]
         private string _playerNickName;
-        public string PlayerNickName => _playerNickName;
+
+        public string PlayerNickName
+        {
+            get
+            {
+                if (!_playerInfoProvider.LoadPlayerName().Equals(_playerNickName))
+                {
+                    _playerNickName = _playerInfoProvider.LoadPlayerName();
+                }
+
+                return _playerNickName;
+            }
+            set
+            {
+                _playerInfoProvider.SetPlayerName(value);
+                _playerNickName = _playerInfoProvider.LoadPlayerName();
+                OnPlayerNameUpdated(_playerNickName);
+            }
+        }
+
+        public event Action<string> OnPlayerNameUpdated = (playerName) => { };
     
         [SerializeField] private PlayerInventory _playerInventory;
         public PlayerInventory PlayerInventory => _playerInventory;
@@ -29,6 +50,5 @@ namespace Player
             _playerNickName = _playerInfoProvider.LoadPlayerName();
             _playerInventory = _playerInfoProvider.LoadInventory();
         }
-    
     }
 }

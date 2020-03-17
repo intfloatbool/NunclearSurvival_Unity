@@ -734,9 +734,19 @@
             <e p="UnitySingletonBase.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
+            <e p="DialogSystem" t="Include">
+              <e p="Dialog.cs" t="Include" />
+              <e p="DialogController.cs" t="Include" />
+              <e p="IntroScreen" t="Include">
+                <e p="IntroDialogController.cs" t="Include" />
+                <e p="NameDialog.cs" t="Include" />
+              </e>
+            </e>
             <e p="ExitBtn.cs" t="Include" />
             <e p="GameButtonBase.cs" t="Include" />
             <e p="InventoryItemUi.cs" t="Include" />
+            <e p="PlayerNickName.cs" t="Include" />
+            <e p="RawImageLoader.cs" t="Include" />
             <e p="SwitchSceneBtn.cs" t="Include" />
             <e p="UiInventory.cs" t="Include" />
           </e>
