@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_NunclearSurvival_Unity.-163977887.00" t="ExcludeRecursive" />
-    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+    <e p="C:\Users\Иван\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Иван\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_NunclearSurvival_Unity.-407879262.00" t="ExcludeRecursive" />
+    <e p="Z:\SRC\NunclearSurvival_Unity" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -71,8 +71,8 @@
                 <e p="GOMapzenProtoTile.cs" t="Include" />
                 <e p="GOMapzenTile.cs" t="Include" />
                 <e p="GOOSMTile.cs" t="Include" />
-                <e p="GOPBFTileAsync.cs" t="Include" />
                 <e p="GOPbfProcedure.cs" t="Include" />
+                <e p="GOPBFTileAsync.cs" t="Include" />
                 <e p="GORoadFeature.cs" t="Include" />
                 <e p="GOStreetName.cs" t="Include" />
                 <e p="GOStreetnamesSettings.cs" t="Include" />
@@ -137,8 +137,8 @@
                 <e p="Gyms" t="Include">
                   <e p="MaraudersGym.cs" t="Include" />
                   <e p="Resources" t="Include">
-                    <e p="FakeVolumetricLightShader.shader" t="Include" />
                     <e p="classicNoise3d.cginc" t="Include" />
+                    <e p="FakeVolumetricLightShader.shader" t="Include" />
                   </e>
                 </e>
                 <e p="Stops" t="Include">
@@ -226,6 +226,29 @@
               <e p="Mapbox" t="Include">
                 <e p="MapboxLayerExtensions.cs" t="Include" />
                 <e p="vector-tile-cs-master" t="Include">
+                  <e p="SRC" t="Include">
+                    <e p="ExtensionMethods" t="Include">
+                      <e p="Enums.cs" t="Include" />
+                      <e p="VectorTile.cs" t="Include" />
+                      <e p="VectorTileFeature.cs" t="Include" />
+                    </e>
+                    <e p="Geometry" t="Include">
+                      <e p="clipper.cs" t="Include" />
+                      <e p="DecodeGeometry.cs" t="Include" />
+                      <e p="Geometry.cs" t="Include" />
+                      <e p="Util.cs" t="Include" />
+                    </e>
+                    <e p="PbfReader" t="Include">
+                      <e p="Constants.cs" t="Include" />
+                      <e p="PbfReader.cs" t="Include" />
+                    </e>
+                    <e p="VectorTileReader" t="Include">
+                      <e p="VectorTile.cs" t="Include" />
+                      <e p="VectorTileFeature.cs" t="Include" />
+                      <e p="VectorTileLayer.cs" t="Include" />
+                      <e p="VectorTileReader.cs" t="Include" />
+                    </e>
+                  </e>
                   <e p="Utils" t="Include">
                     <e p="Compression.cs" t="Include" />
                     <e p="SharpZipLib" t="Include">
@@ -289,29 +312,6 @@
                       <e p="GzipOutputStream.cs" t="Include" />
                     </e>
                   </e>
-                  <e p="src" t="Include">
-                    <e p="ExtensionMethods" t="Include">
-                      <e p="Enums.cs" t="Include" />
-                      <e p="VectorTile.cs" t="Include" />
-                      <e p="VectorTileFeature.cs" t="Include" />
-                    </e>
-                    <e p="Geometry" t="Include">
-                      <e p="DecodeGeometry.cs" t="Include" />
-                      <e p="Geometry.cs" t="Include" />
-                      <e p="Util.cs" t="Include" />
-                      <e p="clipper.cs" t="Include" />
-                    </e>
-                    <e p="PbfReader" t="Include">
-                      <e p="Constants.cs" t="Include" />
-                      <e p="PbfReader.cs" t="Include" />
-                    </e>
-                    <e p="VectorTileReader" t="Include">
-                      <e p="VectorTile.cs" t="Include" />
-                      <e p="VectorTileFeature.cs" t="Include" />
-                      <e p="VectorTileLayer.cs" t="Include" />
-                      <e p="VectorTileReader.cs" t="Include" />
-                    </e>
-                  </e>
                 </e>
               </e>
             </e>
@@ -335,11 +335,11 @@
               <e p="GOAttributes.cs" t="Include" />
               <e p="GOCanvasManager.cs" t="Include" />
               <e p="GOClipPlane.cs" t="Include" />
+              <e p="GoClipPlaneMono.cs" t="Include" />
               <e p="GOMakePrefab.cs" t="Include" />
               <e p="GOMatHolder.cs" t="Include" />
               <e p="GOPreloadedMap.cs" t="Include" />
               <e p="GOUtils.cs" t="Include" />
-              <e p="GoClipPlaneMono.cs" t="Include" />
               <e p="MeshExtrusion.cs" t="Include" />
               <e p="MiniJSON.cs" t="Include" />
               <e p="Poly2Mesh" t="Include">
@@ -490,6 +490,16 @@
           </e>
           <e p="WarFX" t="Include">
             <e p="!WarFX Readme.txt" t="Include" />
+            <e p="_Effects" t="Include">
+              <e p="MuzzleFlashes" t="Include">
+                <e p="!MuzzleFlash Differences.txt" t="Include" />
+              </e>
+            </e>
+            <e p="_Effects (Mobile)" t="Include">
+              <e p="MuzzleFlashes" t="Include">
+                <e p="!MuzzleFlash Differences.txt" t="Include" />
+              </e>
+            </e>
             <e p="Demo" t="Include">
               <e p="Assets" t="Include">
                 <e p="WFX_Demo.cs" t="Include" />
@@ -521,16 +531,6 @@
             </e>
             <e p="Spawn System" t="Include">
               <e p="CFX_SpawnSystem.cs" t="Include" />
-            </e>
-            <e p="_Effects" t="Include">
-              <e p="MuzzleFlashes" t="Include">
-                <e p="!MuzzleFlash Differences.txt" t="Include" />
-              </e>
-            </e>
-            <e p="_Effects (Mobile)" t="Include">
-              <e p="MuzzleFlashes" t="Include">
-                <e p="!MuzzleFlash Differences.txt" t="Include" />
-              </e>
             </e>
           </e>
         </e>
@@ -659,11 +659,11 @@
                 <e p="LeanCanvasGroupInteractable.cs" t="Include" />
                 <e p="LeanGraphicColor.cs" t="Include" />
                 <e p="LeanImageFillAmount.cs" t="Include" />
-                <e p="LeanRectTransformAnchorMax.cs" t="Include" />
-                <e p="LeanRectTransformAnchorMin.cs" t="Include" />
                 <e p="LeanRectTransformAnchoredPosition.cs" t="Include" />
                 <e p="LeanRectTransformAnchoredPositionX.cs" t="Include" />
                 <e p="LeanRectTransformAnchoredPositionY.cs" t="Include" />
+                <e p="LeanRectTransformAnchorMax.cs" t="Include" />
+                <e p="LeanRectTransformAnchorMin.cs" t="Include" />
                 <e p="LeanRectTransformPivot.cs" t="Include" />
                 <e p="LeanRectTransformPivotX.cs" t="Include" />
                 <e p="LeanRectTransformPivotY.cs" t="Include" />
@@ -685,7 +685,7 @@
         </e>
         <e p="Modern_GUI_Skin" t="Include">
           <e p="Demo_Assets" t="Include">
-            <e p="scripts" t="Include">
+            <e p="Scripts" t="Include">
               <e p="GUI_Demo.cs" t="Include" />
             </e>
           </e>
@@ -745,10 +745,18 @@
             <e p="ExitBtn.cs" t="Include" />
             <e p="GameButtonBase.cs" t="Include" />
             <e p="InventoryItemUi.cs" t="Include" />
+            <e p="LocalizedTextUI.cs" t="Include" />
             <e p="PlayerNickName.cs" t="Include" />
             <e p="RawImageLoader.cs" t="Include" />
             <e p="SwitchSceneBtn.cs" t="Include" />
             <e p="UiInventory.cs" t="Include" />
+          </e>
+          <e p="Utils" t="Include">
+            <e p="Localizer" t="Include">
+              <e p="GameLocalization.cs" t="Include" />
+              <e p="LocalizationItem.cs" t="Include" />
+              <e p="TextLocalizer.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">
@@ -771,6 +779,10 @@
               <e p="ShaderPropAnimator.cs" t="Include" />
               <e p="SimpleScript.cs" t="Include" />
               <e p="SkewTextExample.cs" t="Include" />
+              <e p="TeleType.cs" t="Include" />
+              <e p="TextConsoleSimulator.cs" t="Include" />
+              <e p="TextMeshProFloatingText.cs" t="Include" />
+              <e p="TextMeshSpawner.cs" t="Include" />
               <e p="TMP_DigitValidator.cs" t="Include" />
               <e p="TMP_ExampleScript_01.cs" t="Include" />
               <e p="TMP_FrameRateCounter.cs" t="Include" />
@@ -782,10 +794,6 @@
               <e p="TMP_TextSelector_B.cs" t="Include" />
               <e p="TMP_UiFrameRateCounter.cs" t="Include" />
               <e p="TMPro_InstructionOverlay.cs" t="Include" />
-              <e p="TeleType.cs" t="Include" />
-              <e p="TextConsoleSimulator.cs" t="Include" />
-              <e p="TextMeshProFloatingText.cs" t="Include" />
-              <e p="TextMeshSpawner.cs" t="Include" />
               <e p="VertexColorCycler.cs" t="Include" />
               <e p="VertexJitter.cs" t="Include" />
               <e p="VertexShakeA.cs" t="Include" />
@@ -823,9 +831,9 @@
         </e>
       </e>
       <e p="NunclearSurvival_Unity.sln" t="IncludeFlat" />
-      <e p="Temp/bin" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
   </component>
 </project>

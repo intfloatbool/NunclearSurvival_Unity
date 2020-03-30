@@ -1,0 +1,56 @@
+{
+	"LocalizationItems":[
+		{
+			"Key": "GameName",
+				"TextByRegions": [
+					{
+						"RegionName": "Russian",
+						"Text": "INFECTED WORLD"
+					},
+					{
+						"RegionName": "English",
+						"Text": "INFECTED WORLD"
+					}
+				]
+		},
+		{
+			"Key": "StartGame",
+				"TextByRegions": [
+					{
+						"RegionName": "Russian",
+						"Text": "Начать игру"
+					},
+					{
+						"RegionName": "English",
+						"Text": "Start game"
+					}
+				]
+		},
+		{
+			"Key": "ExitGame",
+				"TextByRegions": [
+					{
+						"RegionName": "Russian",
+						"Text": "Выход"
+					},
+					{
+						"RegionName": "English",
+						"Text": "Exit"
+					}
+				]
+		},
+		{
+			"Key": "HelloScreen_1",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "КАКОЙ_ТО ТЕКСТ"
+				},
+				{
+					"RegionName": "English",
+					"Text": "SOME_TEXT"
+				}
+			]
+		}
+	]
+}
