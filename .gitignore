@@ -6,6 +6,12 @@
 
 #
 
+
+
+# Jetbrain Rider Cache
+.idea/
+Assets/Plugins/Editor/JetBrains*
+
 /[Ll]ibrary/
 
 /[Tt]emp/
