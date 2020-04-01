@@ -711,6 +711,9 @@
             <e p="PlayerGlobal.cs" t="Include" />
           </e>
           <e p="Items" t="Include">
+            <e p="Craft" t="Include">
+              <e p="ItemCraftSystem.cs" t="Include" />
+            </e>
             <e p="ItemInfo.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
