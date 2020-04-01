@@ -13,6 +13,15 @@ namespace Player
         [SerializeField]
         private string _playerNickName;
 
+        public bool IsPlayerReady
+        {
+            get
+            {
+                var isPlayerHasNickname = string.IsNullOrEmpty(_playerNickName) == false;
+                return isPlayerHasNickname;
+            }
+        }
+        
         public string PlayerNickName
         {
             get

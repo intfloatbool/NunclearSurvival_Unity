@@ -9,9 +9,8 @@ namespace GameUI
         protected override void Start()
         {
             base.Start();
-
-            var playerName = GlobalPlayer.Instance.PlayerNickName;
-            if (string.IsNullOrEmpty(playerName) || _isAlwaysStart)
+            
+            if (!GlobalPlayer.Instance.IsPlayerReady || _isAlwaysStart)
             {
                 ShowDialogByIndex(0);
             }

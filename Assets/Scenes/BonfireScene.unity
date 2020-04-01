@@ -6409,7 +6409,7 @@ PrefabInstance:
     - target: {fileID: 813721892799721036, guid: 29cc07eb90766269da8bdd02ac2cb391,
         type: 3}
       propertyPath: _isAlwaysStart
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1697781751181460388, guid: 29cc07eb90766269da8bdd02ac2cb391,
         type: 3}

@@ -56,5 +56,11 @@ namespace Player
                 PlayerPrefs.SetInt(itemNameStr, currentItemValue - 1);
             }
         }
+
+        [ContextMenu("Delete all player prefs")]
+        public void ClearAllPrefs()
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 }

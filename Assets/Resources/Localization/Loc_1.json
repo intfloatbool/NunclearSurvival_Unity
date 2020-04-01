@@ -2,42 +2,81 @@
 	"LocalizationItems":[
 		{
 			"Key": "GameName",
-				"TextByRegions": [
-					{
-						"RegionName": "Russian",
-						"Text": "INFECTED WORLD"
-					},
-					{
-						"RegionName": "English",
-						"Text": "INFECTED WORLD"
-					}
-				]
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "INFECTED WORLD"
+				},
+				{
+					"RegionName": "English",
+					"Text": "INFECTED WORLD"
+				}
+			]
+		},
+		{
+			"Key": "EnterPlayerNamePlaceHolder",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Введите имя..."
+				},
+				{
+					"RegionName": "English",
+					"Text": "Enter your name..."
+				}
+			]
+		},
+		{
+			"Key": "HelloDialog_1",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Давно здесь никого не было, я рад видеть выжившего, как твое имя?"
+				},
+				{
+					"RegionName": "English",
+					"Text": "For a long time there was no one here, I'm glad to see the survivor, what's your name?"
+				}
+			]
+		},
+		{
+			"Key": "HelloDialog_2",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Советую изучить больше данных по вирусу, так у тебя будет больше шансов выжить, береги себя!"
+				},
+				{
+					"RegionName": "English",
+					"Text": "I advise you to study more data on the virus, so you will have more chances to survive, take care!"
+				}
+			]
 		},
 		{
 			"Key": "StartGame",
-				"TextByRegions": [
-					{
-						"RegionName": "Russian",
-						"Text": "Начать игру"
-					},
-					{
-						"RegionName": "English",
-						"Text": "Start game"
-					}
-				]
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Начать игру"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Start game"
+				}
+			]
 		},
 		{
 			"Key": "ExitGame",
-				"TextByRegions": [
-					{
-						"RegionName": "Russian",
-						"Text": "Выход"
-					},
-					{
-						"RegionName": "English",
-						"Text": "Exit"
-					}
-				]
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Выход"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Exit"
+				}
+			]
 		},
 		{
 			"Key": "HelloScreen_1",

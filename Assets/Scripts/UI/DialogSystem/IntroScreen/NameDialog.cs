@@ -1,14 +1,14 @@
 ﻿using System;
 using Player;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GameUI
 {
     public class NameDialog : Dialog
     {
         [SerializeField] private int _minSymbols = 4;
-        [SerializeField] private TMP_InputField _input;
+        [SerializeField] private InputField _input;
         public override event Action OnDialogDone = () => { };
 
         public override void DialogDone()
