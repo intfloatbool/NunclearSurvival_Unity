@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class ItemInfo
@@ -14,4 +15,11 @@ public class ItemInfo
     public ItemType ItemType => _itemType;
     [SerializeField] private Sprite _itemIcon;
     public Sprite ItemIcon => _itemIcon;
+    
+    [Space(5f)] 
+    [Header("Craft zone:")]
+    [SerializeField] private bool _isCraftable;
+    public bool IsCraftable => _isCraftable;
+    [SerializeField] private List<ItemPart> _itemCraftParts;
+    public List<ItemPart> ItemCraftParts => _itemCraftParts;
 }

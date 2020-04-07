@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class InventoryItem
@@ -24,4 +25,6 @@ public class InventoryItem
             this._itemName = value;
         }
     }
+    
+    
 }

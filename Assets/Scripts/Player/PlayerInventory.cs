@@ -17,6 +17,12 @@ namespace Player
         /// </summary>
         public event Action<ItemName, int> OnItemAdded = (itemName, amount) => { };
         public event Action<ItemName> OnItemRemoved = (itemName) => { };
+
+
+        public InventoryItem GetItemByName(ItemName itemName)
+        {
+            return _currentItems.FirstOrDefault(i => i.ItemName == itemName);
+        }
         
         public void AddItem(ItemName itemName)
         {
