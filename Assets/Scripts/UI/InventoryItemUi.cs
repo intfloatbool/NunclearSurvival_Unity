@@ -1,4 +1,4 @@
-﻿using Player;
+﻿using SingletonsPreloaders;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +15,11 @@ public class InventoryItemUi : GameButtonBase
     {
         _currentItemInfo = itemInfo;
         _iconImg.sprite = _currentItemInfo.ItemIcon;
-        _amountText.text = amount.ToString();
+        if(!itemInfo.IsConstantItem)
+        {
+            _amountText.gameObject.SetActive(true);
+            _amountText.text = amount.ToString();
+        }   
         _inventory = inventory;
     }
 

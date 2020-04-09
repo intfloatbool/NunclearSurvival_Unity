@@ -15,7 +15,11 @@ public class ItemInfo
     public ItemType ItemType => _itemType;
     [SerializeField] private Sprite _itemIcon;
     public Sprite ItemIcon => _itemIcon;
-    
+
+    [Space(3f)]
+    [SerializeField] private bool _isConstantItem;
+    public bool IsConstantItem => _isConstantItem;
+
     [Space(5f)] 
     [Header("Craft zone:")]
     [SerializeField] private bool _isCraftable;

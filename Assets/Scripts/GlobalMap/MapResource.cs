@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Player;
+﻿using SingletonsPreloaders;
 using UnityEngine;
 
 public class MapResource : MonoBehaviour

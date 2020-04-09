@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using GameUtils;
 
-namespace GameUtils
+namespace SingletonsPreloaders
 {
     public class TextLocalizer : UnitySingletonBase<TextLocalizer>
     {

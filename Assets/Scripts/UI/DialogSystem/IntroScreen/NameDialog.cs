@@ -1,5 +1,6 @@
 ﻿using System;
 using Player;
+using SingletonsPreloaders;
 using UnityEngine;
 using UnityEngine.UI;
 

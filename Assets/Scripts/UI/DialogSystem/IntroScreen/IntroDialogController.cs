@@ -1,4 +1,4 @@
-﻿using Player;
+﻿using SingletonsPreloaders;
 using UnityEngine;
 
 namespace GameUI

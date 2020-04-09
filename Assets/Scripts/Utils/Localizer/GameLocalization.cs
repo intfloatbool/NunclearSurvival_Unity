@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SingletonsPreloaders;
+using UnityEngine;
 
 namespace GameUtils
 {

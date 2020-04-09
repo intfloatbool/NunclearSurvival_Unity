@@ -2,7 +2,7 @@
 using Player;
 using UnityEngine;
 
-namespace Items
+namespace SingletonsPreloaders
 {
     public class ItemCraftSystem : UnitySingletonBase<ItemCraftSystem>
     {

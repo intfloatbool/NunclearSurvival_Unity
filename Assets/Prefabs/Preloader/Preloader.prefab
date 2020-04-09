@@ -46,8 +46,8 @@ MonoBehaviour:
   _managerPrefabs:
   - {fileID: 5988583287667586247, guid: 62f64ae4f81f6de4db72a5b2b40cfc23, type: 3}
   - {fileID: 8118968057662050010, guid: 9011972c8f9fded45aab6d7a7e0d5ff0, type: 3}
-  - {fileID: 4427678890963432305, guid: 63ccef45f5dae9945b783b23bc2ada46, type: 3}
   - {fileID: 7143663329114839917, guid: 66ce739dd7b7b5046ae2222c86154328, type: 3}
+  - {fileID: 4427678890963432305, guid: 63ccef45f5dae9945b783b23bc2ada46, type: 3}
   - {fileID: 3541177977589335755, guid: f9d4c54d52c977242a81593c66d2bed5, type: 3}
   - {fileID: 2986799099218401542, guid: a53643789a74552488439ca3a4e30bae, type: 3}
   _delayAfterPreload: 2

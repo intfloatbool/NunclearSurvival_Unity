@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
+using Player;
 
-namespace Player
+namespace SingletonsPreloaders
 {
     public class GlobalPlayer : UnitySingletonBase<GlobalPlayer>
     {

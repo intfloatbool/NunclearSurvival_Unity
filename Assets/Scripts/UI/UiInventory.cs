@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Player;
+﻿using System.Collections.Generic;
+using SingletonsPreloaders;
 using UnityEngine;
 
 public class UiInventory : MonoBehaviour

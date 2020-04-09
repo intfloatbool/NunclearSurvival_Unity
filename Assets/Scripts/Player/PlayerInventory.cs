@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace Player
@@ -27,9 +28,24 @@ namespace Player
         public void AddItem(ItemName itemName)
         {
             var sameItem = _currentItems.FirstOrDefault(c => c.ItemName == itemName);
+            
+
             if(sameItem != null)
             {
-                sameItem.Amount++;
+                var itemInfo = sameItem.ItemInfo;
+                if(itemInfo.IsConstantItem)
+                {
+                    sameItem = new InventoryItem()
+                    {
+                        ItemName = itemName,
+                        Amount = 1
+                    };
+                    _currentItems.Add(sameItem);
+                }
+                else
+                {
+                    sameItem.Amount++;
+                }             
             }
             else
             {

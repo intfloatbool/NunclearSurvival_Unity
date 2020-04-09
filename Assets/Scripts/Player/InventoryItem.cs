@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using SingletonsPreloaders;
 using UnityEngine;
 
 [System.Serializable]
@@ -19,12 +19,29 @@ public class InventoryItem
     public ItemName ItemName
     {
         get { return this._itemName; }
-        set 
+        set
         {
             this.Name = value.ToString();
             this._itemName = value;
         }
     }
-    
+
+    private ItemInfo _cachedInfo;
+    public ItemInfo ItemInfo 
+    {
+        get
+        {
+            if(_cachedInfo == null)
+            {
+                _cachedInfo = ItemHolder.Instance.GetItemInfoByKey(_itemName);
+                if(_cachedInfo == null)
+                {
+                    Debug.LogError("Cannot get item info from item holder! Not exists!");
+                }
+            }
+
+            return _cachedInfo;
+        }
+    }
     
 }

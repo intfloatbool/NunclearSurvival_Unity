@@ -4,54 +4,57 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using System;
 
-public class SceneLoader : UnitySingletonBase<SceneLoader>
+namespace SingletonsPreloaders
 {
-    [SerializeField] private float _delayAfterLoading = 2f;
-    public event Action<SceneType> OnSceneBeginDownloading = (sceneType) => { };
-    public event Action<SceneType> OnSceneFinishDownloading = (sceneType) => { };
-
-    private Coroutine _currentSceneLoadingCoroutine;
-    private SceneType _currentScene;
-    public float CurrentProgress { get; private set; }
-    protected override SceneLoader GetInstance() => this;
-
-    public float? CurrentDelay { get; set; }
-    public void LoadScene(SceneType sceneType, float? delay = null)
+    public class SceneLoader : UnitySingletonBase<SceneLoader>
     {
-        if(delay.HasValue)
+        [SerializeField] private float _delayAfterLoading = 2f;
+        public event Action<SceneType> OnSceneBeginDownloading = (sceneType) => { };
+        public event Action<SceneType> OnSceneFinishDownloading = (sceneType) => { };
+
+        private Coroutine _currentSceneLoadingCoroutine;
+        private SceneType _currentScene;
+        public float CurrentProgress { get; private set; }
+        protected override SceneLoader GetInstance() => this;
+
+        public float? CurrentDelay { get; set; }
+        public void LoadScene(SceneType sceneType, float? delay = null)
         {
-            CurrentDelay = delay.Value;
-        }
-        else
-        {
-            CurrentDelay = null;
+            if (delay.HasValue)
+            {
+                CurrentDelay = delay.Value;
+            }
+            else
+            {
+                CurrentDelay = null;
+            }
+
+            if (_currentSceneLoadingCoroutine == null)
+            {
+                _currentSceneLoadingCoroutine = StartCoroutine(LoadSceneCoroutine(sceneType));
+            }
+            else
+            {
+                Debug.LogError("Some scene still in downloading!");
+            }
         }
 
-        if (_currentSceneLoadingCoroutine == null)
+        private IEnumerator LoadSceneCoroutine(SceneType sceneType)
         {
-            _currentSceneLoadingCoroutine = StartCoroutine(LoadSceneCoroutine(sceneType));
+            OnSceneBeginDownloading(sceneType);
+            _currentScene = sceneType;
+            var sceneIndex = (int)sceneType;
+            var sceneAsyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
+            CurrentProgress = 0;
+            while (!sceneAsyncLoad.isDone)
+            {
+                CurrentProgress = sceneAsyncLoad.progress;
+                yield return null;
+            }
+            CurrentProgress = 1f;
+            yield return new WaitForSeconds(_delayAfterLoading);
+            OnSceneFinishDownloading(sceneType);
+            _currentSceneLoadingCoroutine = null;
         }
-        else
-        {
-            Debug.LogError("Some scene still in downloading!");
-        }
-    }
-
-    private IEnumerator LoadSceneCoroutine(SceneType sceneType)
-    {
-        OnSceneBeginDownloading(sceneType);
-        _currentScene = sceneType;
-        var sceneIndex = (int)sceneType;
-        var sceneAsyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
-        CurrentProgress = 0;
-        while (!sceneAsyncLoad.isDone)
-        {
-            CurrentProgress = sceneAsyncLoad.progress;
-            yield return null;
-        }
-        CurrentProgress = 1f;
-        yield return new WaitForSeconds(_delayAfterLoading);
-        OnSceneFinishDownloading(sceneType);
-        _currentSceneLoadingCoroutine = null;
     }
 }
