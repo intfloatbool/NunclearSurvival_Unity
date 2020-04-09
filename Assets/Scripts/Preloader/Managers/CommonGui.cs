@@ -1,15 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using GameUI;
 using UnityEngine;
 
 namespace SingletonsPreloaders
 {
     public class CommonGui : UnitySingletonBase<CommonGui>
     {
-        protected override CommonGui GetInstance()
+        [SerializeField] private CustomDialog _customDialog;
+        protected override CommonGui GetInstance() => this;
+
+        public CustomDialog GetDialog()
         {
-            throw new System.NotImplementedException();
+            return _customDialog;
         }
     }
+
 }
 
