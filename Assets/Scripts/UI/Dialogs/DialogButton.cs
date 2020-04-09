@@ -5,6 +5,8 @@ namespace GameUI
 {
     public class DialogButton : MonoBehaviour
     {
+        public bool IsActivated { get; set; }
+
         [SerializeField] private Button _btn;
         public Button Btn => _btn;
 

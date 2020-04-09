@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GameUI;
 using SingletonsPreloaders;
 using UnityEngine;
 
@@ -7,6 +8,11 @@ public class UiInventory : MonoBehaviour
     [SerializeField] private Transform _itemsParent;
     [SerializeField] private InventoryItemUi _itemUiPrefab;
     private List<InventoryItemUi> _currentItems = new List<InventoryItemUi>();
+
+    [SerializeField] private string _useItemLocKey = "action_item_use";
+    [SerializeField] private string _dropItemLocKey = "action_item_drop";
+
+    private ItemInfo _lastClickedItem;
 
     private void Start()
     {
@@ -34,4 +40,45 @@ public class UiInventory : MonoBehaviour
             }
         }
     }
+
+    public void ShowDialogAboutItem(ItemInfo itemInfo)
+    {
+        var commongGui = CommonGui.Instance;
+        if(commongGui == null)
+        {
+            Debug.LogError("CommongGui singleton is missing!");
+            return;
+        }
+
+        var dialog = commongGui.GetDialog();
+        if(dialog == null)
+        {
+            Debug.LogError("Dialog is missing!");
+            return;
+        }
+
+        _lastClickedItem = itemInfo;
+
+        dialog
+            .ResetDialog()
+            .SetHeader(itemInfo.ItemViewNameKey, itemInfo.ItemIcon)
+            .SetDialogDescription(itemInfo.DescriptionLocKey)
+            .AddButton(_useItemLocKey, OnItemUse, CustomDialog.DialogPartType.ACCESS)
+            .AddButton(_dropItemLocKey, OnItemDrop, CustomDialog.DialogPartType.DANGER)
+            .ShowDialog();
+    }
+
+    private void OnItemUse()
+    {
+        //TODO: Complete futher logic!
+        Debug.Log("Item use! - " + _lastClickedItem.ItemViewNameKey);
+    }
+
+    private void OnItemDrop()
+    {
+        //TODO: Complete futher logic!
+        Debug.Log("Item dropped! - " + _lastClickedItem.ItemViewNameKey);
+    }
+
+
 }

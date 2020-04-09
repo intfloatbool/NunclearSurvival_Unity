@@ -25,8 +25,9 @@ public class InventoryItemUi : GameButtonBase
 
     protected override void OnClick()
     {
-        var globalPlayer = GlobalPlayer.Instance;
-        globalPlayer.PlayerInventory.RemoveItem(_currentItemInfo.ItemName);
-        _inventory.UpdateItems();
+        _inventory.ShowDialogAboutItem(_currentItemInfo);
+        //var globalPlayer = GlobalPlayer.Instance;
+        //globalPlayer.PlayerInventory.RemoveItem(_currentItemInfo.ItemName);
+        //_inventory.UpdateItems();
     }
 }

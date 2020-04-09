@@ -44,35 +44,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemInfos:
-  - _itemViewNameKey: Apple
+  - _itemViewNameKey: item_apple_name
+    _descriptionLocKey: item_apple_description
     _itemName: 0
     _itemType: 0
     _itemIcon: {fileID: 21300000, guid: d68d3639bddbabe4da7435ff642ce594, type: 3}
     _isConstantItem: 0
     _isCraftable: 0
     _itemCraftParts: []
-  - _itemViewNameKey: Chicken
+  - _itemViewNameKey: item_chicken_name
+    _descriptionLocKey: item_chicken_description
     _itemName: 1
     _itemType: 0
     _itemIcon: {fileID: 21300000, guid: 98151fe5ee04b564d8579c49b818c163, type: 3}
     _isConstantItem: 0
     _isCraftable: 0
     _itemCraftParts: []
-  - _itemViewNameKey: Water
+  - _itemViewNameKey: item_water_name
+    _descriptionLocKey: item_water_description
     _itemName: 2
     _itemType: 1
     _itemIcon: {fileID: 21300000, guid: 91d9fea438820754da7f3ff2d60084f3, type: 3}
     _isConstantItem: 0
     _isCraftable: 0
     _itemCraftParts: []
-  - _itemViewNameKey: Potato
+  - _itemViewNameKey: item_potato
+    _descriptionLocKey: item_potato_description
     _itemName: 5
     _itemType: 0
     _itemIcon: {fileID: 21300000, guid: 67ad979f59260844e8f404dfa5f84ff6, type: 3}
     _isConstantItem: 0
     _isCraftable: 0
     _itemCraftParts: []
-  - _itemViewNameKey: PotatoAndChicken
+  - _itemViewNameKey: item_cook_potato_chicken
+    _descriptionLocKey: item_cook_potato_chicken_description
     _itemName: 6
     _itemType: 0
     _itemIcon: {fileID: 21300000, guid: 2aaa0ef08d7ad9044a8da8ce2bab26bb, type: 3}
@@ -83,7 +88,8 @@ MonoBehaviour:
       _amount: 1
     - _itemPartName: 1
       _amount: 1
-  - _itemViewNameKey: SkilletSimple
+  - _itemViewNameKey: item_skillet
+    _descriptionLocKey: item_skillet_description
     _itemName: 8
     _itemType: 5
     _itemIcon: {fileID: 21300000, guid: 811b6f1616ba45048b303838ba6d50aa, type: 3}

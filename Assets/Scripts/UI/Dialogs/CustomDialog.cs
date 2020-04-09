@@ -25,27 +25,23 @@ namespace GameUI
 
         [SerializeField] private List<ColorByPartType> _colorPartsByType;
         [Space(3f)]
-        [Header("Dialog header text")]
+        [Header("Dialog header properties")]
         [SerializeField] private Text _headerText;
+        [SerializeField] private Image _headerImage;
+        [SerializeField] private Text _descriptionText;
 
         [Space(3f)]
         [SerializeField] private Transform _dialogRoot;
 
-        [Space(5f)]
-        [SerializeField] private Text _textPrefab;
-        [SerializeField] private Image _imgPrefab;
+        [Space(5f)] 
         [SerializeField] private DialogButton _btnPrefab;
 
         [Space(5f)]
         [Header("Parents for dialog items")]
-        [SerializeField] private Transform _textParent;
-        [SerializeField] private Transform _imgParent;
         [SerializeField] private Transform _btnParent;
 
         [Space(5f)]
         [Header("Runtime references")]
-        [SerializeField] private List<Text> _texts = new List<Text>();
-        [SerializeField] private List<Image> _images = new List<Image>();
         [SerializeField] private List<DialogButton> _buttons = new List<DialogButton>();
 
 
@@ -61,22 +57,56 @@ namespace GameUI
             }
         }
 
-        public CustomDialog SetHeader(string textKey)
+        public CustomDialog SetHeader(string textKey, Sprite imgSprite = null)
         {
             _headerText.text = GameLocalization.Get(textKey);
+            if(imgSprite != null)
+            {
+                _headerImage.gameObject.SetActive(true);
+                _headerImage.sprite = imgSprite;
+            }
+            else
+            {
+                _headerImage.gameObject.SetActive(false);
+            }
+            return this;
+        }
+
+        public CustomDialog SetDialogDescription(string descriptionKey)
+        {
+            _descriptionText.text = GameLocalization.Get(descriptionKey);
             return this;
         }
         
 
-        public CustomDialog AddButton(string textKey, Action onClickAction, DialogPartType partType = DialogPartType.SIMPLE)
+        public CustomDialog AddButton(
+                string textKey, 
+                Action onClickAction,
+                DialogPartType partType = DialogPartType.SIMPLE,
+                bool isCloseDialog = true
+            )
         {
-            var dialogBtn = _buttons.FirstOrDefault(b => b != null && b.gameObject.activeInHierarchy == false);
+            var dialogBtn = _buttons.FirstOrDefault(b => !b.IsActivated);
+
             if(dialogBtn == null)
             {
-                dialogBtn = Instantiate(_btnPrefab, _btnParent);           
+                dialogBtn = Instantiate(_btnPrefab, _btnParent);
+                _buttons.Add(dialogBtn);         
+            }
+            else
+            {
+                dialogBtn.gameObject.SetActive(true);
             }
 
-            dialogBtn.Btn.onClick.AddListener(() => onClickAction());
+            dialogBtn.IsActivated = true;
+
+            dialogBtn.Btn.onClick.AddListener(() => {
+                onClickAction();
+                if(isCloseDialog)
+                {
+                    HideDialog();
+                }
+            });
 
             dialogBtn.SetText(
                 GameLocalization.Get(textKey)
@@ -91,10 +121,8 @@ namespace GameUI
 
         public CustomDialog ResetDialog()
         {
-            ResetTexts();
-            ResetImages();
             ResetButtons();
-            
+           
             return this;
         }
 
@@ -110,31 +138,14 @@ namespace GameUI
             return this;
         }
 
-        private void ResetTexts()
-        {
-            for (int i = 0; i < _texts.Count; i++)
-            {
-                var text = _texts[i];
-                text.gameObject.SetActive(false);
-            }
-        }
-
         private void ResetButtons()
         {
             for(int i = 0; i < _buttons.Count; i++)
             {
                 var button = _buttons[i];
                 button.Btn.onClick.RemoveAllListeners();
+                button.IsActivated = false;
                 button.gameObject.SetActive(false);
-            }
-        }
-
-        private void ResetImages()
-        {
-            for (int i = 0; i < _images.Count; i++)
-            {
-                var img = _images[i];
-                img.gameObject.SetActive(false);
             }
         }
 

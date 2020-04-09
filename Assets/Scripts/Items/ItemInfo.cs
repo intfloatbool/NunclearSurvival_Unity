@@ -4,8 +4,14 @@ using UnityEngine;
 [System.Serializable]
 public class ItemInfo
 {
+    [Header("This is localization key of name")]
     [SerializeField] private string _itemViewNameKey;
     public string ItemViewNameKey => _itemViewNameKey;
+
+    [Space(3f)]
+    [SerializeField] private string _descriptionLocKey;
+    public string DescriptionLocKey => _descriptionLocKey;
+
     [SerializeField] private ItemName _itemName;
     /// <summary>
     /// Primary key of item

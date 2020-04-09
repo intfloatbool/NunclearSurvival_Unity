@@ -90,6 +90,188 @@
 					"Text": "SOME_TEXT"
 				}
 			]
+		},
+		{
+			"Key": "action_item_use",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Использовать"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Use"
+				}
+			]
+		},
+		{
+			"Key": "action_item_drop",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Выбросить"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Drop"
+				}
+			]
+		},
+		{
+			"Key": "item_apple_name",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Яблочко"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Apple"
+				}
+			]
+		},
+		{
+			"Key": "item_apple_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Вкусное, зеленое."
+				},
+				{
+					"RegionName": "English",
+					"Text": "Tasty and green"
+				}
+			]
+		},
+		{
+			"Key": "item_chicken_name",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Курица"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Chicken"
+				}
+			]
+		},
+		{
+			"Key": "item_chicken_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Кусок курицы"
+				},
+				{
+					"RegionName": "English",
+					"Text": "A piece of chicken"
+				}
+			]
+		},
+		{
+			"Key": "item_water_name",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Бутыль воды"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Bottle of water"
+				}
+			]
+		},
+		{
+			"Key": "item_water_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Хорошо утоляет жажду"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Quenches thirst well"
+				}
+			]
+		},
+		{
+			"Key": "item_potato",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Картошка"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Potato"
+				}
+			]
+		},
+		{
+			"Key": "item_potato_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Картошка, в сыром виде не очень вкусная"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Raw is not tasty..."
+				}
+			]
+		},
+		{
+			"Key": "item_cook_potato_chicken",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Картошка с курицей"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Chicken with Potato"
+				}
+			]
+		},
+		{
+			"Key": "item_cook_potato_chicken_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Жареная курица с картошкой- вкусно и жирно!"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Fried chicken with potato - tasty and fat!"
+				}
+			]
+		},
+		{
+			"Key": "item_skillet",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Сковорода"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Skillet"
+				}
+			]
+		},
+		{
+			"Key": "item_skillet_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "На ней можно комбинировать и жарить продукты!"
+				},
+				{
+					"RegionName": "English",
+					"Text": "You can combine and fry food on it!"
+				}
+			]
 		}
 	]
 }
