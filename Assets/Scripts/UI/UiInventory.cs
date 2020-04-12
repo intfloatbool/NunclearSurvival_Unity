@@ -16,7 +16,21 @@ public class UiInventory : MonoBehaviour
 
     private void Start()
     {
+        TryRemoveDebugItemsBeforLoad();
         UpdateItems();
+    }
+
+    private void TryRemoveDebugItemsBeforLoad()
+    {
+        var debugItems = transform.GetComponentsInChildren<InventoryItemUi>();
+        if(debugItems.Length > 0)
+        {
+            for(int i = 0; i < debugItems.Length; i++)
+            {
+                var debugItem = debugItems[i];
+                Destroy(debugItem.gameObject);
+            }
+        }
     }
 
     public void UpdateItems()
@@ -26,18 +40,23 @@ public class UiInventory : MonoBehaviour
         var playerItems = GlobalPlayer.Instance.PlayerInventory.GetCurrentItems();
         foreach(var playerItem in playerItems)
         {
-            var itemInfo = ItemHolder.Instance.GetItemInfoByKey(playerItem.ItemName);
-            if(itemInfo != null)
-            {
-                var itemUi = Instantiate(_itemUiPrefab, _itemsParent);
-                itemUi.gameObject.SetActive(true);
-                itemUi.UpdateItem(this, itemInfo, playerItem.Amount);
-                _currentItems.Add(itemUi);
-            }
-            else
-            {
-                Debug.LogError($"ItemInfo with name {playerItem.ItemName} not found!");
-            }
+            AddItem(playerItem);
+        }
+    }
+
+    public void AddItem(InventoryItem item)
+    {
+        var itemInfo = ItemHolder.Instance.GetItemInfoByKey(item.ItemName);
+        if (itemInfo != null)
+        {
+            var itemUi = Instantiate(_itemUiPrefab, _itemsParent);
+            itemUi.gameObject.SetActive(true);
+            itemUi.UpdateItem(this, itemInfo, item.Amount);
+            _currentItems.Add(itemUi);
+        }
+        else
+        {
+            Debug.LogError($"ItemInfo with name {item.ItemName} not found!");
         }
     }
 
