@@ -63,8 +63,8 @@ public class UiInventory : MonoBehaviour
             .ResetDialog()
             .SetHeader(itemInfo.ItemViewNameKey, itemInfo.ItemIcon)
             .SetDialogDescription(itemInfo.DescriptionLocKey)
-            .AddButton(_useItemLocKey, OnItemUse, CustomDialog.DialogPartType.ACCESS)
             .AddButton(_dropItemLocKey, OnItemDrop, CustomDialog.DialogPartType.DANGER)
+            .AddButton(_useItemLocKey, OnItemUse, CustomDialog.DialogPartType.ACCESS)           
             .ShowDialog();
     }
 

@@ -32,6 +32,7 @@ namespace GameUI
 
         [Space(3f)]
         [SerializeField] private Transform _dialogRoot;
+        [SerializeField] private Transform _dialogBacgrkound;
 
         [Space(5f)] 
         [SerializeField] private DialogButton _btnPrefab;
@@ -43,6 +44,25 @@ namespace GameUI
         [Space(5f)]
         [Header("Runtime references")]
         [SerializeField] private List<DialogButton> _buttons = new List<DialogButton>();
+
+
+        private void Start()
+        {
+            CheckReferences();
+
+            HideDialogVoid();
+        }
+
+        private void CheckReferences()
+        {
+            var dialogAssertionMsg = "Dialog assertion: ";
+            Debug.Assert(_headerText != null, dialogAssertionMsg + "_headerText != null");
+            Debug.Assert(_headerImage != null, dialogAssertionMsg + "_headerImage != null");
+            Debug.Assert(_descriptionText != null, dialogAssertionMsg + "_descriptionText != null");
+            Debug.Assert(_dialogBacgrkound != null, dialogAssertionMsg + "_dialogBacgrkound != null");
+            Debug.Assert(_btnPrefab != null, dialogAssertionMsg + "btnPrefab != null");
+            Debug.Assert(_btnParent != null, dialogAssertionMsg + "_btnParent != null");
+        }
 
 
         private Color GetColorByDialogPartType(DialogPartType partType)
@@ -127,14 +147,21 @@ namespace GameUI
         }
 
         public CustomDialog HideDialog()
-        {
+        {        
             _dialogRoot.gameObject.SetActive(false);
+            _dialogBacgrkound.gameObject.SetActive(false);
             return this;
+        }
+
+        public void HideDialogVoid()
+        {
+            HideDialog();
         }
 
         public CustomDialog ShowDialog()
         {
             _dialogRoot.gameObject.SetActive(true);
+            _dialogBacgrkound.gameObject.SetActive(true);
             return this;
         }
 
