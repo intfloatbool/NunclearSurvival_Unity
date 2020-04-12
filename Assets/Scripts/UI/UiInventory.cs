@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameUI;
 using SingletonsPreloaders;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UiInventory : MonoBehaviour
 {
@@ -12,10 +14,18 @@ public class UiInventory : MonoBehaviour
     [SerializeField] private string _useItemLocKey = "action_item_use";
     [SerializeField] private string _dropItemLocKey = "action_item_drop";
 
+    [Space(3f)]
+    [SerializeField] private Image _draggedItemImage;
+
     private ItemInfo _lastClickedItem;
 
     private Dictionary<ItemType, List<InventoryItemUi>> _categorizedItemsUiDict = new Dictionary<ItemType, List<InventoryItemUi>>();
     private ItemType[] _lastCategories;
+
+    [Space(5f)]
+    [Header("Runtime references")]
+    [SerializeField] private InventoryItemUi _draggedItem;
+    
 
     private void Awake()
     {
@@ -160,5 +170,27 @@ public class UiInventory : MonoBehaviour
         }
     }
 
+    public void OnItemDrag(InventoryItemUi itemUi)
+    {
+        if(_draggedItem != itemUi)
+        {
+            _draggedItemImage.sprite = itemUi.CurrentItemInfo.ItemIcon;
+            _draggedItemImage.gameObject.SetActive(true);
+        }
+        _draggedItem = itemUi;      
+    }
 
+    public void OnItemUp(InventoryItemUi itemUi)
+    {
+        _draggedItem = null;
+        _draggedItemImage.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(_draggedItem != null && _draggedItemImage != null)
+        {
+            _draggedItemImage.rectTransform.position = Input.mousePosition;
+        }
+    }
 }

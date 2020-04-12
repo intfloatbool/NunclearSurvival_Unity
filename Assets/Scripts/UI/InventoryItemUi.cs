@@ -11,6 +11,8 @@ public class InventoryItemUi : GameButtonBase
     public ItemInfo CurrentItemInfo => _currentItemInfo;
     private UiInventory _inventory;
 
+    public bool IsDragged { get; private set; }
+
     public void UpdateItem(UiInventory inventory, ItemInfo itemInfo, int amount)
     {
         _currentItemInfo = itemInfo;
@@ -29,5 +31,17 @@ public class InventoryItemUi : GameButtonBase
         //var globalPlayer = GlobalPlayer.Instance;
         //globalPlayer.PlayerInventory.RemoveItem(_currentItemInfo.ItemName);
         //_inventory.UpdateItems();
+    }
+
+    public void OnItemDrag()
+    {
+        IsDragged = true;
+        _inventory.OnItemDrag(this);  
+    }
+
+    public void OnItemUp()
+    {
+        IsDragged = false;
+        _inventory.OnItemUp(this);       
     }
 }
