@@ -43,5 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8c77536fb029b488496fd3cec9953c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isForcedLanguage: 1
+  _forcedLanguage: 10
   _localizationJsonPath: Localization/Loc_1
-  _localizationItems: []
+  _localizationItemContainer:
+    LocalizationItems: []

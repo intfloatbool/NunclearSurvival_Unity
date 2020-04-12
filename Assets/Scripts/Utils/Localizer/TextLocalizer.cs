@@ -7,6 +7,8 @@ namespace SingletonsPreloaders
 {
     public class TextLocalizer : UnitySingletonBase<TextLocalizer>
     {
+        [SerializeField] private bool _isForcedLanguage = false;
+        [SerializeField] private SystemLanguage _forcedLanguage = SystemLanguage.English;
         [SerializeField] private string _localizationJsonPath = "Localization/Loc_1";
         [SerializeField] private LocalizationItemsContainer _localizationItemContainer;
         
@@ -55,6 +57,10 @@ namespace SingletonsPreloaders
 
         public string GetLocalization(string key, SystemLanguage language)
         {
+            if(_isForcedLanguage)
+            {
+                language = _forcedLanguage;
+            }
             var item = _localizationItemsDict.ContainsKey(key) ? _localizationItemsDict[key] : null;
             if (item != null)
             {
