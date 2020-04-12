@@ -33,6 +33,7 @@ namespace GameUI
         [Space(3f)]
         [SerializeField] private Transform _dialogRoot;
         [SerializeField] private Transform _dialogBacgrkound;
+        [SerializeField] private RectTransform _headArea;
 
         [Space(5f)] 
         [SerializeField] private DialogButton _btnPrefab;
@@ -45,11 +46,13 @@ namespace GameUI
         [Header("Runtime references")]
         [SerializeField] private List<DialogButton> _buttons = new List<DialogButton>();
 
+        private RectTransform _rectTransform;
 
         private void Start()
         {
-            CheckReferences();
+            _rectTransform = GetComponent<RectTransform>();
 
+            CheckReferences();
             HideDialogVoid();
         }
 
@@ -62,6 +65,8 @@ namespace GameUI
             Debug.Assert(_dialogBacgrkound != null, dialogAssertionMsg + "_dialogBacgrkound != null");
             Debug.Assert(_btnPrefab != null, dialogAssertionMsg + "btnPrefab != null");
             Debug.Assert(_btnParent != null, dialogAssertionMsg + "_btnParent != null");
+            Debug.Assert(_rectTransform != null, dialogAssertionMsg + "_rectTransform != null");
+            Debug.Assert(_headArea != null, dialogAssertionMsg + "_headArea != null");
         }
 
 
@@ -142,7 +147,7 @@ namespace GameUI
         public CustomDialog ResetDialog()
         {
             ResetButtons();
-           
+            LayoutRebuilder.ForceRebuildLayoutImmediate(_rectTransform);
             return this;
         }
 
@@ -159,9 +164,14 @@ namespace GameUI
         }
 
         public CustomDialog ShowDialog()
-        {
+        {         
             _dialogRoot.gameObject.SetActive(true);
             _dialogBacgrkound.gameObject.SetActive(true);
+
+            //call 2 times to align layout group + content size filter
+            LayoutRebuilder.ForceRebuildLayoutImmediate(_headArea);          
+            LayoutRebuilder.ForceRebuildLayoutImmediate(_headArea);
+
             return this;
         }
 

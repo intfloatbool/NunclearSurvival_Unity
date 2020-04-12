@@ -272,6 +272,84 @@
 					"Text": "You can combine and fry food on it!"
 				}
 			]
+		},
+		{
+			"Key": "resource_wood",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Древесина"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Wood"
+				}
+			]
+		},
+		{
+			"Key": "resource_wood_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Древесина- основа большинства конструкций"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Wood is the basis of most structures"
+				}
+			]
+		},
+		{
+			"Key": "resource_rock",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Камень"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Rock stone"
+				}
+			]
+		},
+		{
+			"Key": "resource_rock_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Просто камень"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Just a rock stone"
+				}
+			]
+		},
+		{
+			"Key": "resource_iron",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Железный слиток"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Iron bar"
+				}
+			]
+		},
+		{
+			"Key": "resource_iron_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Слиток чистого железа"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Pure iron bar"
+				}
+			]
 		}
 	]
 }

@@ -70,7 +70,7 @@ MonoBehaviour:
     _itemCraftParts: []
   - _itemViewNameKey: item_potato
     _descriptionLocKey: item_potato_description
-    _itemName: 5
+    _itemName: 6
     _itemType: 0
     _itemIcon: {fileID: 21300000, guid: 67ad979f59260844e8f404dfa5f84ff6, type: 3}
     _isConstantItem: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
     _itemCraftParts: []
   - _itemViewNameKey: item_cook_potato_chicken
     _descriptionLocKey: item_cook_potato_chicken_description
-    _itemName: 6
+    _itemName: 7
     _itemType: 0
     _itemIcon: {fileID: 21300000, guid: 2aaa0ef08d7ad9044a8da8ce2bab26bb, type: 3}
     _isConstantItem: 0
@@ -100,3 +100,27 @@ MonoBehaviour:
       _amount: 1
     - _itemPartName: 1
       _amount: 1
+  - _itemViewNameKey: resource_rock
+    _descriptionLocKey: resource_rock_description
+    _itemName: 3
+    _itemType: 2
+    _itemIcon: {fileID: 21300000, guid: 3c4c9d6843cf53f4abc101f97b3c6331, type: 3}
+    _isConstantItem: 0
+    _isCraftable: 0
+    _itemCraftParts: []
+  - _itemViewNameKey: resource_wood
+    _descriptionLocKey: resource_wood_description
+    _itemName: 4
+    _itemType: 2
+    _itemIcon: {fileID: 21300000, guid: a4f9f6e05920ee34db7d4fb2be895ddc, type: 3}
+    _isConstantItem: 0
+    _isCraftable: 0
+    _itemCraftParts: []
+  - _itemViewNameKey: resource_iron
+    _descriptionLocKey: resource_iron_description
+    _itemName: 5
+    _itemType: 2
+    _itemIcon: {fileID: 21300000, guid: e50fc6f638f60f747b13bba20b375ac3, type: 3}
+    _isConstantItem: 0
+    _isCraftable: 0
+    _itemCraftParts: []

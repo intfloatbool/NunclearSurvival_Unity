@@ -10,8 +10,7 @@ namespace GameUI
         [SerializeField] private Button _btn;
 
         public event Action<MenuItem> OnClickItem = (menuItem) => { };
-
-        private void Start()
+        private void Awake()
         {
             Debug.Assert(_img != null, "_img != null");
             Debug.Assert(_btn != null, "_btn != null");
@@ -26,12 +25,12 @@ namespace GameUI
 
         private void OnClick()
         {
-            OnClickItem(this);
+            OnClickItem.Invoke(this);
         }
 
         public void ImitateClick()
         {
-            OnClick();
+            _btn.onClick.Invoke();
         }
         
 

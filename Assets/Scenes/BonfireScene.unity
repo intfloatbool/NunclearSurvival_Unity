@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 117407474}
   - component: {fileID: 117407473}
   - component: {fileID: 117407472}
+  - component: {fileID: 117407476}
   m_Layer: 5
   m_Name: CategoryMinerals
   m_TagString: Untagged
@@ -254,6 +255,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117407470}
   m_CullTransparentMesh: 0
+--- !u!114 &117407476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117407470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d817046c0d6f5f840960946cb807bd72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _categories: 02000000
+  _inventory: {fileID: 1495688693}
+  _btn: {fileID: 117407473}
 --- !u!1 &139607848
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +407,7 @@ GameObject:
   - component: {fileID: 210199482}
   - component: {fileID: 210199481}
   - component: {fileID: 210199484}
+  - component: {fileID: 210199485}
   m_Layer: 5
   m_Name: CategoryFood
   m_TagString: Untagged
@@ -510,6 +527,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _img: {fileID: 914916064}
+  _btn: {fileID: 210199481}
+--- !u!114 &210199485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210199479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d817046c0d6f5f840960946cb807bd72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _categories: 0000000001000000
+  _inventory: {fileID: 1495688693}
   _btn: {fileID: 210199481}
 --- !u!1001 &217973693
 PrefabInstance:
@@ -1479,6 +1511,7 @@ GameObject:
   - component: {fileID: 834440556}
   - component: {fileID: 834440555}
   - component: {fileID: 834440554}
+  - component: {fileID: 834440558}
   m_Layer: 5
   m_Name: CategoryOther
   m_TagString: Untagged
@@ -1599,6 +1632,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834440552}
   m_CullTransparentMesh: 0
+--- !u!114 &834440558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834440552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d817046c0d6f5f840960946cb807bd72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _categories: 05000000
+  _inventory: {fileID: 1495688693}
+  _btn: {fileID: 834440555}
 --- !u!1001 &894054893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2419,6 +2467,7 @@ GameObject:
   - component: {fileID: 1389448394}
   - component: {fileID: 1389448393}
   - component: {fileID: 1389448392}
+  - component: {fileID: 1389448396}
   m_Layer: 5
   m_Name: CategoryEquipment
   m_TagString: Untagged
@@ -2539,6 +2588,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389448390}
   m_CullTransparentMesh: 0
+--- !u!114 &1389448396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389448390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d817046c0d6f5f840960946cb807bd72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _categories: 0300000004000000
+  _inventory: {fileID: 1495688693}
+  _btn: {fileID: 1389448393}
 --- !u!224 &1443059003 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3130717500951508949, guid: 0e1823538d92ebf408e6cf911a2d873c,
