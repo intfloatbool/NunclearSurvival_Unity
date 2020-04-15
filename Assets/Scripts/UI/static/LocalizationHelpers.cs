@@ -8,6 +8,7 @@ namespace StaticHelpers
     {
         public static readonly string YES_LOC_KEY = "yesLocKey";
         public static readonly string NO_LOC_KEY = "noLocKey";
+        public static readonly string ARE_YOU_SURE_KEY = "areYouSureKey";
     }
 }
 

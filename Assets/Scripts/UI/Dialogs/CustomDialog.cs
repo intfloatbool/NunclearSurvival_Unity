@@ -1,4 +1,5 @@
 ﻿using GameUtils;
+using StaticHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -174,6 +175,20 @@ namespace GameUI
             LayoutRebuilder.ForceRebuildLayoutImmediate(_headArea);
 
             return this;
+        }
+
+        public void ShowConfirmDialog(Action onConfirmAction, string confirmBodyTextKey, string confirmHeaderTextKey = null)
+        {
+            if(string.IsNullOrEmpty(confirmHeaderTextKey))
+            {
+                confirmHeaderTextKey = LocalizationHelpers.ARE_YOU_SURE_KEY;
+            }
+            ResetDialog();
+            SetHeader(confirmHeaderTextKey);
+            SetDialogDescription(confirmBodyTextKey);
+            AddButton(LocalizationHelpers.NO_LOC_KEY, null, CustomDialog.DialogPartType.SIMPLE);
+            AddButton(LocalizationHelpers.YES_LOC_KEY, onConfirmAction, CustomDialog.DialogPartType.ACCESS);
+            ShowDialog();
         }
 
         private void ResetButtons()

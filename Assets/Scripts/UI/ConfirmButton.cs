@@ -10,20 +10,14 @@ namespace GameUI
     public class ConfirmButton : MonoBehaviour, IPointerDownHandler
     {
         private Button _btn;
-        [SerializeField] private string _confirmHeaderTextKey = "areYouSureKey";
+        [SerializeField] private string _confirmHeaderTextKey;
         [SerializeField] private string _confirmBodyTextKey;
         public void OnPointerDown(PointerEventData eventData)
         {
             var dialog = CommonGui.Instance?.GetDialog();
             if(dialog != null)
             {
-                dialog
-                    .ResetDialog()
-                    .SetHeader(_confirmHeaderTextKey)
-                    .SetDialogDescription(_confirmBodyTextKey)
-                    .AddButton(LocalizationHelpers.NO_LOC_KEY, null, CustomDialog.DialogPartType.SIMPLE)
-                    .AddButton(LocalizationHelpers.YES_LOC_KEY, InvokeClick, CustomDialog.DialogPartType.ACCESS)
-                    .ShowDialog();
+                dialog.ShowConfirmDialog(InvokeClick, _confirmBodyTextKey, _confirmHeaderTextKey);
             }
         }
 
