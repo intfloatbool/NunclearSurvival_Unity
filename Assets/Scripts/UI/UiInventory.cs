@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GameUI;
 using SingletonsPreloaders;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UiInventory : MonoBehaviour
@@ -15,6 +17,10 @@ public class UiInventory : MonoBehaviour
     [SerializeField] private string _dropItemLocKey = "action_item_drop";
 
     [Space(3f)]
+    [SerializeField] private GraphicRaycaster _raycaster;
+    [SerializeField] private EventSystem _eventSystem;
+
+    [Space(3f)]
     [SerializeField] private Image _draggedItemImage;
 
     private ItemInfo _lastClickedItem;
@@ -25,7 +31,9 @@ public class UiInventory : MonoBehaviour
     [Space(5f)]
     [Header("Runtime references")]
     [SerializeField] private InventoryItemUi _draggedItem;
+    private PointerEventData m_PointerEventData;
     
+
 
     private void Awake()
     {
@@ -152,19 +160,22 @@ public class UiInventory : MonoBehaviour
     private void OnItemDrop()
     {
         //TODO: Complete futher logic!
-        Debug.Log("Item dropped! - " + _lastClickedItem.ItemViewNameKey);
+        RemoveItem(_lastClickedItem);
+    }
 
+    public void RemoveItem(ItemInfo itemInfo)
+    {
         var globalPlayer = GlobalPlayer.Instance;
-        if(globalPlayer == null)
+        if (globalPlayer == null)
         {
             Debug.LogError("Global player singleton is missing!");
             return;
         }
 
         var inventory = globalPlayer.PlayerInventory;
-        inventory.RemoveItem(_lastClickedItem.ItemName);
+        inventory.RemoveItem(itemInfo.ItemName);
 
-        if(_lastCategories != null)
+        if (_lastCategories != null)
         {
             ShowItemsByCategory(_lastCategories);
         }
@@ -184,6 +195,31 @@ public class UiInventory : MonoBehaviour
     {
         _draggedItem = null;
         _draggedItemImage.gameObject.SetActive(false);
+
+        TryUseItemUiInInteractors(itemUi);
+    }
+
+    private void TryUseItemUiInInteractors(InventoryItemUi itemUi)
+    {
+        m_PointerEventData = new PointerEventData(_eventSystem);
+        m_PointerEventData.position = Input.mousePosition;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        _raycaster.Raycast(m_PointerEventData, results);
+
+        IItemInteractorUI interactor = null;
+
+        foreach (RaycastResult result in results)
+        {
+            interactor = result.gameObject.GetComponent<IItemInteractorUI>();
+            if (interactor != null)
+                break;
+        }
+
+        if(interactor != null)
+        {
+            interactor.OnItemDroppedHere(itemUi);
+        }
     }
 
     private void Update()
