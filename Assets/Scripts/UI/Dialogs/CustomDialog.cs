@@ -126,7 +126,8 @@ namespace GameUI
             dialogBtn.IsActivated = true;
 
             dialogBtn.Btn.onClick.AddListener(() => {
-                onClickAction();
+                if(onClickAction != null)
+                    onClickAction();
                 if(isCloseDialog)
                 {
                     HideDialog();

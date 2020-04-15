@@ -1,6 +1,58 @@
 {
 	"LocalizationItems":[
 		{
+			"Key": "yesLocKey",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Да"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Yes"
+				}
+			]
+		},	
+		{
+			"Key": "noLocKey",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Нет"
+				},
+				{
+					"RegionName": "English",
+					"Text": "No"
+				}
+			]
+		},	
+		{
+			"Key": "areYouSureKey",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Вы уверены?"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Are you sure?"
+				}
+			]
+		},
+		{
+			"Key": "globalMapTransitionSceneKey",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Переход в глобальную карту"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Transition to the global map"
+				}
+			]
+		},	
+		{
 			"Key": "GameName",
 			"TextByRegions": [
 				{
