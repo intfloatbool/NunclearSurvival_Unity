@@ -1,4 +1,5 @@
 ﻿using GameUtils;
+using SingletonsPreloaders;
 using StaticHelpers;
 using System;
 using System.Collections.Generic;
@@ -175,6 +176,24 @@ namespace GameUI
             LayoutRebuilder.ForceRebuildLayoutImmediate(_headArea);
 
             return this;
+        }
+
+        public void ShowAttentionDialog(string bodyTextKey, string headerTextKey = null,
+            Sprite icon = null, Action onOkey = null)
+        {
+            if(string.IsNullOrEmpty(headerTextKey))
+            {
+                headerTextKey = LocalizationHelpers.ATTENTION_KEY;
+            }
+            if(icon == null)
+            {
+                icon = SpritesHolder.Instance.GetSpriteByKey(SpriteNamesHelper.ATTENTION_ICON);
+            }
+            ResetDialog();
+            SetHeader(headerTextKey, icon);
+            SetDialogDescription(bodyTextKey);
+            AddButton(LocalizationHelpers.OK_LOC_KEY, onOkey, DialogPartType.ACCESS);
+            ShowDialog();
         }
 
         public void ShowConfirmDialog(Action onConfirmAction, string confirmBodyTextKey, string confirmHeaderTextKey = null)

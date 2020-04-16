@@ -1,4 +1,5 @@
 ﻿using SingletonsPreloaders;
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,6 +19,12 @@ namespace GameEditorDebugHelpers
             if(GUILayout.Button($"Add {_selectedName}"))
             {
                 globalPlayer.PlayerInventory.AddItem(_selectedName);
+            }
+            if(GUILayout.Button($"Add random item"))
+            {
+                var itemNames = Enum.GetNames(typeof(ItemName));
+                var rndItemIndex = UnityEngine.Random.Range(0, itemNames.Length);
+                globalPlayer.PlayerInventory.AddItem((ItemName) rndItemIndex);
             }
         }
     }

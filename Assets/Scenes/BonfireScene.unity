@@ -1062,8 +1062,8 @@ RectTransform:
   - {fileID: 706305817}
   - {fileID: 489061009}
   - {fileID: 1260196662}
-  - {fileID: 2130895071}
   - {fileID: 959807252}
+  - {fileID: 2130895071}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2276,7 +2276,7 @@ RectTransform:
   - {fileID: 1598997189}
   - {fileID: 817629143}
   m_Father: {fileID: 413829543}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.39533338, y: 0}
   m_AnchorMax: {x: 1, y: 0.855}
@@ -8760,6 +8760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4847296ef79564d4ba40c395dff5faa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onlyFoodAttentionLocKey: onlyFoodAttentionKey
   _inventoryUi: {fileID: 1495688693}
   _inputItemsParent: {fileID: 1284424521}
 --- !u!1001 &1853881503
@@ -8922,7 +8923,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 413829543}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

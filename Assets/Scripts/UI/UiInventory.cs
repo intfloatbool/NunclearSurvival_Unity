@@ -7,9 +7,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UiInventory : MonoBehaviour
+public class UiInventory : MonoBehaviour, IItemHandler
 {
+
     [SerializeField] private Transform _itemsParent;
+    public Transform ItemsParent => _itemsParent;
+
     [SerializeField] private InventoryItemUi _itemUiPrefab;
     private List<InventoryItemUi> _currentItems = new List<InventoryItemUi>();
 
@@ -32,8 +35,6 @@ public class UiInventory : MonoBehaviour
     [Header("Runtime references")]
     [SerializeField] private InventoryItemUi _draggedItem;
     private PointerEventData m_PointerEventData;
-    
-
 
     private void Awake()
     {
@@ -104,26 +105,40 @@ public class UiInventory : MonoBehaviour
     public void AddItem(InventoryItem item)
     {
         var itemInfo = ItemHolder.Instance.GetItemInfoByKey(item.ItemName);
+        AddItem(itemInfo, item.Amount);
+    }
+
+    public void AddItem(ItemInfo itemInfo, int amount)
+    {
         if (itemInfo != null)
         {
             var itemCategory = itemInfo.ItemType;
             var itemsByCategory = _categorizedItemsUiDict.ContainsKey(itemCategory) ? _categorizedItemsUiDict[itemCategory] : null;
-            if(itemsByCategory == null)
+            if (itemsByCategory == null)
             {
                 _categorizedItemsUiDict.Add(itemCategory, new List<InventoryItemUi>());
                 itemsByCategory = _categorizedItemsUiDict[itemCategory];
             }
             var itemUi = Instantiate(_itemUiPrefab, _itemsParent);
             itemUi.gameObject.SetActive(false);
-            itemUi.UpdateItem(this, itemInfo, item.Amount);
-            itemsByCategory.Add(itemUi);       
+            itemUi.UpdateItem(this, itemInfo, amount);
+            itemsByCategory.Add(itemUi);
         }
         else
         {
-            Debug.LogError($"ItemInfo with name {item.ItemName} not found!");
+            Debug.LogError($"ItemInfo with name {itemInfo.ItemName} not found!");
         }
     }
 
+    public void OnItemDropAtHandler(InventoryItemUi itemUi)
+    {
+        AddItem(itemUi.CurrentItemInfo, itemUi.CurrentAmount);
+    }
+
+    public void MakeActionWithItem(InventoryItemUi itemUi)
+    {
+        ShowDialogAboutItem(itemUi.CurrentItemInfo);
+    }
     public void ShowDialogAboutItem(ItemInfo itemInfo)
     {
         var commongGui = CommonGui.Instance;

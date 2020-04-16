@@ -1,4 +1,6 @@
-﻿using SingletonsPreloaders;
+﻿using GameUI;
+using SingletonsPreloaders;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,39 +11,53 @@ public class InventoryItemUi : GameButtonBase
     [SerializeField] private TextMeshProUGUI _amountText;
     private ItemInfo _currentItemInfo;
     public ItemInfo CurrentItemInfo => _currentItemInfo;
-    private UiInventory _inventory;
+    private IItemHandler _itemHandler;
 
+    private int _currentAmount;
+    public int CurrentAmount => _currentAmount;
     public bool IsDragged { get; private set; }
 
-    public void UpdateItem(UiInventory inventory, ItemInfo itemInfo, int amount)
+    public Action<InventoryItemUi> ExternalOnClickAction { get; set; }
+
+    public void UpdateItem(IItemHandler itemHandler, ItemInfo itemInfo, int amount)
     {
         _currentItemInfo = itemInfo;
         _iconImg.sprite = _currentItemInfo.ItemIcon;
         if(!itemInfo.IsConstantItem)
         {
             _amountText.gameObject.SetActive(true);
-            _amountText.text = amount.ToString();
-        }   
-        _inventory = inventory;
+            _currentAmount = amount; 
+            _amountText.text = _currentAmount.ToString();
+        }
+        _itemHandler = itemHandler;
     }
 
     protected override void OnClick()
     {
-        _inventory.ShowDialogAboutItem(_currentItemInfo);
-        //var globalPlayer = GlobalPlayer.Instance;
-        //globalPlayer.PlayerInventory.RemoveItem(_currentItemInfo.ItemName);
-        //_inventory.UpdateItems();
+        if(ExternalOnClickAction != null)
+        {
+            ExternalOnClickAction(this);
+            return;
+        }
+        _itemHandler.MakeActionWithItem(this);
     }
 
     public void OnItemDrag()
     {
         IsDragged = true;
-        _inventory.OnItemDrag(this);  
+        _itemHandler.OnItemDrag(this);
     }
 
     public void OnItemUp()
     {
         IsDragged = false;
-        _inventory.OnItemUp(this);       
+        _itemHandler.OnItemUp(this);       
+    }
+
+    public InventoryItemUi Clone(Transform parent = null)
+    {
+        var clone = Instantiate(this, parent);
+        clone.UpdateItem(_itemHandler, _currentItemInfo, _currentAmount);
+        return clone;
     }
 }
