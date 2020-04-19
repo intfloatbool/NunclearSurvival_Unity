@@ -8,5 +8,7 @@
     //Equipment
     EQUIPMENT_ARMOR,
     EQUIPMENT_WEAPON,
-    ITEM_CONSTANT
+    //COMMON
+    RECIPE,
+    COOK_ITEM
 }

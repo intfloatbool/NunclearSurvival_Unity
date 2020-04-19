@@ -8,6 +8,16 @@ using UnityEngine.UI;
 public class InventoryItemUi : GameButtonBase
 {
     [SerializeField] private Image _iconImg;
+    private Sprite _itemSprite;
+    public Sprite ItemSprite 
+    {
+        get { return _itemSprite; }
+        set 
+        {
+            this._itemSprite = value;
+            _iconImg.sprite = _itemSprite;
+        }
+    }
     [SerializeField] private TextMeshProUGUI _amountText;
     private ItemInfo _currentItemInfo;
     public ItemInfo CurrentItemInfo => _currentItemInfo;
@@ -31,6 +41,7 @@ public class InventoryItemUi : GameButtonBase
     {
         _currentItemInfo = itemInfo;
         _iconImg.sprite = _currentItemInfo.ItemIcon;
+        _itemSprite = _currentItemInfo.ItemIcon;
         if(!itemInfo.IsConstantItem)
         {
             _amountText.gameObject.SetActive(true);
