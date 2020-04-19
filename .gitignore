@@ -31,6 +31,9 @@
 **/.idea/**/contentModel.xml
 **/.idea/**/modules.xml
 
+#vscode
+.vscode/
+
 *.suo
 *.user
 .vs/
