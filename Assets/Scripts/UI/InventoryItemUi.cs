@@ -14,7 +14,15 @@ public class InventoryItemUi : GameButtonBase
     private IItemHandler _itemHandler;
 
     private int _currentAmount;
-    public int CurrentAmount => _currentAmount;
+    public int CurrentAmount
+    {
+        get { return _currentAmount; }
+        set 
+        {
+            this._currentAmount = value;
+            this._amountText.text =  _currentAmount.ToString();
+        }
+    }
     public bool IsDragged { get; private set; }
 
     public Action<InventoryItemUi> ExternalOnClickAction { get; set; }

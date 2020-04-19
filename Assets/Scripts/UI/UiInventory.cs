@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using GameUI;
 using SingletonsPreloaders;
 using UnityEngine;
@@ -9,7 +7,7 @@ using UnityEngine.UI;
 
 public class UiInventory : MonoBehaviour, IItemHandler
 {
-
+    
     [SerializeField] private Transform _itemsParent;
     public Transform ItemsParent => _itemsParent;
 
@@ -189,7 +187,11 @@ public class UiInventory : MonoBehaviour, IItemHandler
 
         var inventory = globalPlayer.PlayerInventory;
         inventory.RemoveItem(itemInfo.ItemName);
+        UpdateLastCategories();       
+    }
 
+    public void UpdateLastCategories() 
+    {
         if (_lastCategories != null)
         {
             ShowItemsByCategory(_lastCategories);
