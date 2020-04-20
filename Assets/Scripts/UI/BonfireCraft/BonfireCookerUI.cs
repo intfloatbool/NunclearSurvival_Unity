@@ -1,33 +1,72 @@
 ﻿using SingletonsPreloaders;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 namespace GameUI
 {
     public class BonfireCookerUI : MonoBehaviour, IItemInteractorUI
     {
-        [SerializeField] private string _onlyFoodOrCookItemAttentionLocKey = "onlyFoodOrCookAttentionKey";
-
+        [SerializeField] private string _onlyFoodItemAttentionLocKey = "onlyFoodAttentionKey";
+        [SerializeField] private string _onlyCookItemAttentionLocKey = "onlyCookAttentionKey";
         [SerializeField] private UiInventory _inventoryUi;
         [SerializeField] private Transform _inputItemsParent;
         [SerializeField] private List<InventoryItemUi> _currentItems;
-        [SerializeField] private InventoryItemUi _currentCookItem;
+        [SerializeField] private NecessaryItemUi _cookItem;
+        [SerializeField] private NecessaryItemUi _recipeItem;
         private void Start()
         {
             Debug.Assert(_inventoryUi != null, "_inventoryUi != null");
             Debug.Assert(_inputItemsParent != null, "_inputItemsParent != null");
+            Debug.Assert(_cookItem != null, "_cookItem != null");
+
+            CheckInventoryItemOfNecessaryItem(_cookItem);
+            _inventoryUi.OnItemsUpdated += OnItemsUpdatedInInventoryUI;
         }
+
+        private void OnItemsUpdatedInInventoryUI()  
+        {
+            CheckInventoryItemOfNecessaryItem(_cookItem);
+
+            if(_recipeItem.IsReady) {
+                CheckInventoryItemOfNecessaryItem(_recipeItem);
+            }
+        }
+
+        private void CheckInventoryItemOfNecessaryItem(NecessaryItemUi necessaryItemUi) {
+            var item  =_inventoryUi.AllItems.FirstOrDefault(
+                i => i.CurrentItemInfo.ItemType == necessaryItemUi.LinkedType
+                );
+            if(item != null)  {
+                necessaryItemUi.UpdateItem(item);
+            } else {
+                necessaryItemUi.ResetItem();
+            }
+        }
+
 
         public void OnItemDroppedHere(InventoryItemUi itemUi)
         {
-            var itemType = itemUi.CurrentItemInfo.ItemType;
-            if(itemType != ItemType.FOOD || itemType != ItemType.COOK_ITEM)
+            var itemType = itemUi.CurrentItemInfo.ItemType;   
+            if(itemType == ItemType.COOK_ITEM) 
+            {
+                _cookItem.UpdateItem(itemUi);
+                return;
+            }  
+
+            else if(itemType == ItemType.RECIPE)  
+            {
+                _recipeItem.UpdateItem(itemUi);
+                return;
+            }      
+
+            if(itemType != ItemType.FOOD)
             {
                 var guiDialog = CommonGui.Instance?.GetDialog();
                 if(guiDialog != null)
                 {
-                    guiDialog.ShowAttentionDialog(_onlyFoodOrCookItemAttentionLocKey);
+                    guiDialog.ShowAttentionDialog(_onlyFoodItemAttentionLocKey);
                 }
 
                 return;
@@ -36,49 +75,25 @@ namespace GameUI
             AddItemToBonfire(itemUi);
         }
 
-
-        private void UpdateCookItem(InventoryItemUi itemUi) {
-
-        }
-
         private void AddItemToBonfire(InventoryItemUi itemUi) 
         {
-            if(itemUi.CurrentItemInfo.ItemType == ItemType.COOK_ITEM)
+            var sameItem = _currentItems.FirstOrDefault( i => i.CurrentItemInfo.ItemName == itemUi.CurrentItemInfo.ItemName );
+            if(sameItem != null)
             {
-                if(_currentCookItem != null)
-                {
-                    _currentCookItem.ItemSprite = itemUi.ItemSprite;
-                }
-                else
-                {
-                    //TODO: logic for updating new cook item
-                }
+                sameItem.CurrentAmount++;
             }
             else 
             {
-                var sameItem = _currentItems.FirstOrDefault( i => i.CurrentItemInfo.ItemName == itemUi.CurrentItemInfo.ItemName );
-                if(sameItem != null)
-                {
-                    sameItem.CurrentAmount++;
-                }
-                else 
-                {
-                    var clone = itemUi.Clone(_inputItemsParent);
-                    clone.ExternalOnClickAction = OnItemClick;
-                    clone.CurrentAmount = 1;
-                    _currentItems.Add(clone);              
-                }
-                _inventoryUi.RemoveItem(itemUi.CurrentItemInfo);   
+                var clone = itemUi.Clone(_inputItemsParent);
+                clone.ExternalOnClickAction = OnItemClick;
+                clone.CurrentAmount = 1;
+                _currentItems.Add(clone);              
             }
-                   
+            _inventoryUi.RemoveItem(itemUi.CurrentItemInfo);                  
         }
 
         private void OnItemClick(InventoryItemUi itemUi)
         {
-            if(itemUi.CurrentItemInfo.ItemType == ItemType.COOK_ITEM) 
-            {
-                return;
-            }
             var globalPlayer  = GlobalPlayer.Instance;
             if(globalPlayer != null)
             {

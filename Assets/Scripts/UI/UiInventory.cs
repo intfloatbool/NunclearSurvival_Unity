@@ -4,6 +4,7 @@ using SingletonsPreloaders;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
 
 public class UiInventory : MonoBehaviour, IItemHandler
 {
@@ -13,6 +14,9 @@ public class UiInventory : MonoBehaviour, IItemHandler
 
     [SerializeField] private InventoryItemUi _itemUiPrefab;
     private List<InventoryItemUi> _currentItems = new List<InventoryItemUi>();
+
+    private List<InventoryItemUi> _allItems = new List<InventoryItemUi>();
+    public List<InventoryItemUi> AllItems => _allItems;
 
     [SerializeField] private string _useItemLocKey = "action_item_use";
     [SerializeField] private string _dropItemLocKey = "action_item_drop";
@@ -33,6 +37,8 @@ public class UiInventory : MonoBehaviour, IItemHandler
     [Header("Runtime references")]
     [SerializeField] private InventoryItemUi _draggedItem;
     private PointerEventData m_PointerEventData;
+
+    public event Action OnItemsUpdated = () => {};
 
     private void Awake()
     {
@@ -87,6 +93,7 @@ public class UiInventory : MonoBehaviour, IItemHandler
     {
         DestroyCurrentItems();
         _currentItems.Clear();
+        _allItems.Clear();
         foreach(var itemType in _categorizedItemsUiDict.Keys)
         {
             var items = _categorizedItemsUiDict[itemType];
@@ -98,6 +105,8 @@ public class UiInventory : MonoBehaviour, IItemHandler
         {
             AddItem(playerItem);
         }
+
+        OnItemsUpdated();
     }
 
     public void AddItem(InventoryItem item)
@@ -121,6 +130,7 @@ public class UiInventory : MonoBehaviour, IItemHandler
             itemUi.gameObject.SetActive(false);
             itemUi.UpdateItem(this, itemInfo, amount);
             itemsByCategory.Add(itemUi);
+            _allItems.Add(itemUi);
         }
         else
         {

@@ -62,5 +62,15 @@ namespace Player
         {
             PlayerPrefs.DeleteAll();
         }
+
+        public override string GetValue(string key)
+        {
+            return PlayerPrefs.GetString(key);
+        }
+
+        public override void SetValue(string key, string value)
+        {
+            PlayerPrefs.SetString(key, value);
+        }
     }
 }

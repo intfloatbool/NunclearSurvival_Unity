@@ -60,5 +60,13 @@ namespace SingletonsPreloaders
             _playerNickName = _playerInfoProvider.LoadPlayerName();
             _playerInventory = _playerInfoProvider.LoadInventory();
         }
+
+        public string GetValueFromCurrentProvider(string key) {
+            return _playerInfoProvider.GetValue(key);
+        }
+
+        public void SetValueFromCurrentProvider(string key, string value) {
+            this._playerInfoProvider.SetValue(key, value);
+        }
     }
 }

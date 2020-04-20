@@ -91,7 +91,7 @@ MonoBehaviour:
   - _itemViewNameKey: item_skillet
     _descriptionLocKey: item_skillet_description
     _itemName: 8
-    _itemType: 5
+    _itemType: 6
     _itemIcon: {fileID: 21300000, guid: 811b6f1616ba45048b303838ba6d50aa, type: 3}
     _isConstantItem: 1
     _isCraftable: 1
@@ -122,5 +122,13 @@ MonoBehaviour:
     _itemType: 2
     _itemIcon: {fileID: 21300000, guid: e50fc6f638f60f747b13bba20b375ac3, type: 3}
     _isConstantItem: 0
+    _isCraftable: 0
+    _itemCraftParts: []
+  - _itemViewNameKey: recipe_potato_chicken
+    _descriptionLocKey: resource_iron_description
+    _itemName: 9
+    _itemType: 5
+    _itemIcon: {fileID: 21300000, guid: f259fcd0137a1244a883c04cc28eb69e, type: 3}
+    _isConstantItem: 1
     _isCraftable: 0
     _itemCraftParts: []

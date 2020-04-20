@@ -32,4 +32,11 @@ public class ItemInfo
     public bool IsCraftable => _isCraftable;
     [SerializeField] private List<ItemPart> _itemCraftParts;
     public List<ItemPart> ItemCraftParts => _itemCraftParts;
+
+    public ItemInfo Clone() 
+    {
+        var boxingClone = MemberwiseClone();
+        return boxingClone as ItemInfo;
+    }
+
 }
