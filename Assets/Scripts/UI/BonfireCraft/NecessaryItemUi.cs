@@ -15,6 +15,11 @@ namespace GameUI
         public ItemInfo LastItemInfo => _lastItemInfo;
         
         public bool IsReady {get; private set;}
+
+        private void Start()
+        {
+            ResetItem();
+        }
         public void UpdateItem(InventoryItemUi itemUi) 
         {          
             _lastItemInfo = itemUi.CurrentItemInfo.Clone();

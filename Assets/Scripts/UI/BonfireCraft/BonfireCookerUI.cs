@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using System;
 
 namespace GameUI
 {
@@ -13,8 +14,15 @@ namespace GameUI
         [SerializeField] private UiInventory _inventoryUi;
         [SerializeField] private Transform _inputItemsParent;
         [SerializeField] private List<InventoryItemUi> _currentItems;
+        public List<InventoryItemUi> CurrentItems => _currentItems;
+
         [SerializeField] private NecessaryItemUi _cookItem;
+        public NecessaryItemUi CookItem => _cookItem;
+
         [SerializeField] private NecessaryItemUi _recipeItem;
+        public NecessaryItemUi RecipeItem => _recipeItem;
+
+        public event Action<InventoryItemUi> OnItemAdd = (item) => { };
         private void Start()
         {
             Debug.Assert(_inventoryUi != null, "_inventoryUi != null");
@@ -81,15 +89,18 @@ namespace GameUI
             if(sameItem != null)
             {
                 sameItem.CurrentAmount++;
+                OnItemAdd(sameItem);
             }
             else 
             {
                 var clone = itemUi.Clone(_inputItemsParent);
                 clone.ExternalOnClickAction = OnItemClick;
                 clone.CurrentAmount = 1;
-                _currentItems.Add(clone);              
+                _currentItems.Add(clone);
+                OnItemAdd(clone);
             }
-            _inventoryUi.RemoveItem(itemUi.CurrentItemInfo);                  
+            _inventoryUi.RemoveItem(itemUi.CurrentItemInfo);
+        
         }
 
         private void OnItemClick(InventoryItemUi itemUi)

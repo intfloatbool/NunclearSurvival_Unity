@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GameUI
 {
     public interface IItemInteractorUI
     {
-        void OnItemDroppedHere(InventoryItemUi itemUi);
+        void OnItemDroppedHere(InventoryItemUi itemUi);     
     }
 
 }

@@ -125,7 +125,7 @@ MonoBehaviour:
     _isCraftable: 0
     _itemCraftParts: []
   - _itemViewNameKey: recipe_potato_chicken
-    _descriptionLocKey: resource_iron_description
+    _descriptionLocKey: recipe_potato_chicken_description
     _itemName: 9
     _itemType: 5
     _itemIcon: {fileID: 21300000, guid: f259fcd0137a1244a883c04cc28eb69e, type: 3}
