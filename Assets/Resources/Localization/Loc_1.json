@@ -415,6 +415,19 @@
 					"Text": "World map"
 				}
 			]
+		},
+        {
+			"Key": "_SureToMainMenuTransitionBody",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Выход в главное меню"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Exit to main menu"
+				}
+			]
 		}
 	]
 }
