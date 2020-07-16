@@ -428,6 +428,58 @@
 					"Text": "Exit to main menu"
 				}
 			]
+		},
+        {
+			"Key": "_playerLevelLabel",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Уровень"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Level"
+				}
+			]
+		},
+        {
+			"Key": "_playerRankLabel",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Рейтинг"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Rating"
+				}
+			]
+		},
+        {
+			"Key": "_playerHealthLabel",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Здоровье"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Health"
+				}
+			]
+		},
+        {
+			"Key": "_playerStaminaLabel",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Сила"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Power"
+				}
+			]
 		}
 	]
 }

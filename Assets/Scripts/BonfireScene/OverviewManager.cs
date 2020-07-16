@@ -7,6 +7,7 @@ namespace NunclearGame.BonfireSceneUI
 {
     public class OverviewManager : MonoBehaviour
     {
+        [SerializeField] private OverviewElement[] _allElements;
         [SerializeField] private OverviewElement _defaultOverview;
         public event Action<OverviewElement> OnOverviewChanged;
 
@@ -35,8 +36,22 @@ namespace NunclearGame.BonfireSceneUI
             } 
             if (overviewElement != _currentOverviewElement)
             {
+                
                 _currentOverviewElement = overviewElement;
+                SetupElements(_currentOverviewElement);
                 OnOverviewChanged?.Invoke(_currentOverviewElement);
+            }
+        }
+
+        private void SetupElements(OverviewElement overviewElement)
+        {
+            for (int i = 0; i < _allElements.Length; i++)
+            {
+                var element = _allElements[i];
+                if (element != null)
+                {
+                    element.SetActiveRelativeObjects(overviewElement == element);
+                }
             }
         }
     }

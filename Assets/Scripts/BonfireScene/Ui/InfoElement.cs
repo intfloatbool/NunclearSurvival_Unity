@@ -7,7 +7,10 @@ namespace NunclearGame.BonfireSceneUI
     public class InfoElement : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _titleText;
+        public TextMeshProUGUI TitleText => _titleText;
+        
         [SerializeField] private TextMeshProUGUI _valueText;
+        public TextMeshProUGUI ValueText => _valueText;
         [SerializeField] private Image _iconImg;
         public void Init(string titleContent, string valueContent, Sprite iconSprite = null)
         {
