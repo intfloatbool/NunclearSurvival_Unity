@@ -15,6 +15,11 @@ namespace NunclearGame.BonfireSceneUI
         private void Awake()
         {
             Assert.IsNotNull(_defaultOverview, "_defaultOverview != null");
+            ShowDefaultOverview();
+        }
+
+        public void ShowDefaultOverview()
+        {
             if (_defaultOverview != null)
             {
                 SetOverview(_defaultOverview);
