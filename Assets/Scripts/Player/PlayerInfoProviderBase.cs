@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NunclearGame.Player;
+using UnityEngine;
 
 namespace Player
 {
@@ -7,7 +8,8 @@ namespace Player
         public abstract string LoadPlayerName();
         public abstract void SetPlayerName(string freshName);
         public abstract PlayerInventory LoadInventory();
-
+        public abstract PlayerValues LoadPlayerValues();
+        public abstract void SavePlayerValues(PlayerValues playerValues);
         public abstract string GetValue(string key);
         public abstract void SetValue(string key, string value);
     }

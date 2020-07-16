@@ -1,5 +1,6 @@
 ﻿using SingletonsPreloaders;
 using System;
+using Player;
 using UnityEditor;
 using UnityEngine;
 
@@ -26,6 +27,38 @@ namespace GameEditorDebugHelpers
                 var rndItemIndex = UnityEngine.Random.Range(0, itemNames.Length);
                 globalPlayer.PlayerInventory.AddItem((ItemName) rndItemIndex);
             }
+            
+            GUILayout.Space(5f);
+            GUILayout.Label("Player values:");
+            GUILayout.Space(2f);
+            if(GUILayout.Button($"Increase player level +1"))
+            {
+                globalPlayer.ValuesController.IncreaseLevel();
+            }
+            
+            int damageValue = 10;
+            if(GUILayout.Button($"Damage player with: {damageValue}"))
+            {
+                globalPlayer.ValuesController.AddDamage(damageValue);
+            }
+
+            int healValue = 10;
+            if(GUILayout.Button($"Heal player with: {healValue}"))
+            {
+                globalPlayer.ValuesController.HealUp(healValue);
+            }
+            
+            GUILayout.Space(10f);
+            
+            if(GUILayout.Button($"Clear data (requires restart)"))
+            {
+                var prefsProvider = globalPlayer.PlayerInfoProvider as PlayerPrefsInfoProvider;
+                if (prefsProvider != null)
+                {
+                    prefsProvider.ClearAllPrefs();
+                }
+            }
+            
         }
     }
 }

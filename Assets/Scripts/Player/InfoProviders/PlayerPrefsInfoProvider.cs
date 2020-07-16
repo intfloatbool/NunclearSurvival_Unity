@@ -1,4 +1,6 @@
 ﻿using System;
+using NunclearGame.Player;
+using NunclearGame.Static;
 using UnityEngine;
 
 namespace Player
@@ -38,6 +40,42 @@ namespace Player
             playerInventory.OnItemRemoved += OnItemRemoved;
             
             return playerInventory;
+        }
+
+        public override PlayerValues LoadPlayerValues()
+        {
+            bool isPlayerValuesExists = PlayerPrefs.HasKey(GameHelper.PlayerPrefsKeys.HAS_VALUES_KEY);
+            
+            if (isPlayerValuesExists == false)
+            {
+                PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.HAS_VALUES_KEY, 1);
+                var defaultValues = GameHelper.PlayerHelper.CreateDefaultValues();
+                SavePlayerValues(defaultValues);
+            }
+
+            return GetPlayerValues();
+        }
+
+        public override void SavePlayerValues(PlayerValues playerValues)
+        {
+            PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.MAX_HP_KEY, playerValues.MaxHp);
+            PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.RATING_KEY, playerValues.Rating);
+            PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.CURRENT_HP_KEY, playerValues.CurrentHp);
+            PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.MAX_STAMINA_KEY, playerValues.MaxStamina);
+            PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.PLAYER_LEVEL_KEY, playerValues.PlayerLvl);
+        }
+
+        private PlayerValues GetPlayerValues()
+        {
+            int maxHp = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.MAX_HP_KEY, 0);
+            int rating = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.RATING_KEY, 0);
+            int currentHp = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.CURRENT_HP_KEY, 0);
+            int maxStamina = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.MAX_STAMINA_KEY, 0);
+            int playerLvl = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.PLAYER_LEVEL_KEY, 0);
+            
+            return new PlayerValues(
+                playerLvl, maxHp, currentHp, maxStamina, rating
+                );
         }
 
         private void OnItemAdded(ItemName itemName, int currentAmount)

@@ -1,4 +1,5 @@
 ﻿using System;
+using NunclearGame.Player;
 using UnityEngine;
 using Player;
 
@@ -42,11 +43,38 @@ namespace SingletonsPreloaders
             }
         }
 
+        [SerializeField] private PlayerValues _playerValuesDebugInfo;
+        private PlayerValues? _currentValues;
+        public PlayerValues PlayerValues
+        {
+            get
+            {
+                if (_currentValues == null)
+                {
+                    _currentValues = _playerInfoProvider.LoadPlayerValues();
+                    _playerValuesDebugInfo = _currentValues.Value;
+                }
+                
+                return _currentValues.Value;
+            }
+            set
+            {
+                _playerInfoProvider.SavePlayerValues(value);
+                _currentValues = _playerInfoProvider.LoadPlayerValues();
+                _playerValuesDebugInfo = _currentValues.Value;
+                OnPlayerValuesUpdated?.Invoke(_currentValues.Value);
+            }
+        }
+
+        public event Action<PlayerValues> OnPlayerValuesUpdated;
+        
         public event Action<string> OnPlayerNameUpdated = (playerName) => { };
     
         [SerializeField] private PlayerInventory _playerInventory;
         public PlayerInventory PlayerInventory => _playerInventory;
-    
+        
+        public PlayerValuesController ValuesController { get; private set; }
+        
         protected override GlobalPlayer GetInstance() => this;
 
         protected override void Awake()
@@ -59,6 +87,11 @@ namespace SingletonsPreloaders
         {
             _playerNickName = _playerInfoProvider.LoadPlayerName();
             _playerInventory = _playerInfoProvider.LoadInventory();
+            
+            //values
+            ValuesController = new PlayerValuesController(this);
+            _currentValues = _playerInfoProvider.LoadPlayerValues();
+            _playerValuesDebugInfo = _currentValues.Value;
         }
 
         public string GetValueFromCurrentProvider(string key) {
