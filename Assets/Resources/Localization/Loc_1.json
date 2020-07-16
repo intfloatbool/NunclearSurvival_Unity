@@ -402,6 +402,19 @@
 					"Text": "Pure iron bar"
 				}
 			]
+		},
+        {
+			"Key": "bonfire_WorldMap_btn",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Карта мира"
+				},
+				{
+					"RegionName": "English",
+					"Text": "World map"
+				}
+			]
 		}
 	]
 }
