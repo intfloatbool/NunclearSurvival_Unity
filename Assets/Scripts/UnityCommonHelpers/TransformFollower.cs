@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DrawMagicGame.Prototype
+namespace Common
 {
     public class TransformFollower : MonoBehaviour
     {
