@@ -480,6 +480,20 @@
 					"Text": "Power"
 				}
 			]
+		},
+        {
+			"Key": "_craftBtn",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "СДЕЛАТЬ"
+				},
+				{
+					"RegionName": "English",
+					"Text": "CRAFT"
+				}
+			]
 		}
+        
 	]
 }
