@@ -493,7 +493,21 @@
 					"Text": "CRAFT"
 				}
 			]
+		},
+        {
+			"Key": "_clearBonfireBtn",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "ОЧИСТИТЬ"
+				},
+				{
+					"RegionName": "English",
+					"Text": "CLEAR"
+				}
+			]
 		}
+        
         
 	]
 }

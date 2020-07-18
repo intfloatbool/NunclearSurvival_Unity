@@ -58,7 +58,7 @@ public class InventoryItemUi : GameButtonBase
             ExternalOnClickAction(this);
             return;
         }
-        _itemHandler.MakeActionWithItem(this);
+        _itemHandler?.MakeActionWithItem(this);
     }
 
     public void OnItemDrag()
