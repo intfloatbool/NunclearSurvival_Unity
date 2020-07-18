@@ -4,6 +4,12 @@ namespace NunclearGame.Static
 {
     public static class GameHelper
     {
+        public static class LocKeys
+        {
+            public const string NEW_ITEM_DIALOG_HEADER_KEY = "_newItemDialogHeader";
+            public const string OKAY_LABEL_KEY = "_okayText";
+        }
+        
         public static class PlayerPrefsKeys
         {
             public const string HAS_VALUES_KEY = "p_valuesHasValues";

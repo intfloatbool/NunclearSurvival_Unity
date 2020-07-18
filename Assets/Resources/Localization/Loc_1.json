@@ -506,6 +506,32 @@
 					"Text": "CLEAR"
 				}
 			]
+		}, 
+        {
+			"Key": "_newItemDialogHeader",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Новый предмет!"
+				},
+				{
+					"RegionName": "English",
+					"Text": "New item!"
+				}
+			]
+		},
+        {
+			"Key": "_okayText",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Ок!"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Ok!"
+				}
+			]
 		}
         
         

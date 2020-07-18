@@ -17,6 +17,8 @@ namespace Player
         /// int - current amount of item
         /// </summary>
         public event Action<ItemName, int> OnItemAdded;
+
+        public event Action<InventoryItem> OnItemAddedRef;
         public event Action<ItemName> OnItemRemoved;
 
         public event Action OnItemsUpdated;
@@ -60,6 +62,7 @@ namespace Player
             }
 
             OnItemAdded?.Invoke(sameItem.ItemName, sameItem.Amount);
+            OnItemAddedRef?.Invoke(sameItem);
             OnItemsUpdated?.Invoke();
         }
 
