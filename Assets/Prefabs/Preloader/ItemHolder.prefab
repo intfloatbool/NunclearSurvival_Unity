@@ -84,8 +84,8 @@ MonoBehaviour:
     _isConstantItem: 0
     _isCraftable: 1
     _itemCraftParts:
-    - _itemPartName: 5
-      _amount: 1
+    - _itemPartName: 6
+      _amount: 2
     - _itemPartName: 1
       _amount: 1
   - _itemViewNameKey: item_skillet
@@ -94,7 +94,7 @@ MonoBehaviour:
     _itemType: 6
     _itemIcon: {fileID: 21300000, guid: 811b6f1616ba45048b303838ba6d50aa, type: 3}
     _isConstantItem: 1
-    _isCraftable: 1
+    _isCraftable: 0
     _itemCraftParts:
     - _itemPartName: 5
       _amount: 1

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Player;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ namespace SingletonsPreloaders
         
         protected override ItemCraftSystem GetInstance() => this;
         
-        public InventoryItem TryCraftItem(ItemName sourceItemName)
+        public InventoryItem TryCraftItem(ItemName sourceItemName, params ItemName[] includeItemNames)
         {
             var sourceItem = ItemHolder.Instance.GetItemInfoByKey(sourceItemName);
             //TODO: make more optimization
@@ -36,10 +37,12 @@ namespace SingletonsPreloaders
                 var playerInventory = GlobalPlayer.Instance.PlayerInventory;
                 Debug.Assert(playerInventory != null, "Player inventory is NULL!");
                 int craftableCount = 0;
+                var itemNamesCollection = includeItemNames.ToList();
                 foreach (var craftPartItem in sourceItem.ItemCraftParts)
                 {
-                    var itemInInventory = playerInventory.GetItemByName(craftPartItem.ItemPartName);
-                    if (itemInInventory != null && itemInInventory.Amount >= craftPartItem.Amount)
+                    var partsFromCollection = itemNamesCollection.Where(itemName
+                        => itemName == craftPartItem.ItemPartName);
+                    if (partsFromCollection.Count() >= craftPartItem.Amount)
                     {
                         craftableCount++;
                     }
@@ -67,7 +70,6 @@ namespace SingletonsPreloaders
                     };
                 }
             }
-            Debug.LogWarning("Cannot craft item!");
             return null;
         }
         
