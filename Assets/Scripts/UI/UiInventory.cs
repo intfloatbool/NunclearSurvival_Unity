@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
+using System.Linq;
+using Player;
+using UnityEngine.Assertions;
 
 public class UiInventory : MonoBehaviour, IItemHandler
 {
@@ -38,11 +41,29 @@ public class UiInventory : MonoBehaviour, IItemHandler
     [SerializeField] private InventoryItemUi _draggedItem;
     private PointerEventData m_PointerEventData;
 
-    public event Action OnItemsUpdated = () => {};
-
+    private PlayerInventory _playerInventory;
+    
+    public event Action OnItemsUpdated;
+    
     private void Awake()
     {
+        _playerInventory = GlobalPlayer.Instance?.PlayerInventory;
+        Assert.IsNotNull(_playerInventory, "_playerInventory != null");
+        if (_playerInventory != null)
+        {
+            _playerInventory.OnItemsUpdated += UpdateItems;
+            _playerInventory.OnItemsUpdated += UpdateLastCategories;
+        }
         TryRemoveDebugItemsBeforLoad();
+    }
+
+    private void OnDestroy()
+    {
+        if (_playerInventory != null)
+        {
+            _playerInventory.OnItemsUpdated -= UpdateItems;
+            _playerInventory.OnItemsUpdated -= UpdateLastCategories;
+        }
     }
 
     public void ShowItemsByCategory(params ItemType[] itemTypes)
@@ -65,6 +86,10 @@ public class UiInventory : MonoBehaviour, IItemHandler
         ShowCurrentItems();
     }
 
+    public InventoryItemUi GetItemByName(ItemName itemName)
+    {
+        return _allItems.FirstOrDefault(iui => iui.CurrentItemInfo.ItemName == itemName);
+    }
     
     private void ShowCurrentItems()
     {
@@ -106,7 +131,7 @@ public class UiInventory : MonoBehaviour, IItemHandler
             AddItem(playerItem);
         }
 
-        OnItemsUpdated();
+        OnItemsUpdated?.Invoke();
     }
 
     public void AddItem(InventoryItem item)
