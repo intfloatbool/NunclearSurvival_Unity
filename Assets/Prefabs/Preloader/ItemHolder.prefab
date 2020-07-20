@@ -50,6 +50,9 @@ MonoBehaviour:
     _itemType: 0
     _itemIcon: {fileID: 21300000, guid: d68d3639bddbabe4da7435ff642ce594, type: 3}
     _isConstantItem: 0
+    _itemValues:
+    - _valueKey: foodNutritional
+      _value: 5
     _isCraftable: 0
     _itemCraftParts: []
   - _itemViewNameKey: item_chicken_name
@@ -58,6 +61,9 @@ MonoBehaviour:
     _itemType: 0
     _itemIcon: {fileID: 21300000, guid: 98151fe5ee04b564d8579c49b818c163, type: 3}
     _isConstantItem: 0
+    _itemValues:
+    - _valueKey: foodNutritional
+      _value: 10
     _isCraftable: 0
     _itemCraftParts: []
   - _itemViewNameKey: item_water_name
@@ -66,6 +72,9 @@ MonoBehaviour:
     _itemType: 1
     _itemIcon: {fileID: 21300000, guid: 91d9fea438820754da7f3ff2d60084f3, type: 3}
     _isConstantItem: 0
+    _itemValues:
+    - _valueKey: waterThirstDrink
+      _value: 5
     _isCraftable: 0
     _itemCraftParts: []
   - _itemViewNameKey: item_potato
@@ -74,6 +83,9 @@ MonoBehaviour:
     _itemType: 0
     _itemIcon: {fileID: 21300000, guid: 67ad979f59260844e8f404dfa5f84ff6, type: 3}
     _isConstantItem: 0
+    _itemValues:
+    - _valueKey: foodNutritional
+      _value: 3
     _isCraftable: 0
     _itemCraftParts: []
   - _itemViewNameKey: item_cook_potato_chicken
@@ -82,22 +94,13 @@ MonoBehaviour:
     _itemType: 0
     _itemIcon: {fileID: 21300000, guid: 2aaa0ef08d7ad9044a8da8ce2bab26bb, type: 3}
     _isConstantItem: 0
+    _itemValues:
+    - _valueKey: foodNutritional
+      _value: 15
     _isCraftable: 1
     _itemCraftParts:
     - _itemPartName: 6
       _amount: 2
-    - _itemPartName: 1
-      _amount: 1
-  - _itemViewNameKey: item_skillet
-    _descriptionLocKey: item_skillet_description
-    _itemName: 8
-    _itemType: 6
-    _itemIcon: {fileID: 21300000, guid: 811b6f1616ba45048b303838ba6d50aa, type: 3}
-    _isConstantItem: 1
-    _isCraftable: 0
-    _itemCraftParts:
-    - _itemPartName: 5
-      _amount: 1
     - _itemPartName: 1
       _amount: 1
   - _itemViewNameKey: resource_rock
@@ -106,6 +109,7 @@ MonoBehaviour:
     _itemType: 2
     _itemIcon: {fileID: 21300000, guid: 3c4c9d6843cf53f4abc101f97b3c6331, type: 3}
     _isConstantItem: 0
+    _itemValues: []
     _isCraftable: 0
     _itemCraftParts: []
   - _itemViewNameKey: resource_wood
@@ -114,6 +118,7 @@ MonoBehaviour:
     _itemType: 2
     _itemIcon: {fileID: 21300000, guid: a4f9f6e05920ee34db7d4fb2be895ddc, type: 3}
     _isConstantItem: 0
+    _itemValues: []
     _isCraftable: 0
     _itemCraftParts: []
   - _itemViewNameKey: resource_iron
@@ -122,13 +127,21 @@ MonoBehaviour:
     _itemType: 2
     _itemIcon: {fileID: 21300000, guid: e50fc6f638f60f747b13bba20b375ac3, type: 3}
     _isConstantItem: 0
+    _itemValues: []
     _isCraftable: 0
     _itemCraftParts: []
-  - _itemViewNameKey: recipe_potato_chicken
-    _descriptionLocKey: recipe_potato_chicken_description
-    _itemName: 9
-    _itemType: 5
-    _itemIcon: {fileID: 21300000, guid: f259fcd0137a1244a883c04cc28eb69e, type: 3}
+  - _itemViewNameKey: weapon_axe_simple
+    _descriptionLocKey: weapon_axe_simple_description
+    _itemName: 10
+    _itemType: 4
+    _itemIcon: {fileID: 21300000, guid: 53cae6b8f59db42a18c245e95e7c9ab7, type: 3}
     _isConstantItem: 1
-    _isCraftable: 0
-    _itemCraftParts: []
+    _itemValues:
+    - _valueKey: weaponDamage
+      _value: 7
+    _isCraftable: 1
+    _itemCraftParts:
+    - _itemPartName: 4
+      _amount: 2
+    - _itemPartName: 5
+      _amount: 2

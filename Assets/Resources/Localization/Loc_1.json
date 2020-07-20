@@ -532,6 +532,32 @@
 					"Text": "Ok!"
 				}
 			]
+		},
+        {
+			"Key": "weapon_axe_simple",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Простой топор"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Simple axe"
+				}
+			]
+		},
+        {
+			"Key": "weapon_axe_simple_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Простой топор, поможет в обороне и на охоте"
+				},
+				{
+					"RegionName": "English",
+					"Text": "A simple ax, will help in defense and hunting"
+				}
+			]
 		}
         
         

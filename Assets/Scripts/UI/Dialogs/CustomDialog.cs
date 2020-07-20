@@ -4,6 +4,7 @@ using StaticHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NunclearGame.Dialogs;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,11 +45,17 @@ namespace GameUI
         [Header("Parents for dialog items")]
         [SerializeField] private Transform _btnParent;
 
+        [Space(5f)] 
+        [SerializeField] private ValueUI _valueUIprefab;
+        [SerializeField] private Transform _valuesContainer;
+        [SerializeField] private Transform _valuesParent;
+        
         [Space(5f)]
         [Header("Runtime references")]
         [SerializeField] private List<DialogButton> _buttons = new List<DialogButton>();
 
         private RectTransform _rectTransform;
+        private List<ValueUI> _curreltValues = new List<ValueUI>();
 
         private void Start()
         {
@@ -147,9 +154,36 @@ namespace GameUI
             return this;
         }
 
+        public CustomDialog ShowValuesContainer()
+        {
+
+            SetActiveValuesContainer(true);
+            return this;
+        }
+
+        public CustomDialog AddValueInContainer(int valueNum, Sprite valueIcon = null)
+        {
+            var propertyValue = Instantiate(_valueUIprefab, _valuesParent);
+            propertyValue.Init(valueNum.ToString(), valueIcon);
+            propertyValue.gameObject.SetActive(true);
+            _curreltValues.Add(propertyValue);
+            return this;
+        }
+
+        private void SetActiveValuesContainer(bool isActive)
+        {
+            _valuesContainer.gameObject.SetActive(isActive);
+            if (!isActive)
+            {
+                _curreltValues.ForEach(v => Destroy(v.gameObject));
+                _curreltValues.Clear();
+            }
+        }
+
         public CustomDialog ResetDialog()
         {
             ResetButtons();
+            SetActiveValuesContainer(false);
             LayoutRebuilder.ForceRebuildLayoutImmediate(_rectTransform);
             return this;
         }

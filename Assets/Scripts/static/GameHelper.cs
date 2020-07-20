@@ -4,6 +4,14 @@ namespace NunclearGame.Static
 {
     public static class GameHelper
     {
+
+        public static class ItemValueKeys
+        {
+            public const string FOOD_NUTRITIONAL = "foodNutritional";
+            public const string WATER_THIRST = "waterThirstDrink";
+            public const string WEAPON_DAMAGE = "weaponDamage";
+        }
+        
         public static class LocKeys
         {
             public const string NEW_ITEM_DIALOG_HEADER_KEY = "_newItemDialogHeader";

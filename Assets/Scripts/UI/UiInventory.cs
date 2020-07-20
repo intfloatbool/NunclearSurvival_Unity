@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
 using System.Linq;
+using NunclearGame.Items;
 using Player;
 using UnityEngine.Assertions;
 
@@ -197,7 +198,34 @@ public class UiInventory : MonoBehaviour, IItemHandler
             .AddButton(_dropItemLocKey, OnItemDrop, CustomDialog.DialogPartType.DANGER)
             .AddButton(_useItemLocKey, OnItemUse, CustomDialog.DialogPartType.ACCESS)           
             .ShowDialog();
+
+        if (itemInfo.GetItemValues().Any())
+        {
+            var paramsWithSprite = GetItemParamViewInfo(itemInfo);
+            foreach (var spritableParam in paramsWithSprite)
+            {
+                dialog.AddValueInContainer(spritableParam.Item1.Value, spritableParam.Item2);
+            }
+
+            dialog.ShowValuesContainer();
+        }
     }
+
+    private IEnumerable<Tuple<ItemValue, Sprite>> GetItemParamViewInfo(ItemInfo itemInfo)
+    {
+        var itemParamsTuples = new List<Tuple<ItemValue, Sprite>>();
+        var itemParams = itemInfo.GetItemValues();
+        foreach (var itemValue in itemParams)
+        {
+            var key = itemValue.ValueKey;
+            var sprite = SpritesHolder.Instance.GetSpriteByKey(key);
+            
+            itemParamsTuples.Add(new Tuple<ItemValue, Sprite>(itemValue, sprite));
+        }
+
+        return itemParamsTuples;
+    }
+    
 
     private void OnItemUse()
     {

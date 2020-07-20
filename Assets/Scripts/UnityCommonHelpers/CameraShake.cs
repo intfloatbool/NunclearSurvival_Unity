@@ -41,7 +41,7 @@ namespace Common
             else
             {
                 shakeDuration = 0f;
-                camTransform.localPosition = originalPos;
+                
             }
         }
     }

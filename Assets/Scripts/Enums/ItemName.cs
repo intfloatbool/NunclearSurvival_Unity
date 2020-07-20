@@ -1,5 +1,6 @@
 ﻿public enum ItemName
 {
+    //FOOD
     FOOD_APPLE,
     FOOD_CHICKEN,
     WATER_WATER,
@@ -9,5 +10,6 @@
     FOOD_POTATO,
     FOOD_POTATO_WITH_CHICKEN,
     ITEM_SKILLET,
-    RECIPE_POTATO_CHICKEN
+    RECIPE_POTATO_CHICKEN,
+    WEAPON_AXE
 }

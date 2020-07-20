@@ -43,10 +43,6 @@ namespace SingletonsPreloaders
             {
                 sprite = _namedSpritesDict[spriteKey];
             }
-            else
-            {
-                Debug.LogError($"Cannot get sprite with key: {spriteKey} !");
-            }
 
             return sprite;
         }
