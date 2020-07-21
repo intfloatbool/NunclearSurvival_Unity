@@ -10,6 +10,8 @@ namespace SingletonsPreloaders
 
         public static PlayerInventory Inventory => Instance?.PlayerInventory;
         public static PlayerValuesController PlayerValuesController => Instance?.ValuesController;
+
+        public static PlayerEquipmentController PlayerEquipmentController => Instance?.EquipmentController;
         
         [Header("All player data will be load from here")]
         [SerializeField] private PlayerInfoProviderBase _playerInfoProvider;
@@ -47,6 +49,9 @@ namespace SingletonsPreloaders
             }
         }
 
+        private PlayerEquipmentController _equipmentController;
+        public PlayerEquipmentController EquipmentController => _equipmentController;
+
         [SerializeField] private PlayerValues _playerValuesDebugInfo;
         private PlayerValues? _currentValues;
         public PlayerValues PlayerValues
@@ -69,6 +74,9 @@ namespace SingletonsPreloaders
                 OnPlayerValuesUpdated?.Invoke(_currentValues.Value);
             }
         }
+
+        [Space(5f)]
+        [SerializeField] private PlayerEquipment _currentEquipment;
 
         public event Action<PlayerValues> OnPlayerValuesUpdated;
         
@@ -96,6 +104,17 @@ namespace SingletonsPreloaders
             ValuesController = new PlayerValuesController(this);
             _currentValues = _playerInfoProvider.LoadPlayerValues();
             _playerValuesDebugInfo = _currentValues.Value;
+            
+            //equipment
+            _equipmentController = new PlayerEquipmentController(this);
+            _equipmentController.OnEquipmentChanged += UpdateDebugEquipment;
+            _equipmentController.Init();
+            _equipmentController.OnEquipmentChanged += _playerInfoProvider.SaveEquipment;
+        }
+
+        private void UpdateDebugEquipment(PlayerEquipment playerEquipment)
+        {
+            _currentEquipment = playerEquipment;
         }
 
         public string GetValueFromCurrentProvider(string key) {

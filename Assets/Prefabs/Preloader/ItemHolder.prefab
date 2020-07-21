@@ -133,7 +133,7 @@ MonoBehaviour:
   - _itemViewNameKey: weapon_axe_simple
     _descriptionLocKey: weapon_axe_simple_description
     _itemName: 10
-    _itemType: 4
+    _itemType: 6
     _itemIcon: {fileID: 21300000, guid: 53cae6b8f59db42a18c245e95e7c9ab7, type: 3}
     _isConstantItem: 1
     _itemValues:

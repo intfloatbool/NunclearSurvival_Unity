@@ -1,5 +1,7 @@
 ﻿public enum ItemName
 {
+    NONE = -1,
+    
     //FOOD
     FOOD_APPLE,
     FOOD_CHICKEN,

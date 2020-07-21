@@ -110,5 +110,33 @@ namespace Player
         {
             PlayerPrefs.SetString(key, value);
         }
+
+        public override PlayerEquipment LoadEquipment()
+        {
+            int armor = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_ARMOR, -1);
+            int weapon = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_WEAPON, -1);
+            int grenade = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_GRENADE, -1);
+            int meleeWeapon = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_MELEE_WEAPON, -1);
+            
+            EquipmentValue armorValue = new EquipmentValue(ItemType.EQUIPMENT_ARMOR, (ItemName) armor);
+            EquipmentValue weaponValue = new EquipmentValue(ItemType.EQUIPMENT_WEAPON, (ItemName) weapon);
+            EquipmentValue grenadeValue = new EquipmentValue(ItemType.EQUIPMENT_GRENADE, (ItemName) grenade);
+            EquipmentValue meleeValue = new EquipmentValue(ItemType.EQUIPMENT_MELEE_WEAPON, (ItemName) meleeWeapon);
+            
+            return new PlayerEquipment(
+                weaponValue,
+                armorValue,
+                meleeValue,
+                grenadeValue
+                );
+        }
+
+        public override void SaveEquipment(PlayerEquipment equipment)
+        {
+            PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_ARMOR, (int) equipment.Armor.ItemName);
+            PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_WEAPON, (int) equipment.Weapon.ItemName);
+            PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_GRENADE, (int) equipment.Grenade.ItemName);
+            PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_MELEE_WEAPON, (int) equipment.MeleeWeapon.ItemName);
+        }
     }
 }

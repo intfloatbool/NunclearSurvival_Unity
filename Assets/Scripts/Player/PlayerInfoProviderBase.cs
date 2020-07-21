@@ -12,5 +12,8 @@ namespace Player
         public abstract void SavePlayerValues(PlayerValues playerValues);
         public abstract string GetValue(string key);
         public abstract void SetValue(string key, string value);
+
+        public abstract PlayerEquipment LoadEquipment();
+        public abstract void SaveEquipment(PlayerEquipment equipment);
     }
 }

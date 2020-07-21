@@ -26,6 +26,11 @@ namespace NunclearGame.Static
             public const string CURRENT_HP_KEY = "p_valuesCurrentHp";
             public const string MAX_STAMINA_KEY = "p_valuesMaxStamina";
             public const string RATING_KEY = "p_valuesRating";
+
+            public const string EQUIPMENT_WEAPON = "_equipWeapon";
+            public const string EQUIPMENT_ARMOR = "_equipArmor";
+            public const string EQUIPMENT_MELEE_WEAPON = "_equipMelee";
+            public const string EQUIPMENT_GRENADE = "_equipGrenade";
         }
         
         public static class PlayerHelper
