@@ -12,6 +12,9 @@ namespace NunclearGame.BonfireSceneUI
         [SerializeField] private TextMeshProUGUI _valueText;
         public TextMeshProUGUI ValueText => _valueText;
         [SerializeField] private Image _iconImg;
+
+        [SerializeField] private Image _filledImg;
+        public Image FilledImg => _filledImg;
         public void Init(string titleContent, string valueContent, Sprite iconSprite = null)
         {
             if (_titleText != null)

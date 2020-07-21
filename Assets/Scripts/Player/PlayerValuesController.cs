@@ -1,4 +1,5 @@
-﻿using SingletonsPreloaders;
+﻿using System;
+using SingletonsPreloaders;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -13,6 +14,8 @@ namespace NunclearGame.Player
             Assert.IsNotNull(_globalPlayer, "_globalPlayer != null");
         }
 
+        public event Action<PlayerValues> OnPlayerValuesChanged;
+
         public void IncreaseLevel()
         {
             var currentValues = _globalPlayer.PlayerValues;
@@ -25,6 +28,8 @@ namespace NunclearGame.Player
                 ); 
             
             _globalPlayer.PlayerValues = newValues;
+            
+            OnPlayerValuesChanged?.Invoke(newValues);
         }
 
         public void AddDamage(int dmg)
@@ -41,6 +46,8 @@ namespace NunclearGame.Player
             );
 
             _globalPlayer.PlayerValues = newValues;
+            
+            OnPlayerValuesChanged?.Invoke(newValues);
         }
 
         public void HealUp(int healValue)
@@ -57,6 +64,8 @@ namespace NunclearGame.Player
             ); 
             
             _globalPlayer.PlayerValues = newValues;
+            
+            OnPlayerValuesChanged?.Invoke(newValues);
         }
     }
 }

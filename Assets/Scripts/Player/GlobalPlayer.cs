@@ -7,6 +7,10 @@ namespace SingletonsPreloaders
 {
     public class GlobalPlayer : UnitySingletonBase<GlobalPlayer>
     {
+
+        public static PlayerInventory Inventory => Instance?.PlayerInventory;
+        public static PlayerValuesController PlayerValuesController => Instance?.ValuesController;
+        
         [Header("All player data will be load from here")]
         [SerializeField] private PlayerInfoProviderBase _playerInfoProvider;
         public PlayerInfoProviderBase PlayerInfoProvider => _playerInfoProvider;

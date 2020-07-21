@@ -229,7 +229,7 @@ public class UiInventory : MonoBehaviour, IItemHandler
 
     private void OnItemUse()
     {
-        //TODO: Complete futher logic!
+        ItemUserManager.Instance?.UseItem(_lastClickedItem);
         Debug.Log("Item use! - " + _lastClickedItem.ItemViewNameKey);
     }
 

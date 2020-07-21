@@ -1,4 +1,5 @@
 ﻿using System;
+using NunclearGame.Player;
 using SingletonsPreloaders;
 using UnityEngine;
 
@@ -11,36 +12,54 @@ namespace NunclearGame.BonfireSceneUI
         [SerializeField] private InfoElement _staminaElement;
         [SerializeField] private InfoElement _rankElement;
 
-        private void OnEnable()
+
+        private void Awake()
         {
-            InitPlayerValuesView();
+            GlobalPlayer.PlayerValuesController.OnPlayerValuesChanged += InitPlayerValuesView;
+        }
+        
+
+        private void OnDestroy()
+        {
+            GlobalPlayer.PlayerValuesController.OnPlayerValuesChanged -= InitPlayerValuesView;
         }
 
-        private void InitPlayerValuesView()
+        private void OnEnable()
         {
             var globalPlayer = GlobalPlayer.Instance;
             if (globalPlayer != null)
             {
-                var playerValues = globalPlayer.PlayerValues;
-                if (_levelElement != null)
-                {
-                    _levelElement.ValueText.text = playerValues.PlayerLvl.ToString();
-                }
+                InitPlayerValuesView(globalPlayer.PlayerValues);
+            }
+            
+        }
 
-                if (_hpElement != null)
-                {
-                    _hpElement.ValueText.text = $"{playerValues.CurrentHp} / {playerValues.MaxHp}";
-                }
+        private void InitPlayerValuesView(PlayerValues playerValues)
+        {
+            
+            if (_levelElement != null)
+            {
+                _levelElement.ValueText.text = playerValues.PlayerLvl.ToString();
+            }
 
-                if (_staminaElement != null)
+            if (_hpElement != null)
+            {
+                var fillAmount = (float) playerValues.CurrentHp / (float) playerValues.MaxHp;
+                if (_hpElement.FilledImg != null)
                 {
-                    _staminaElement.ValueText.text = playerValues.MaxStamina.ToString();
+                    _hpElement.FilledImg.fillAmount = fillAmount;
                 }
+                _hpElement.ValueText.text = $"{playerValues.CurrentHp} / {playerValues.MaxHp}";
+            }
 
-                if (_rankElement != null)
-                {
-                    _rankElement.ValueText.text = playerValues.Rating.ToString();
-                }
+            if (_staminaElement != null)
+            {
+                _staminaElement.ValueText.text = playerValues.MaxStamina.ToString();
+            }
+
+            if (_rankElement != null)
+            {
+                _rankElement.ValueText.text = playerValues.Rating.ToString();
             }
         }
     }
