@@ -558,6 +558,32 @@
 					"Text": "A simple ax, will help in defense and hunting"
 				}
 			]
+		},
+        {
+			"Key": "armor_simple_iron_cuirass",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Железная броня"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Iron armor"
+				}
+			]
+		},
+        {
+			"Key": "armor_simple_iron_cuirass_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Легкая броня из железа"
+				},
+				{
+					"RegionName": "English",
+					"Text": "A simple iron armor"
+				}
+			]
 		}
         
         

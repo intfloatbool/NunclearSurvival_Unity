@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Player;
 using SingletonsPreloaders;
 using UnityEngine;
@@ -11,6 +12,9 @@ namespace NunclearGame.Player
         private GlobalPlayer _globalPlayer;
         private PlayerInventory _playerInventory;
         private PlayerEquipment _currentEquipment;
+        public PlayerEquipment CurrentEquipment => _currentEquipment;
+        
+        public List<EquipmentValue> TotalEquipmentCollection { get; private set; } = new List<EquipmentValue>(4);
         
         public event Action<PlayerEquipment> OnEquipmentChanged;
         
@@ -30,7 +34,17 @@ namespace NunclearGame.Player
             //TODO: load values 
             _currentEquipment = _globalPlayer.PlayerInfoProvider.LoadEquipment();
             CheckEquipmentContainsInInventory();
+            OnEquipmentChanged += UpdateTotalEquipmentCollection;
             OnEquipmentChanged?.Invoke(_currentEquipment);
+        }
+
+        private void UpdateTotalEquipmentCollection(PlayerEquipment equipment)
+        {
+            TotalEquipmentCollection.Clear();
+            TotalEquipmentCollection.Add(equipment.Armor);
+            TotalEquipmentCollection.Add(equipment.Weapon);
+            TotalEquipmentCollection.Add(equipment.MeleeWeapon);
+            TotalEquipmentCollection.Add(equipment.Grenade);
         }
 
         private void CheckEquipmentContainsInInventory()

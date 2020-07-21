@@ -145,3 +145,16 @@ MonoBehaviour:
       _amount: 2
     - _itemPartName: 5
       _amount: 2
+  - _itemViewNameKey: armor_simple_iron_cuirass
+    _descriptionLocKey: armor_simple_iron_cuirass_description
+    _itemName: 11
+    _itemType: 3
+    _itemIcon: {fileID: 21300000, guid: 5ff7f7693b689483f954816c6a88820f, type: 3}
+    _isConstantItem: 1
+    _itemValues:
+    - _valueKey: armorValue
+      _value: 5
+    _isCraftable: 1
+    _itemCraftParts:
+    - _itemPartName: 5
+      _amount: 4

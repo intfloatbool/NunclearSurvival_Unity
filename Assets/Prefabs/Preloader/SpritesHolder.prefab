@@ -54,3 +54,5 @@ MonoBehaviour:
     Sprite: {fileID: 21300000, guid: 905aefa8652570842be8659ac40217a5, type: 3}
   - Name: weaponDamage
     Sprite: {fileID: 21300000, guid: ac45507ea1c6d4b1dbbcc743d8977a7e, type: 3}
+  - Name: armorValue
+    Sprite: {fileID: 21300000, guid: b617fc9ef2a7e49109d631ae28581b1d, type: 3}
