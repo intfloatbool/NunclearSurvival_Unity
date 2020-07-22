@@ -584,8 +584,33 @@
 					"Text": "A simple iron armor"
 				}
 			]
+		},
+        {
+			"Key": "makar_pistol_name",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Пистолет Макаров"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Makarov pistol"
+				}
+			]
+		},
+        {
+			"Key": "makar_pistol_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Простой и надежный пистолет"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Simple and reliable pistol"
+				}
+			]
 		}
-        
         
 	]
 }

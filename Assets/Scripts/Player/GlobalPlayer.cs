@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using NunclearGame.Player;
 using UnityEngine;
 using Player;
@@ -21,6 +22,10 @@ namespace SingletonsPreloaders
         [SerializeField]
         private string _playerNickName;
 
+        
+        /// <summary>
+        /// Is Player not first time play in game
+        /// </summary>
         public bool IsPlayerReady
         {
             get
@@ -86,13 +91,25 @@ namespace SingletonsPreloaders
         public PlayerInventory PlayerInventory => _playerInventory;
         
         public PlayerValuesController ValuesController { get; private set; }
+
+        [Space(5f)] 
+        [SerializeField] private ItemName[] _basicItemsForPlayer;
         
         protected override GlobalPlayer GetInstance() => this;
-
+    
         protected override void Awake()
         {
             base.Awake();
             InitializeDataFromLoader();
+        }
+
+        private IEnumerator Start()
+        {
+            yield return new WaitForSeconds(1f);
+            if (!IsPlayerReady)
+            {
+                yield return InitPlayerFirstGameLaunch();
+            }
         }
 
         private void InitializeDataFromLoader()
@@ -110,6 +127,22 @@ namespace SingletonsPreloaders
             _equipmentController.OnEquipmentChanged += UpdateDebugEquipment;
             _equipmentController.Init();
             _equipmentController.OnEquipmentChanged += _playerInfoProvider.SaveEquipment;
+        }
+
+        private IEnumerator InitPlayerFirstGameLaunch()
+        {
+            
+            //init basic items
+            var waiting = new WaitForSeconds(1f);
+            for (int i = 0; i < _basicItemsForPlayer.Length; i++)
+            {
+                if (_playerInventory != null)
+                {
+                    var itemName = _basicItemsForPlayer[i];
+                    _playerInventory.AddItem(itemName);
+                    yield return waiting;
+                }
+            }
         }
 
         private void UpdateDebugEquipment(PlayerEquipment playerEquipment)

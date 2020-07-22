@@ -43,7 +43,6 @@ namespace NunclearGame.Player
             TotalEquipmentCollection.Clear();
             TotalEquipmentCollection.Add(equipment.Armor);
             TotalEquipmentCollection.Add(equipment.Weapon);
-            TotalEquipmentCollection.Add(equipment.MeleeWeapon);
             TotalEquipmentCollection.Add(equipment.Grenade);
         }
 
@@ -79,23 +78,13 @@ namespace NunclearGame.Player
                 }
             }
             
-            var meleeWeaponName = _currentEquipment.MeleeWeapon.ItemName;
-            if (meleeWeaponName != ItemName.NONE)
-            {
-                var itemRef = _playerInventory.GetItemByName(meleeWeaponName);
-                if (itemRef == null)
-                {
-                    UnEquip(ItemType.EQUIPMENT_MELEE_WEAPON);
-                }
-            }
         }
 
         public bool IsEquipable(ItemInfo itemInfo)
         {
             return itemInfo.ItemType == ItemType.EQUIPMENT_ARMOR ||
                    itemInfo.ItemType == ItemType.EQUIPMENT_WEAPON ||
-                   itemInfo.ItemType == ItemType.EQUIPMENT_GRENADE ||
-                   itemInfo.ItemType == ItemType.EQUIPMENT_MELEE_WEAPON;
+                   itemInfo.ItemType == ItemType.EQUIPMENT_GRENADE;
         }
         
         public void UnEquip(ItemType itemType)
@@ -109,7 +98,6 @@ namespace NunclearGame.Player
                     freshValues = new PlayerEquipment(
                         lastValues.Weapon,
                         new EquipmentValue(itemType, ItemName.NONE),
-                        lastValues.MeleeWeapon,
                         lastValues.Grenade
                     );
                     break;
@@ -119,7 +107,6 @@ namespace NunclearGame.Player
                     freshValues = new PlayerEquipment(
                         new EquipmentValue(itemType, ItemName.NONE),
                         lastValues.Armor,
-                        lastValues.MeleeWeapon,
                         lastValues.Grenade
                     );
                     break;
@@ -129,18 +116,7 @@ namespace NunclearGame.Player
                     freshValues = new PlayerEquipment(
                         lastValues.Weapon,
                         lastValues.Armor,
-                        lastValues.MeleeWeapon,
                         new EquipmentValue(itemType, ItemName.NONE)
-                    );
-                    break;
-                }
-                case ItemType.EQUIPMENT_MELEE_WEAPON:
-                {
-                    freshValues = new PlayerEquipment(
-                        lastValues.Weapon,
-                        lastValues.Armor,
-                        new EquipmentValue(itemType, ItemName.NONE),
-                        lastValues.Grenade
                     );
                     break;
                 }
@@ -167,7 +143,6 @@ namespace NunclearGame.Player
                     freshValues = new PlayerEquipment(
                         lastValues.Weapon,
                         new EquipmentValue(itemType, itemInfo.ItemName),
-                        lastValues.MeleeWeapon,
                         lastValues.Grenade
                         );
                     break;
@@ -177,7 +152,6 @@ namespace NunclearGame.Player
                     freshValues = new PlayerEquipment(
                         new EquipmentValue(itemType, itemInfo.ItemName),
                         lastValues.Armor,
-                        lastValues.MeleeWeapon,
                         lastValues.Grenade
                     );
                     break;
@@ -187,18 +161,7 @@ namespace NunclearGame.Player
                     freshValues = new PlayerEquipment(
                         lastValues.Weapon,
                         lastValues.Armor,
-                        lastValues.MeleeWeapon,
                         new EquipmentValue(itemType, itemInfo.ItemName)
-                    );
-                    break;
-                }
-                case ItemType.EQUIPMENT_MELEE_WEAPON:
-                {
-                    freshValues = new PlayerEquipment(
-                        lastValues.Weapon,
-                        lastValues.Armor,
-                        new EquipmentValue(itemType, itemInfo.ItemName),
-                        lastValues.Grenade
                     );
                     break;
                 }
