@@ -610,7 +610,34 @@
 					"Text": "Simple and reliable pistol"
 				}
 			]
+		},
+        {
+			"Key": "metro_btn_key",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Метро"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Metro"
+				}
+			]
+		},
+        {
+			"Key": "metroMapTransitionSceneKey",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Спуск в метро"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Metro entring"
+				}
+			]
 		}
+        
         
 	]
 }

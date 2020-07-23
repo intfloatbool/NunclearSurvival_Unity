@@ -133,14 +133,13 @@ namespace SingletonsPreloaders
         {
             
             //init basic items
-            var waiting = new WaitForSeconds(1f);
             for (int i = 0; i < _basicItemsForPlayer.Length; i++)
             {
                 if (_playerInventory != null)
                 {
                     var itemName = _basicItemsForPlayer[i];
                     _playerInventory.AddItem(itemName);
-                    yield return waiting;
+                    yield return null;
                 }
             }
         }

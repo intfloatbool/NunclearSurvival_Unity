@@ -10,7 +10,8 @@ namespace SingletonsPreloaders
         public void UseItem(ItemInfo itemInfo)
         {
             //TODO: Complete item using
-            var itemType = itemInfo.ItemType;
+            ItemName itemName = itemInfo.ItemName;
+            ItemType itemType = itemInfo.ItemType;
             switch (itemType)
             {
                 case ItemType.FOOD:
@@ -21,6 +22,21 @@ namespace SingletonsPreloaders
                         GlobalPlayer.PlayerValuesController.HealUp(hungryHealValue.Value);
                     }
                     GlobalPlayer.Inventory.RemoveItem(itemInfo.ItemName);
+                    break;
+                }
+                case ItemType.EQUIPMENT_WEAPON:
+                {
+                    GlobalPlayer.PlayerEquipmentController.Equip(itemInfo);
+                    break;
+                }
+                case ItemType.EQUIPMENT_ARMOR:
+                {
+                    GlobalPlayer.PlayerEquipmentController.Equip(itemInfo);
+                    break;
+                }
+                case ItemType.EQUIPMENT_GRENADE:
+                {
+                    GlobalPlayer.PlayerEquipmentController.Equip(itemInfo);
                     break;
                 }
             }
