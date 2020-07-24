@@ -1,4 +1,5 @@
 ﻿using System;
+using Common.Visual;
 using GameUtils;
 using NunclearGame.Static;
 using TMPro;
@@ -14,6 +15,8 @@ namespace NunclearGame.Metro
 
         [SerializeField] private TextMeshPro _nameText;
         [SerializeField] private TextMeshPro _dangerText;
+
+        [SerializeField] private ColorChangerBase[] _relativeColorChangersByDanger;
         private StationProperties _stationProperties;
         private string _localizedName;
 
@@ -38,12 +41,26 @@ namespace NunclearGame.Metro
             _stationProperties = properties;
             _nameText.text = GetLocalizedName();
             _dangerText.text = GameLocalization.Get(_stationProperties.DangerType.ToString());
-            
-            //TODO: Mark danger with something else but no color! Its for test! 
-            if (GameHelper.MetroHolder != null)
+
+            UpdateColorByDanger();
+        }
+
+        private void UpdateColorByDanger()
+        {
+            if (GameHelper.MetroHolder == null)
             {
-                var colorByDanger = GameHelper.MetroHolder.GetColorByDanger(_stationProperties.DangerType);
-                _dangerText.color = colorByDanger;
+                Debug.LogError($"{nameof(GameHelper.MetroHolder)} is MISSING!");
+                return;
+            }
+            
+            Color colorByDanger = GameHelper.MetroHolder.GetColorByDanger(_stationProperties.DangerType);
+            for (int i = 0; i < _relativeColorChangersByDanger.Length; i++)
+            {
+                var colorChanger = _relativeColorChangersByDanger[i];
+                if(colorChanger == null)
+                    continue;
+                colorChanger.SetColor(colorByDanger);
+                    
             }
         }
     }

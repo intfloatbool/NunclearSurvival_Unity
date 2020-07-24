@@ -43,6 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace1a4090e94342d2a71555192081859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _colorsByDangerous:
+  - DangerType: 0
+    Color: {r: 0.7460406, g: 0.8301887, b: 0.5286579, a: 1}
+  - DangerType: 1
+    Color: {r: 0.44910166, g: 0.6698113, b: 0.37597898, a: 1}
+  - DangerType: 2
+    Color: {r: 0.9528302, g: 0.8328267, b: 0.5348434, a: 1}
+  - DangerType: 3
+    Color: {r: 0.9433962, g: 0.5665516, b: 0.28034887, a: 1}
+  - DangerType: 4
+    Color: {r: 0.9150943, g: 0.34470108, b: 0.11654504, a: 1}
   _stationPropertieses:
   - _name: m_st_Leninskaya
     _dangerType: 0

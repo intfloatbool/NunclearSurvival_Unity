@@ -7,6 +7,18 @@ namespace SingletonsPreloaders
 {
     public class MetroHolder : UnitySingletonBase<MetroHolder>
     {
+        
+        [System.Serializable]
+        private struct ColorByDanger
+        {
+            public DangerType DangerType;
+            public Color Color;
+        }
+
+        [SerializeField] private ColorByDanger[] _colorsByDangerous;
+        private Dictionary<DangerType, Color> _colorsByDangerousDict = new Dictionary<DangerType, Color>();
+
+        [Space(5f)]
         [Header("Station definitions")] 
         [SerializeField] private StationProperties[] _stationPropertieses;
         
@@ -17,10 +29,11 @@ namespace SingletonsPreloaders
         protected override void Awake()
         {
             base.Awake();
-            InitDict();
+            InitStationDict();
+            InitColorsDict();
         }
 
-        private void InitDict()
+        private void InitStationDict()
         {
             for (int i = 0; i < _stationPropertieses.Length; i++)
             {
@@ -37,6 +50,23 @@ namespace SingletonsPreloaders
             }
         }
 
+        private void InitColorsDict()
+        {
+            for (int i = 0; i < _colorsByDangerous.Length; i++)
+            {
+                ColorByDanger colorByDanger = _colorsByDangerous[i];
+                if (_colorsByDangerousDict.ContainsKey(colorByDanger.DangerType))
+                {
+                    Debug.LogError($"Color for dangerType: {colorByDanger.DangerType} already defined!");   
+                }
+                else
+                {
+                    _colorsByDangerousDict.Add(colorByDanger.DangerType, colorByDanger.Color);
+                }
+                
+            }
+        }
+
         public StationProperties GetStationPropertiesByName(string stationNameKey)
         {
             StationProperties properties = null;
@@ -46,18 +76,10 @@ namespace SingletonsPreloaders
 
         public Color GetColorByDanger(DangerType dangerType)
         {
-            if (dangerType == DangerType.VERY_LOW)
-                return Color.cyan;
-            if(dangerType == DangerType.LOW)
-                return Color.green;
-            if(dangerType == DangerType.MIDDLE)
-                return Color.yellow;
-            if(dangerType == DangerType.HARD)
-                return Color.red;
-            if(dangerType == DangerType.VERY_HARD)
-                return Color.red;
+            if (_colorsByDangerousDict.ContainsKey(dangerType))
+                return _colorsByDangerousDict[dangerType];
 
-            return Color.white;
+            return Color.black;
         }
     }
 }
