@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Common.Visual;
 using GameUtils;
 using NunclearGame.Static;
@@ -20,10 +21,18 @@ namespace NunclearGame.Metro
         private StationProperties _stationProperties;
         private string _localizedName;
 
+        [Space(5f)] 
+        [SerializeField] private List<MetroMapView> _relativeStations; 
+
         private void Awake()
         {
             Assert.IsNotNull(_nameText, "_nameText != null");
             Assert.IsNotNull(_dangerText, "_dangerText != null");
+        }
+
+        public bool IsRelationStation(MetroMapView metroMapView)
+        {
+            return _relativeStations.Contains(metroMapView);
         }
 
         public string GetLocalizedName()
