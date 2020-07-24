@@ -161,6 +161,7 @@ MonoBehaviour:
   _descriptionText: {fileID: 8456065885502333011}
   _dialogRoot: {fileID: 8311181231773308698}
   _dialogBacgrkound: {fileID: 8490375909670623510}
+  _descriptionRoot: {fileID: 6737579785305059249}
   _headArea: {fileID: 1808743384698488249}
   _btnPrefab: {fileID: 1895004846425760425, guid: 4a390820b81948a4fafef21e5332720b,
     type: 3}
@@ -1483,7 +1484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 205.43658, y: 0}
+  m_AnchoredPosition: {x: 209.84616, y: 0}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7903392342022089708

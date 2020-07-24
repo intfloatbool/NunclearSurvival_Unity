@@ -36,6 +36,7 @@ namespace GameUI
         [Space(3f)]
         [SerializeField] private Transform _dialogRoot;
         [SerializeField] private Transform _dialogBacgrkound;
+        [SerializeField] private Transform _descriptionRoot;
         [SerializeField] private RectTransform _headArea;
 
         [Space(5f)] 
@@ -106,8 +107,12 @@ namespace GameUI
             return this;
         }
 
-        public CustomDialog SetDialogDescription(string descriptionKey)
+        public CustomDialog SetDialogDescription(string descriptionKey, bool isActive = true)
         {
+            _descriptionRoot.gameObject.SetActive(isActive);
+            if (string.IsNullOrEmpty(descriptionKey))
+                return this;
+            
             _descriptionText.text = GameLocalization.Get(descriptionKey);
             return this;
         }
@@ -238,7 +243,9 @@ namespace GameUI
             }
             ResetDialog();
             SetHeader(confirmHeaderTextKey);
-            SetDialogDescription(confirmBodyTextKey);
+            bool isHaveDescription = !string.IsNullOrEmpty(confirmBodyTextKey);
+            SetDialogDescription(confirmBodyTextKey, isActive: isHaveDescription);
+
             AddButton(LocalizationHelpers.NO_LOC_KEY, null, CustomDialog.DialogPartType.SIMPLE);
             AddButton(LocalizationHelpers.YES_LOC_KEY, onConfirmAction, CustomDialog.DialogPartType.ACCESS);
             ShowDialog();

@@ -636,7 +636,138 @@
 					"Text": "Metro entring"
 				}
 			]
+		},
+        {
+			"Key": "backToBonfireText",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Вернуться к костру"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Back to the Bonfire"
+				}
+			]
+		},
+        {
+			"Key": "m_st_Leninskaya",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Ленинская"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Leninskaya"
+				}
+			]
+		},
+        {
+			"Key": "m_st_Orehova",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Орехова"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Orehova"
+				}
+			]
+		},
+        {
+			"Key": "m_st_Vodovka",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Водовка"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Vodovka"
+				}
+			]
+		},
+        {
+			"Key": "m_st_KhanyakinskyVokzal",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Ханякинский вокзал"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Khanyakin's vokzal"
+				}
+			]
+		},
+        {
+			"Key": "VERY_LOW",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Очень слабая"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Very low"
+				}
+			]
+		},
+        {
+			"Key": "LOW",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Слабая"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Low"
+				}
+			]
+		},
+        {
+			"Key": "MIDDLE",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Средняя"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Medium"
+				}
+			]
+		},
+        {
+			"Key": "HARD",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Высокая"
+				},
+				{
+					"RegionName": "English",
+					"Text": "High"
+				}
+			]
+		},
+        {
+			"Key": "VERY_HARD",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Очень высокая"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Very high"
+				}
+			]
 		}
+        
         
         
 	]

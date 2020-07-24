@@ -1,9 +1,12 @@
 ﻿using NunclearGame.Player;
+using SingletonsPreloaders;
 
 namespace NunclearGame.Static
 {
     public static class GameHelper
     {
+        //Useful managers links
+        public static MetroHolder MetroHolder => MetroHolder.Instance;
 
         public static class ItemValueKeys
         {
