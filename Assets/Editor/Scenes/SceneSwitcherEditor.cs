@@ -30,12 +30,19 @@ namespace GameEditorDebugHelpers
         {
             LoadSceneByName("GlobalMap");
         }
-
-        [MenuItem("SceneSwitcher/Battle Scene")]
-        static void LoadBattleScene()
+        
+        [MenuItem("SceneSwitcher/Metro scene")]
+        static void LoadMetroScene()
         {
-            LoadSceneByName("BattleScene");
+            LoadSceneByName("MetroScene");
         }
+        
+        
+        // [MenuItem("SceneSwitcher/Battle Scene")]
+        // static void LoadBattleScene()
+        // {
+        //     LoadSceneByName("BattleScene");
+        // }
 
         static void LoadSceneByName(string sceneName)
         {
