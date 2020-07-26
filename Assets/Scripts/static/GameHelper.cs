@@ -23,6 +23,7 @@ namespace NunclearGame.Static
         {
             public const string NEW_ITEM_DIALOG_HEADER_KEY = "_newItemDialogHeader";
             public const string OKAY_LABEL_KEY = "_okayText";
+            public const string DANGER_TEXT = "_dangerText";
         }
         
         public static class PlayerPrefsKeys

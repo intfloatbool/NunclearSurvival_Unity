@@ -12,7 +12,10 @@ namespace NunclearGame.Metro
         private MetroHolder _metroHolder;
         private MetroMapView _lastMetroMapView;
 
+        public bool IsInteractByClicks { get; set; } = true;
+        
         public event Action<MetroMapView> OnPlayerTransitionToStation;
+        public event Action<MetroMapView> OnPlayerTryEnterStation;
 
         private void Awake()
         {
@@ -30,6 +33,9 @@ namespace NunclearGame.Metro
 
         private void TryTransitionOnMetroStation(MetroMapView metroMapView)
         {
+            if (!IsInteractByClicks)
+                return;
+            
             //TODO: Complete transition logic, checking for clearing and so on..
             var currentPlayerStation = _metroInitializer.CurrentPlayerStation;
             if (metroMapView == currentPlayerStation)
@@ -56,6 +62,7 @@ namespace NunclearGame.Metro
                 
                 //TODO: Entering dialog
                 Debug.Log("Station is not clear. Open transition dialog.");
+                OnPlayerTryEnterStation?.Invoke(metroMapView);
             }
             
 
