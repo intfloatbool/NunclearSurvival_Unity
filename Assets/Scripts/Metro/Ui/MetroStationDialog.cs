@@ -31,6 +31,11 @@ namespace NunclearGame.Metro
             }
         }
 
+        private void Start()
+        {
+            _stationDialog.gameObject.SetActive(false);
+        }
+
         private void ShowDialog(MetroMapView metroMapView)
         {
             _metroController.IsInteractByClicks = false;

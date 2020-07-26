@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MetroScene.unity
     guid: 09c01e156ec16462088b1a51f5cf3702
+  - enabled: 1
+    path: Assets/Scenes/BattleScene.unity
+    guid: 957faae3a9fee4b438c6b727c09743b6
   m_configObjects: {}

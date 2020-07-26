@@ -37,6 +37,12 @@ namespace GameEditorDebugHelpers
             LoadSceneByName("MetroScene");
         }
         
+        [MenuItem("SceneSwitcher/Battle scene")]
+        static void LoadBattleScene()
+        {
+            LoadSceneByName("BattleScene");
+        }
+        
         
         // [MenuItem("SceneSwitcher/Battle Scene")]
         // static void LoadBattleScene()

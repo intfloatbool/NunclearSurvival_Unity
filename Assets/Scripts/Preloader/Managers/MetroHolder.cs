@@ -10,6 +10,7 @@ namespace SingletonsPreloaders
     public class MetroHolder : UnitySingletonBase<MetroHolder>
     {
         
+        
         [System.Serializable]
         private struct ColorByDanger
         {
@@ -56,6 +57,27 @@ namespace SingletonsPreloaders
         [SerializeField] private string _playerDefaultStationKey;
 
         [SerializeField] private StationData _defaultStationData;
+        
+        [Space(5f)]
+        [Header("Runtime")]
+        [SerializeField] private string _potentialSceneNameToGo;
+        private StationProperties _potentialStationToGo;
+
+        public StationProperties PotentialStationToGo
+        {
+            get
+            {
+                return _potentialStationToGo;
+            }
+            set
+            {
+                _potentialStationToGo = value;
+                if (_potentialStationToGo != null)
+                {
+                    _potentialSceneNameToGo = _potentialStationToGo.Name;
+                }
+            }
+        }
         
         private string _playerLastStationKey;
         public string PlayerLastStationKey => _playerLastStationKey;

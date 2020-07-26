@@ -65,7 +65,7 @@ namespace NunclearGame.Metro
                 OnPlayerTryEnterStation?.Invoke(metroMapView);
             }
             
-
+            GameHelper.MetroHolder.PotentialStationToGo = metroMapView.StationProperties;
         }
     }
 }
