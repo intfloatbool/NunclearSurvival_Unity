@@ -22,7 +22,7 @@ namespace NunclearGame.Metro
         public event Action<MetroMapView[]> OnStationsInitialized;
         public event Action<MetroMapView[]> OnStationsUpdated;
 
-        
+        public event Action<MetroMapView> OnPlayerStartPointInitialized;
         
         private void Awake()
         {
@@ -68,6 +68,7 @@ namespace NunclearGame.Metro
                 if (metroMapView.MetroNameKey.Equals(stationKey))
                 {
                     metroMapView.SetPlayerIsHere(true);
+                    OnPlayerStartPointInitialized?.Invoke(metroMapView);
                     _currentPlayerStation = metroMapView;
                 }
                 else
