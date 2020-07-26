@@ -32,11 +32,16 @@ namespace NunclearGame.Metro
         [SerializeField] private Color _gizmosRelationLinesColor = Color.yellow;
         
         [Space(5f)] 
-        [SerializeField] private List<MetroMapView> _relativeStations; 
+        [SerializeField] private List<MetroMapView> _relativeStations;
+
+        private MetroController _metroController;
 
         private void Awake()
         {
             Assert.IsNotNull(_nameText, "_nameText != null");
+
+            _metroController = FindObjectOfType<MetroController>();
+            Assert.IsNotNull(_metroController, "_metroController != null");
         }
 
         public bool IsRelationStation(MetroMapView metroMapView)
@@ -150,6 +155,14 @@ namespace NunclearGame.Metro
             foreach (MetroMapView relativeStation in _relativeStations)
             {
                 Gizmos.DrawLine(transform.position, relativeStation.transform.position);
+            }
+        }
+
+        private void OnMouseDown()
+        {
+            if (_metroController != null)
+            {
+                _metroController.OnPlayerClickOnMetro(this);
             }
         }
     }
