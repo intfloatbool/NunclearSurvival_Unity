@@ -15,19 +15,24 @@ namespace NunclearGame.Metro
         public string MetroNameKey => _metroNameKey;
 
         [SerializeField] private TextMeshPro _nameText;
-        [SerializeField] private TextMeshPro _dangerText;
 
         [SerializeField] private ColorChangerBase[] _relativeColorChangersByDanger;
         private StationProperties _stationProperties;
         private string _localizedName;
 
+        private string _debugName;
+        
+        [Space(5f)] 
+        [SerializeField] private bool _isUseGizmosHelpers = true;
+
+        [SerializeField] private Color _gizmosRelationLinesColor = Color.yellow;
+        
         [Space(5f)] 
         [SerializeField] private List<MetroMapView> _relativeStations; 
 
         private void Awake()
         {
             Assert.IsNotNull(_nameText, "_nameText != null");
-            Assert.IsNotNull(_dangerText, "_dangerText != null");
         }
 
         public bool IsRelationStation(MetroMapView metroMapView)
@@ -49,7 +54,6 @@ namespace NunclearGame.Metro
         {
             _stationProperties = properties;
             _nameText.text = GetLocalizedName();
-            _dangerText.text = GameLocalization.Get(_stationProperties.DangerType.ToString());
 
             UpdateColorByDanger();
         }
@@ -70,6 +74,43 @@ namespace NunclearGame.Metro
                     continue;
                 colorChanger.SetColor(colorByDanger);
                     
+            }
+        }
+        
+        
+        private void OnDrawGizmos()
+        {
+            if(!_isUseGizmosHelpers)
+                return;
+            AutoNameSetting();
+            DrawRelationsGizmo();
+        }
+
+        [ContextMenu("Reset name")]
+        public void ResetDebugName()
+        {
+            _debugName = null;
+        }
+        
+        private void AutoNameSetting()
+        {
+            if (string.IsNullOrEmpty(_debugName))
+            {
+                _debugName = $"{nameof(MetroMapView)}_{_metroNameKey}";
+            }
+
+            if (!gameObject.name.Equals(_debugName))
+            {
+                gameObject.name = _debugName;
+            }
+        }
+
+        private void DrawRelationsGizmo()
+        {
+            Gizmos.color = _gizmosRelationLinesColor;
+            foreach (MetroMapView relativeStation in _relativeStations)
+            {
+                Gizmos.DrawLine(transform.position, relativeStation.transform.position);
             }
         }
     }

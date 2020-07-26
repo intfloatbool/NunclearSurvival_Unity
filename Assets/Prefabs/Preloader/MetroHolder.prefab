@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace1a4090e94342d2a71555192081859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dangerSprite: {fileID: 21300000, guid: 63818c0600c654be992c4d0e6c9dfe1d, type: 3}
   _colorsByDangerous:
   - DangerType: 0
     Color: {r: 0.7460406, g: 0.8301887, b: 0.5286579, a: 1}
@@ -61,5 +62,9 @@ MonoBehaviour:
     _dangerType: 2
   - _name: m_st_Vodovka
     _dangerType: 1
-  - _name: m_st_KhanyakinskyVokzal
+  - _name: m_st_Khanyakina
     _dangerType: 3
+  - _name: m_st_Permskaya
+    _dangerType: 2
+  - _name: m_st_Knyazev
+    _dangerType: 1

@@ -690,15 +690,41 @@
 			]
 		},
         {
-			"Key": "m_st_KhanyakinskyVokzal",
+			"Key": "m_st_Khanyakina",
 			"TextByRegions": [
 				{
 					"RegionName": "Russian",
-					"Text": "Ханякинский вокзал"
+					"Text": "Ханякина"
 				},
 				{
 					"RegionName": "English",
-					"Text": "Khanyakin's vokzal"
+					"Text": "Khanyakina"
+				}
+			]
+		},
+        {
+			"Key": "m_st_Permskaya",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Пермская"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Permskaya"
+				}
+			]
+		},
+        {
+			"Key": "m_st_Knyazev",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Князев"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Knyazev"
 				}
 			]
 		},

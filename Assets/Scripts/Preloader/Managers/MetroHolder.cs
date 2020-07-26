@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NunclearGame.Enums;
 using NunclearGame.Metro;
 using UnityEngine;
@@ -15,9 +16,27 @@ namespace SingletonsPreloaders
             public Color Color;
         }
 
-        [SerializeField] private ColorByDanger[] _colorsByDangerous;
-        private Dictionary<DangerType, Color> _colorsByDangerousDict = new Dictionary<DangerType, Color>();
+        public class StationDangerIconInfo
+        {
+            [SerializeField] private Sprite _sprite;
+            public Sprite Sprite => _sprite;
+            [SerializeField] private Color _color;
+            public Color Color => _color;
 
+            public StationDangerIconInfo(Sprite sprite, Color color)
+            {
+                this._sprite = sprite;
+                this._color = color;
+            }
+        }
+
+        [SerializeField] private Sprite _dangerSprite;
+        private Dictionary<DangerType, StationDangerIconInfo> _dangerIconsDict = new Dictionary<DangerType, StationDangerIconInfo>();
+
+        [SerializeField] private ColorByDanger[] _colorsByDangerous;
+        
+        private Dictionary<DangerType, Color> _colorsByDangerousDict = new Dictionary<DangerType, Color>();
+        
         [Space(5f)]
         [Header("Station definitions")] 
         [SerializeField] private StationProperties[] _stationPropertieses;
@@ -67,6 +86,16 @@ namespace SingletonsPreloaders
             }
         }
 
+        private void InitDangerIconsDict()
+        {
+            var dangerTypeNames = Enum.GetNames(typeof(DangerType));
+            for (int i = 0; i < dangerTypeNames.Length; i++)
+            {
+                var dangerType = (DangerType) i;
+                _dangerIconsDict.Add(dangerType, CreateIconInfoByDangerType(dangerType));
+            }
+        }
+
         public StationProperties GetStationPropertiesByName(string stationNameKey)
         {
             StationProperties properties = null;
@@ -80,6 +109,24 @@ namespace SingletonsPreloaders
                 return _colorsByDangerousDict[dangerType];
 
             return Color.black;
+        }
+
+        public StationDangerIconInfo GetDangerIconByType(DangerType dangerType)
+        {
+            StationDangerIconInfo iconInfo = null;
+            _dangerIconsDict.TryGetValue(dangerType, out iconInfo);
+            if (iconInfo == null)
+            {
+                Debug.LogError($"There is no dangerIcon for {dangerType} !");
+            }
+
+            return iconInfo;
+        }
+        
+        private StationDangerIconInfo CreateIconInfoByDangerType(DangerType dangerType)
+        {
+            var colorByDanger = GetColorByDanger(dangerType);
+            return new StationDangerIconInfo(_dangerSprite, colorByDanger);
         }
     }
 }
