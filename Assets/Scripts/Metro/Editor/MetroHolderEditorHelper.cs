@@ -30,6 +30,15 @@ namespace NunclearGame.Metro
             }
             
             GUILayout.Space(5f);
+            GUILayout.Label("** DANGER ZONE **");
+            GUILayout.Space(2f);
+
+            if (GUILayout.Button("Make all stations cleared"))
+            {
+                holder.MakeAllStationsCleared();
+            }
+            
+            GUILayout.Space(5f);
             if (GUILayout.Button("Clear metro saved data"))
             {
                 if (GameHelper.InfoProvider == null)

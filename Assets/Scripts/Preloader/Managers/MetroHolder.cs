@@ -231,6 +231,20 @@ namespace SingletonsPreloaders
 
             return iconInfo;
         }
+
+        //Debug
+        public void MakeAllStationsCleared()
+        {
+            foreach (var stationKey in _stationsDict.Keys)
+            {
+                var stationData = 
+                    new StationData
+                    {
+                        IsClear = true
+                    };
+                UpdateStationData(stationKey, stationData);
+            }
+        }
         
         private StationDangerIconInfo CreateIconInfoByDangerType(DangerType dangerType)
         {
