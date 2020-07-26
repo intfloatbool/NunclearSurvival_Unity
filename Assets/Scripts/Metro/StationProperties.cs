@@ -12,9 +12,12 @@ namespace NunclearGame.Metro
         [SerializeField] private DangerType _dangerType;
         public DangerType DangerType => _dangerType;
 
-        public StationProperties Clone()
+        [Space(5f)] [Header("Runtime data will loading and update after start!")] 
+        [SerializeField] private StationData _stationData;
+        public StationData StationData
         {
-            return this.MemberwiseClone() as StationProperties;
+            get => _stationData;
+            set => _stationData = value;
         }
     }
 }

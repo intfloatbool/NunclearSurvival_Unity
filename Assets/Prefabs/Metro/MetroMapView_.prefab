@@ -553,6 +553,12 @@ MonoBehaviour:
   _nameText: {fileID: 73600913783343578}
   _relativeColorChangersByDanger:
   - {fileID: 2989946776649486815}
+  _relativeColorChangersByPlayerIsHere:
+  - {fileID: 6253186979911594177}
+  - {fileID: 3960181283189171797}
+  _clearedRelativeObjects: []
+  _notClearedRelativeObjects:
+  - {fileID: 3206981815478501854}
   _isUseGizmosHelpers: 1
   _gizmosRelationLinesColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _relativeStations: []

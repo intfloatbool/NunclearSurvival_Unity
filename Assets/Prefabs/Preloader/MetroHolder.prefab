@@ -58,13 +58,30 @@ MonoBehaviour:
   _stationPropertieses:
   - _name: m_st_Leninskaya
     _dangerType: 0
+    _stationData:
+      IsClear: 0
   - _name: m_st_Orehova
     _dangerType: 2
+    _stationData:
+      IsClear: 0
   - _name: m_st_Vodovka
     _dangerType: 1
+    _stationData:
+      IsClear: 0
   - _name: m_st_Khanyakina
     _dangerType: 3
+    _stationData:
+      IsClear: 0
   - _name: m_st_Permskaya
     _dangerType: 2
+    _stationData:
+      IsClear: 0
   - _name: m_st_Knyazev
     _dangerType: 1
+    _stationData:
+      IsClear: 0
+  _playerHereColor: {r: 0.21226418, g: 0.754017, b: 1, a: 0.84313726}
+  _playerNotHereColor: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 0.84313726}
+  _playerDefaultStationKey: m_st_Orehova
+  _defaultStationData:
+    IsClear: 1

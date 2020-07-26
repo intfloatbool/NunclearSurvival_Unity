@@ -17,6 +17,10 @@ namespace NunclearGame.Metro
         [SerializeField] private TextMeshPro _nameText;
 
         [SerializeField] private ColorChangerBase[] _relativeColorChangersByDanger;
+        [SerializeField] private ColorChangerBase[] _relativeColorChangersByPlayerIsHere;
+        [SerializeField] private GameObject[] _clearedRelativeObjects;
+        [SerializeField] private GameObject[] _notClearedRelativeObjects;
+        
         private StationProperties _stationProperties;
         private string _localizedName;
 
@@ -54,7 +58,8 @@ namespace NunclearGame.Metro
         {
             _stationProperties = properties;
             _nameText.text = GetLocalizedName();
-
+            var stationData = properties.StationData;
+            SetIsCleared(stationData.IsClear);
             UpdateColorByDanger();
         }
 
@@ -73,7 +78,41 @@ namespace NunclearGame.Metro
                 if(colorChanger == null)
                     continue;
                 colorChanger.SetColor(colorByDanger);
-                    
+            }
+        }
+
+        public void SetPlayerIsHere(bool isPlayerHere)
+        {
+            if (GameHelper.MetroHolder == null)
+            {
+                Debug.LogError("Metro holder is missing!");
+                return;
+            }
+
+            Color placedColor = isPlayerHere
+                ? GameHelper.MetroHolder.PlayerHereColor
+                : GameHelper.MetroHolder.PlayerNotHereColor;
+            
+            for (int i = 0; i < _relativeColorChangersByPlayerIsHere.Length; i++)
+            {
+                var colorChanger = _relativeColorChangersByPlayerIsHere[i];
+                if(colorChanger == null)
+                    continue;
+                colorChanger.SetColor(placedColor);
+            }
+        }
+
+        public void SetIsCleared(bool isCleared)
+        {
+            SetActiveObjectsInCollection(_clearedRelativeObjects, isCleared);
+            SetActiveObjectsInCollection(_notClearedRelativeObjects, !isCleared);
+        }
+
+        private void SetActiveObjectsInCollection(IEnumerable<GameObject> goCollection, bool isActive)
+        {
+            foreach (var gameObjectInCol in goCollection)
+            {
+                gameObjectInCol.SetActive(isActive);
             }
         }
         

@@ -1,4 +1,5 @@
 ﻿using NunclearGame.Player;
+using Player;
 using SingletonsPreloaders;
 
 namespace NunclearGame.Static
@@ -7,6 +8,8 @@ namespace NunclearGame.Static
     {
         //Useful managers links
         public static MetroHolder MetroHolder => MetroHolder.Instance;
+        public static PlayerInfoProviderBase InfoProvider => GlobalPlayer?.PlayerInfoProvider;
+        public static GlobalPlayer GlobalPlayer => GlobalPlayer.Instance;
 
         public static class ItemValueKeys
         {
@@ -34,6 +37,16 @@ namespace NunclearGame.Static
             public const string EQUIPMENT_WEAPON = "_equipWeapon";
             public const string EQUIPMENT_ARMOR = "_equipArmor";
             public const string EQUIPMENT_GRENADE = "_equipGrenade";
+            
+            //Metro stations
+            private const string STATION_IS_CLEAR = "isClearKey";
+            public static string GetIsClearStationKey(string stationKey)
+            {
+                return stationKey + STATION_IS_CLEAR;
+            }
+
+            public const string PLAYER_LAST_STATION_KEY = "_playerLastStationKey";
+
         }
         
         public static class PlayerHelper

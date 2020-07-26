@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NunclearGame.Enums;
 using NunclearGame.Metro;
+using NunclearGame.Static;
 using UnityEngine;
 
 namespace SingletonsPreloaders
@@ -42,6 +43,32 @@ namespace SingletonsPreloaders
         [SerializeField] private StationProperties[] _stationPropertieses;
         
         private Dictionary<string, StationProperties> _stationsDict = new Dictionary<string, StationProperties>();
+
+        [Space(5f)] 
+        [SerializeField] private Color _playerHereColor = Color.blue;
+        public Color PlayerHereColor => _playerHereColor;
+        
+        [SerializeField] private Color _playerNotHereColor = Color.white;
+        public Color PlayerNotHereColor => _playerNotHereColor;
+
+        [Space(5f)] 
+        [SerializeField] private string _playerDefaultStationKey;
+
+        [SerializeField] private StationData _defaultStationData;
+        
+        private string _playerLastStationKey;
+        public string PlayerLastStationKey => _playerLastStationKey;
+
+        /// <summary>
+        /// Arg#0 - StationKey
+        /// Arg#1 - StationProperties ref from holder
+        /// </summary>
+        public event Action<string, StationProperties> OnStationDataUpdated;
+
+        /// <summary>
+        /// Arg#0 - Current player station
+        /// </summary>
+        public event Action<string> OnPlayerLastStationUpdated;
         
         protected override MetroHolder GetInstance() => this;
 
@@ -50,6 +77,19 @@ namespace SingletonsPreloaders
             base.Awake();
             InitStationDict();
             InitColorsDict();
+            InitDangerIconsDict();
+        }
+
+        private void Start()
+        {
+            //Data loading
+            LoadAllData();
+        }
+
+        private void LoadAllData()
+        {
+            LoadAllStationData();
+            LoadLastPlayerStation();
         }
 
         private void InitStationDict()
@@ -101,6 +141,52 @@ namespace SingletonsPreloaders
             StationProperties properties = null;
             _stationsDict.TryGetValue(stationNameKey, out properties);
             return properties;
+        }
+
+        private void LoadAllStationData()
+        {
+            foreach (var stationKey in _stationsDict.Keys)
+            {
+                _stationsDict[stationKey].StationData = GameHelper.InfoProvider.LoadStationDataByKey(stationKey);
+            }
+        }
+
+        private void LoadLastPlayerStation()
+        {
+            _playerLastStationKey = GameHelper.InfoProvider.LoadCurrentPlayerStationKey();
+            if (string.IsNullOrEmpty(_playerLastStationKey))
+            {
+                _playerLastStationKey = _playerDefaultStationKey;
+                SetLastPlayerStation(_playerLastStationKey);
+                UpdateStationData(_playerLastStationKey, _defaultStationData);
+                Debug.Log("Last metro station is not defined, load default! - " + _playerLastStationKey);
+            }
+        }
+
+        public void SetLastPlayerStation(string stationKey)
+        {
+            _playerLastStationKey = stationKey;
+            GameHelper.InfoProvider.SetCurrentPlayerStationKey(stationKey);
+            OnPlayerLastStationUpdated?.Invoke(_playerLastStationKey);
+        } 
+
+        public void UpdateStationData(string stationNameKey, StationData stationData)
+        {
+            var propertiesByName = GetStationPropertiesByName(stationNameKey);
+            if (propertiesByName == null)
+            {
+                Debug.LogError("There is Properties for station: " + stationNameKey);
+                return;
+            }
+            propertiesByName.StationData = stationData;
+            if (GameHelper.GlobalPlayer == null)
+            {
+                Debug.LogError("GlobalPlayer is missing!");
+                return;
+            }
+            
+            GameHelper.GlobalPlayer.PlayerInfoProvider.UpdateStationData(stationNameKey, stationData);
+            OnStationDataUpdated?.Invoke(stationNameKey, propertiesByName);
         }
 
         public Color GetColorByDanger(DangerType dangerType)

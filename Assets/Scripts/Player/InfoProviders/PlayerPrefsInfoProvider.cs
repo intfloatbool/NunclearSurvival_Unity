@@ -1,4 +1,5 @@
 ﻿using System;
+using NunclearGame.Metro;
 using NunclearGame.Player;
 using NunclearGame.Static;
 using UnityEngine;
@@ -110,6 +111,33 @@ namespace Player
         {
             PlayerPrefs.SetString(key, value);
         }
+
+        public override string LoadCurrentPlayerStationKey()
+        {
+            return PlayerPrefs.GetString(GameHelper.PlayerPrefsKeys.PLAYER_LAST_STATION_KEY);
+        }
+
+        public override void SetCurrentPlayerStationKey(string stationKey)
+        {
+            PlayerPrefs.SetString(GameHelper.PlayerPrefsKeys.PLAYER_LAST_STATION_KEY, stationKey);
+        }
+
+        public override void UpdateStationData(string stationKey, StationData stationData)
+        {
+            PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.GetIsClearStationKey(stationKey), Convert.ToInt32(stationData.IsClear));
+        }
+
+        public override StationData LoadStationDataByKey(string stationKey)
+        {
+            int isClearInt = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.GetIsClearStationKey(stationKey), 0);
+            bool isClear = Convert.ToBoolean(isClearInt);
+            
+            return new StationData
+            {
+                IsClear = isClear
+            };
+        }
+
 
         public override PlayerEquipment LoadEquipment()
         {

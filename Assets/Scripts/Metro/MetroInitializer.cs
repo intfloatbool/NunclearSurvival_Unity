@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using NunclearGame.Static;
 using UnityEngine;
@@ -12,7 +13,15 @@ namespace NunclearGame.Metro
         [SerializeField] private MetroMapView[] _stations;
         public MetroMapView[] Stations => _stations;
         private Dictionary<string, MetroMapView> _mapViewsDict = new Dictionary<string, MetroMapView>();
+        
+        [Space(5f)]
+        [Header("Runtime refs")]
+        [SerializeField] private MetroMapView _currentPlayerStation;
+        
         public event Action<MetroMapView[]> OnStationsInitialized;
+        public event Action<MetroMapView[]> OnStationsUpdated;
+
+        
         
         private void Awake()
         {
@@ -20,6 +29,49 @@ namespace NunclearGame.Metro
             if (GameHelper.MetroHolder != null)
             {
                 InitStations();
+                GameHelper.MetroHolder.OnPlayerLastStationUpdated += PlacePlayerAtStation;
+                GameHelper.MetroHolder.OnStationDataUpdated += UpdateStationView;
+            }
+        }
+
+        private void Start()
+        {
+            if (GameHelper.MetroHolder != null)
+            {
+                PlacePlayerAtStation(GameHelper.MetroHolder.PlayerLastStationKey);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (GameHelper.MetroHolder != null)
+            {
+                GameHelper.MetroHolder.OnPlayerLastStationUpdated -= PlacePlayerAtStation;
+                GameHelper.MetroHolder.OnStationDataUpdated -= UpdateStationView;
+            }
+        }
+
+        private void UpdateStationView(string stationKey, StationProperties stationProperties)
+        {
+            var mapView = GetMapViewByStationKey(stationKey);
+            if (mapView != null)
+            {
+                mapView.InitStation(stationProperties);   
+            }
+        }
+
+        private void PlacePlayerAtStation(string stationKey)
+        {
+            foreach (var metroMapView in _stations)
+            {
+                if (metroMapView.MetroNameKey.Equals(stationKey))
+                {
+                    metroMapView.SetPlayerIsHere(true);
+                }
+                else
+                {
+                    metroMapView.SetPlayerIsHere(false);
+                }
             }
         }
 
@@ -69,5 +121,18 @@ namespace NunclearGame.Metro
                 }   
             }
         }
+
+        private MetroMapView GetMapViewByStationKey(string stationKey)
+        {
+            MetroMapView mapView = null;
+            _mapViewsDict.TryGetValue(stationKey, out mapView);
+            if (mapView == null)
+            {
+                Debug.LogError($"MapView with key {stationKey} is missing!");
+            }
+
+            return mapView;
+        }
+        
     }
 }
