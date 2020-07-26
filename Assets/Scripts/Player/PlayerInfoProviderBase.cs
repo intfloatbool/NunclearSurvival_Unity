@@ -16,9 +16,9 @@ namespace Player
 
         public abstract string LoadCurrentPlayerStationKey();
         public abstract void SetCurrentPlayerStationKey(string stationKey);
-        
         public abstract void UpdateStationData(string stationKey, StationData properties);
         public abstract StationData LoadStationDataByKey(string stationKey);
+        public abstract void RemoveAllMetroData();
 
         public abstract PlayerEquipment LoadEquipment();
         public abstract void SaveEquipment(PlayerEquipment equipment);

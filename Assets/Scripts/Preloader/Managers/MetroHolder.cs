@@ -43,6 +43,7 @@ namespace SingletonsPreloaders
         [SerializeField] private StationProperties[] _stationPropertieses;
         
         private Dictionary<string, StationProperties> _stationsDict = new Dictionary<string, StationProperties>();
+        public Dictionary<string, StationProperties> StationsDict => _stationsDict;
 
         [Space(5f)] 
         [SerializeField] private Color _playerHereColor = Color.blue;
@@ -165,8 +166,30 @@ namespace SingletonsPreloaders
 
         public void SetLastPlayerStation(string stationKey)
         {
+            StationData lastStationData;
+            if (!_stationsDict.ContainsKey(stationKey))
+            {
+                Debug.LogError("There is no station defined for key" + stationKey);
+                return;
+            }
+
+            StationProperties stationProperties = _stationsDict[stationKey];
+
+            //To copy last values
+            lastStationData = stationProperties.StationData;
+            
             _playerLastStationKey = stationKey;
             GameHelper.InfoProvider.SetCurrentPlayerStationKey(stationKey);
+            
+            StationData updatedStationData =
+                new StationData
+                {
+                    IsClear = true
+                };
+            GameHelper.InfoProvider.UpdateStationData(stationKey, updatedStationData);
+
+            stationProperties.StationData = updatedStationData;
+            OnStationDataUpdated?.Invoke(stationKey, stationProperties);
             OnPlayerLastStationUpdated?.Invoke(_playerLastStationKey);
         } 
 

@@ -17,6 +17,7 @@ namespace NunclearGame.Metro
         [Space(5f)]
         [Header("Runtime refs")]
         [SerializeField] private MetroMapView _currentPlayerStation;
+        public MetroMapView CurrentPlayerStation => _currentPlayerStation;
         
         public event Action<MetroMapView[]> OnStationsInitialized;
         public event Action<MetroMapView[]> OnStationsUpdated;
@@ -67,6 +68,7 @@ namespace NunclearGame.Metro
                 if (metroMapView.MetroNameKey.Equals(stationKey))
                 {
                     metroMapView.SetPlayerIsHere(true);
+                    _currentPlayerStation = metroMapView;
                 }
                 else
                 {

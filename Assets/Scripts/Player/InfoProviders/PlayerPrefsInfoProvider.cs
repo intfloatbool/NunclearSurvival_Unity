@@ -2,6 +2,7 @@
 using NunclearGame.Metro;
 using NunclearGame.Player;
 using NunclearGame.Static;
+using SingletonsPreloaders;
 using UnityEngine;
 
 namespace Player
@@ -136,6 +137,26 @@ namespace Player
             {
                 IsClear = isClear
             };
+        }
+
+        public override void RemoveAllMetroData()
+        {
+            var metroHolder = MetroHolder.Instance;
+            if (metroHolder == null)
+            {
+                Debug.LogError("Metro holder is missing!");
+                return;
+            }
+
+            var stationKeysCollection = metroHolder.StationsDict.Keys;
+            foreach (var stationKey in stationKeysCollection)
+            {
+                PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.GetIsClearStationKey(stationKey), 0);
+            }
+            
+            PlayerPrefs.DeleteKey(GameHelper.PlayerPrefsKeys.PLAYER_LAST_STATION_KEY);
+            
+            Debug.Log("Metro data has been clear! Please relaunch game.");
         }
 
 

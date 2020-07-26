@@ -22,6 +22,8 @@ namespace NunclearGame.Metro
         [SerializeField] private GameObject[] _notClearedRelativeObjects;
         
         private StationProperties _stationProperties;
+        public StationProperties StationProperties => _stationProperties;
+        
         private string _localizedName;
 
         private string _debugName;
