@@ -7,10 +7,24 @@ namespace GameEditorDebugHelpers
 {
     public class UsefulLinks : MonoBehaviour
     {
+        private static readonly string hook_name = "[HOOK_FOLDER].prefab";
+        
         [MenuItem("UsefulLinks/Preloaders folder")]
         private static void OpenPreloadersFolder()
         {
             var path = "Assets/Prefabs/Preloader/Preloader.prefab";
+            TryPingObjectbyPath(path);
+        }
+
+        [MenuItem("UsefulLinks/Prefabs folder")]
+        private static void OpenPrefabsFolder()
+        {
+            var path = "Assets/Prefabs/" + hook_name;
+            TryPingObjectbyPath(path);
+        }
+
+        private static void TryPingObjectbyPath(string path)
+        {
             Object assetInPath = GetAssetByPath(path);
             int id = -1;
             if (assetInPath != null)

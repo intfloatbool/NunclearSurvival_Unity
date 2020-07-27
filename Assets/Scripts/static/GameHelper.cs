@@ -1,6 +1,9 @@
-﻿using NunclearGame.Player;
+﻿using System.Collections.Generic;
+using Common.Interfaces;
+using NunclearGame.Player;
 using Player;
 using SingletonsPreloaders;
+using UnityEngine;
 
 namespace NunclearGame.Static
 {
@@ -11,6 +14,8 @@ namespace NunclearGame.Static
         public static PlayerInfoProviderBase InfoProvider => GlobalPlayer?.PlayerInfoProvider;
         public static GlobalPlayer GlobalPlayer => GlobalPlayer.Instance;
 
+        public static EquipmentHolder EquipmentHolder => EquipmentHolder.Instance;
+        
         public static class ItemValueKeys
         {
             public const string FOOD_NUTRITIONAL = "foodNutritional";
@@ -67,6 +72,39 @@ namespace NunclearGame.Static
                     defaultRating
                     );
             }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourceCollection">object that will added in dict by T1 key</param>
+        /// <typeparam name="T1">Primary key of T2 object</typeparam>
+        /// <typeparam name="T2">Object reference</typeparam>
+        /// <returns></returns>
+        public static Dictionary<T1, T2> InitDictionaryByCollection<T1, T2>(IEnumerable<T2> sourceCollection) where T2 : IKeyPreferer<T1>
+        {
+            var dict = new Dictionary<T1, T2>();
+
+            foreach (var sourceItem in sourceCollection)
+            {
+                if (sourceItem == null)
+                {
+                    Debug.LogError("Missing item!");
+                    continue;
+                }
+
+                var itemKey = sourceItem.GetKey();
+                if (dict.ContainsKey(itemKey))
+                {
+                    Debug.LogError("Dict already has key!");
+                }
+                else
+                {
+                    dict.Add(itemKey, sourceItem);   
+                }
+            }
+
+            return dict;
         }
     }
 

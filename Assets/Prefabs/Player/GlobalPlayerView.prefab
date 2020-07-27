@@ -40,6 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 177629707359916951}
+  - component: {fileID: 3579670281833306994}
+  - component: {fileID: 5468568170146832092}
+  - component: {fileID: 2085469918931841373}
   m_Layer: 0
   m_Name: GlobalPlayerView
   m_TagString: Untagged
@@ -58,10 +61,53 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 5565564770849043405}
+  - {fileID: 5073117179431021288}
   - {fileID: 4465980678811197854}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3579670281833306994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177629707359916936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1236f2b8f4f349839a21e987a68a99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _equipViewItems: []
+--- !u!114 &5468568170146832092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177629707359916936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae218692eef2747a1a7515cc55410632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerView: {fileID: 3579670281833306994}
+--- !u!114 &2085469918931841373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177629707359916936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c67ae292f0904a659d9393e694e0491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerView: {fileID: 3579670281833306994}
+  _animator: {fileID: 1022923197421191022}
+  _isHaveWeaponAnimKey: IsHaveWeapon
 --- !u!1 &197310680766533950
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,6 +169,52 @@ Transform:
   m_Father: {fileID: 3892044710323758295}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &745487991634209455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5073117179431021288}
+  - component: {fileID: 7694523879571161383}
+  m_Layer: 0
+  m_Name: Grenade_ANCHOR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5073117179431021288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745487991634209455}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.961, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 177629707359916951}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7694523879571161383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745487991634209455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7fffaccf8954a7d9d8ef06388b7e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemtype: 5
+  _anchor: {fileID: 0}
+  _currentItemInstance: {fileID: 0}
 --- !u!1 &781440044015697996
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +711,7 @@ Transform:
   - {fileID: 1561371521029609709}
   - {fileID: 1503843582681977798}
   m_Father: {fileID: 177629707359916951}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1022923197421191022
 Animator:
@@ -1290,6 +1382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4484457939578487451}
+  - component: {fileID: 6348667274663123336}
   m_Layer: 0
   m_Name: WEAPON_ANCHOR
   m_TagString: Untagged
@@ -1312,6 +1405,21 @@ Transform:
   m_Father: {fileID: 909117930467653055}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6348667274663123336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8099515826950364350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7fffaccf8954a7d9d8ef06388b7e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemtype: 4
+  _anchor: {fileID: 0}
+  _currentItemInstance: {fileID: 0}
 --- !u!1 &8131548731285695486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,6 +1513,52 @@ Transform:
   m_Father: {fileID: 4317763025722493112}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8917869208630937772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5565564770849043405}
+  - component: {fileID: 5484600928790778317}
+  m_Layer: 0
+  m_Name: ARMOR_ANCHOR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5565564770849043405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8917869208630937772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.961, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 177629707359916951}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5484600928790778317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8917869208630937772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7fffaccf8954a7d9d8ef06388b7e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemtype: 3
+  _anchor: {fileID: 0}
+  _currentItemInstance: {fileID: 0}
 --- !u!1 &9020878142939895884
 GameObject:
   m_ObjectHideFlags: 0

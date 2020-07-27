@@ -21,6 +21,11 @@ namespace NunclearGame.Player
             this._armor = armor;
             this._grenade = grenade;
         }
+
+        public EquipmentValue[] GetAllEquipment()
+        {
+            return new[] {_weapon, _armor, _grenade};
+        }
     }
 }
 

@@ -54,4 +54,5 @@ MonoBehaviour:
   - {fileID: 2781920707375370588, guid: e717ab823ecffcd4d9c3ebeff8fbf716, type: 3}
   - {fileID: 6060786776748562844, guid: ab4f91abc72a84648b81a6abfc0b0daf, type: 3}
   - {fileID: 5031994819747638072, guid: 7c38174edb44f4cc0bb8deb821ab8be8, type: 3}
+  - {fileID: 6696822054755397963, guid: 5585e9399040d4a89bb1f8ea80041151, type: 3}
   _delayAfterPreload: 2

@@ -844,6 +844,32 @@
 					"Text": "Enter the station"
 				}
 			]
+		},
+        {
+			"Key": "ak47_weapon_name",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "АК-47"
+				},
+				{
+					"RegionName": "English",
+					"Text": "AK-47"
+				}
+			]
+		},
+        {
+			"Key": "ak47_weapon_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Надежный и мощный автомат"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Reliable and powerful weapon"
+				}
+			]
 		}
         
 	]

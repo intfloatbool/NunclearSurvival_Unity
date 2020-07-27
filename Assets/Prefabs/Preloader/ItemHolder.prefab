@@ -154,3 +154,14 @@ MonoBehaviour:
       _value: 4
     _isCraftable: 0
     _itemCraftParts: []
+  - _itemViewNameKey: ak47_weapon_name
+    _descriptionLocKey: ak47_weapon_description
+    _itemName: 10
+    _itemType: 4
+    _itemIcon: {fileID: 21300000, guid: a39247d0575a5470381e9b4e3907bebf, type: 3}
+    _isConstantItem: 1
+    _itemValues:
+    - _valueKey: weaponDamage
+      _value: 25
+    _isCraftable: 0
+    _itemCraftParts: []
