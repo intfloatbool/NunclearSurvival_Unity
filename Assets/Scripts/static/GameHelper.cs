@@ -15,6 +15,7 @@ namespace NunclearGame.Static
         public static GlobalPlayer GlobalPlayer => GlobalPlayer.Instance;
 
         public static EquipmentHolder EquipmentHolder => EquipmentHolder.Instance;
+        public static CommonGui CommonGui => CommonGui.Instance;
         
         public static class ItemValueKeys
         {

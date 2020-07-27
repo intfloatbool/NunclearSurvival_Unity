@@ -58,6 +58,11 @@ namespace GameUI
         private RectTransform _rectTransform;
         private List<ValueUI> _curreltValues = new List<ValueUI>();
 
+        /// <summary>
+        /// arg#0 (bool) - is dialog showed?
+        /// </summary>
+        public event Action<bool> OnDialogSetActivate;
+
         private void Start()
         {
             _rectTransform = GetComponent<RectTransform>();
@@ -197,6 +202,8 @@ namespace GameUI
         {        
             _dialogRoot.gameObject.SetActive(false);
             _dialogBacgrkound.gameObject.SetActive(false);
+            
+            OnDialogSetActivate?.Invoke(false);
             return this;
         }
 
@@ -213,7 +220,8 @@ namespace GameUI
             //call 2 times to align layout group + content size filter
             LayoutRebuilder.ForceRebuildLayoutImmediate(_headArea);          
             LayoutRebuilder.ForceRebuildLayoutImmediate(_headArea);
-
+            
+            OnDialogSetActivate?.Invoke(true);
             return this;
         }
 

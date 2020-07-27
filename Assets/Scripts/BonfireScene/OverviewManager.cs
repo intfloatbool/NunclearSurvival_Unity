@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using NunclearGame.Static;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -13,10 +14,26 @@ namespace NunclearGame.BonfireSceneUI
 
         private OverviewElement _currentOverviewElement;
 
+        [SerializeField] private bool _isClickableActive = true;
+
         private void Awake()
         {
             Assert.IsNotNull(_defaultOverview, "_defaultOverview != null");
             ShowDefaultOverview();
+            
+            Assert.IsNotNull(GameHelper.CommonGui, "GameHelper.CommonGui != null");
+            if (GameHelper.CommonGui != null)
+            {
+                GameHelper.CommonGui.GetDialog().OnDialogSetActivate += SetActiveClickableByDialog;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (GameHelper.CommonGui != null)
+            {
+                GameHelper.CommonGui.GetDialog().OnDialogSetActivate -= SetActiveClickableByDialog;
+            }
         }
 
         public void ShowDefaultOverview()
@@ -27,8 +44,15 @@ namespace NunclearGame.BonfireSceneUI
             }
         }
 
+        private void SetActiveClickableByDialog(bool isDialogShowed)
+        {
+            _isClickableActive = !isDialogShowed;
+        }
+
         public void SetOverview(OverviewElement overviewElement)
         {
+            if (!_isClickableActive)
+                return;
             if (overviewElement == null)
             {
                 Debug.LogError("Overview element is missing!");
