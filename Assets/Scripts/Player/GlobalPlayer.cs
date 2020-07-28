@@ -3,12 +3,16 @@ using System.Collections;
 using NunclearGame.Player;
 using UnityEngine;
 using Player;
+using UnityEngine.Assertions;
 
 namespace SingletonsPreloaders
 {
     public class GlobalPlayer : UnitySingletonBase<GlobalPlayer>
     {
 
+        [SerializeField] private PlayerView _playerViewPrefab;
+        public PlayerView PlayerViewPrefab => _playerViewPrefab;
+        
         public static PlayerInventory Inventory => Instance?.PlayerInventory;
         public static PlayerValuesController PlayerValuesController => Instance?.ValuesController;
 
@@ -100,6 +104,9 @@ namespace SingletonsPreloaders
         protected override void Awake()
         {
             base.Awake();
+            
+            Assert.IsNotNull(_playerViewPrefab, "_playerViewPrefab != null");
+            
             InitializeDataFromLoader();
         }
 

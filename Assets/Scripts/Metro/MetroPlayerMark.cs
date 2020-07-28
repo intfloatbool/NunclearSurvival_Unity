@@ -9,6 +9,8 @@ namespace NunclearGame.Metro
         private MetroController _metroController;
         private MetroInitializer _metroInitializer;
 
+        public event Action<MetroMapView> OnPlayerMarkChanged;
+
         private void Awake()
         {
             _metroController = FindObjectOfType<MetroController>();
@@ -44,6 +46,8 @@ namespace NunclearGame.Metro
         private void PlaceOnMetroView(MetroMapView metroMapView)
         {
             transform.position = metroMapView.transform.position;
+            
+            OnPlayerMarkChanged?.Invoke(metroMapView);
         }
     }
 }
