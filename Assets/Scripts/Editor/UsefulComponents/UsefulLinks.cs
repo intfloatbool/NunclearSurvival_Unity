@@ -22,6 +22,13 @@ namespace GameEditorDebugHelpers
             var path = "Assets/Prefabs/" + hook_name;
             TryPingObjectbyPath(path);
         }
+        
+        [MenuItem("UsefulLinks/Scripts folder")]
+        private static void OpenScriptsFolder()
+        {
+            var path = "Assets/Scripts/" + hook_name;
+            TryPingObjectbyPath(path);
+        }
 
         private static void TryPingObjectbyPath(string path)
         {
