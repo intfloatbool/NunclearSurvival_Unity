@@ -134,7 +134,7 @@ MonoBehaviour:
     _descriptionLocKey: armor_simple_iron_cuirass_description
     _itemName: 8
     _itemType: 3
-    _itemIcon: {fileID: 21300000, guid: 5ff7f7693b689483f954816c6a88820f, type: 3}
+    _itemIcon: {fileID: 21300000, guid: 88a749b753434cf4c9d61e51e25cec5f, type: 3}
     _isConstantItem: 1
     _itemValues:
     - _valueKey: armorValue
