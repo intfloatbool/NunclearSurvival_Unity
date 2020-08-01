@@ -163,5 +163,42 @@ namespace SingletonsPreloaders
         public void SetValueFromCurrentProvider(string key, string value) {
             this._playerInfoProvider.SetValue(key, value);
         }
+
+        public ItemInfo GetItemInfoFromCurrentEquipmentByType(ItemType itemType)
+        {
+            if (EquipmentController == null)
+            {
+                Debug.LogError($"{nameof(PlayerEquipmentController)} is missing!");
+                return null;
+            }
+
+            EquipmentValue[] allEquipment = EquipmentController.CurrentEquipment.GetAllEquipment();
+            EquipmentValue currentValue = new EquipmentValue(ItemType.NONE, ItemName.NONE);
+            for (int i = 0; i < allEquipment.Length; i++)
+            {
+                var equipment = allEquipment[i];
+                if (equipment.ItemType == itemType)
+                {
+                    currentValue = equipment;
+                }
+            }
+
+            if (currentValue.ItemName == ItemName.NONE || currentValue.ItemType == ItemType.NONE)
+                return null;
+
+            if (Inventory == null)
+            {
+                Debug.LogError($"{nameof(PlayerInventory)} is missing!");
+            }
+
+            ItemInfo itemFromInventory = Inventory.GetItemByName(currentValue.ItemName)?.ItemInfo;
+            if (itemFromInventory == null)
+            {
+                Debug.LogError($"Player inventory dont have item with {currentValue.ToString()}");
+                return null;
+            }
+
+            return itemFromInventory;
+        }
     }
 }
