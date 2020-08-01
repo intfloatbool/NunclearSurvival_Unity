@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace NunclearGame
+namespace NunclearGame.Battle
 {
     public class GameUnit : MonoBehaviour
     {
