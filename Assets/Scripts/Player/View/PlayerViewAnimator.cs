@@ -1,4 +1,5 @@
 ﻿using System;
+using NunclearGame.Static;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -9,8 +10,6 @@ namespace NunclearGame.Player
         [SerializeField] private PlayerView _playerView;
         [SerializeField] private Animator _animator;
 
-        [SerializeField] private string _isHaveWeaponAnimKey = "IsHaveWeapon";
-        
         private void Awake()
         {
             if (_playerView == null)
@@ -49,7 +48,7 @@ namespace NunclearGame.Player
                 return;
             if (itemType == ItemType.EQUIPMENT_WEAPON)
             {
-                _animator.SetBool(_isHaveWeaponAnimKey, true);
+                _animator.SetBool(GameHelper.AnimationKeys.PlayerAnimationKeys.IS_PLAYER_HAVE_WEAPON, true);
             }
             
         }
@@ -58,7 +57,7 @@ namespace NunclearGame.Player
         {
             if (itemType == ItemType.EQUIPMENT_WEAPON)
             {
-                _animator.SetBool(_isHaveWeaponAnimKey, false);
+                _animator.SetBool(GameHelper.AnimationKeys.PlayerAnimationKeys.IS_PLAYER_HAVE_WEAPON, false);
             }
         }
     }

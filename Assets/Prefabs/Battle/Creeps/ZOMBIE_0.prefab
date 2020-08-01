@@ -78,9 +78,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7560410915213901409}
   - component: {fileID: 1725525001004835966}
+  - component: {fileID: 7744076477491103966}
+  - component: {fileID: 6545614587305527825}
+  - component: {fileID: 6614645780518874420}
   m_Layer: 0
   m_Name: ZOMBIE_0
-  m_TagString: Untagged
+  m_TagString: MetroEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,6 +119,52 @@ MonoBehaviour:
   _nameKey: _infectedCitizen
   _currentHp: 100
   _isDead: 0
+--- !u!114 &7744076477491103966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7560410915213901410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10554f35d19bc4d2192df4f52022fc1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnabled: 1
+  _gameUnit: {fileID: 1725525001004835966}
+  _unitDamage: {fileID: 937102570249009705}
+  _attackDelay: 2
+  _currentTarget: {fileID: 0}
+--- !u!114 &6545614587305527825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7560410915213901410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6acc097a99b1841eda86887a75d5ea67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7560410916165518266}
+  _unitDamage: {fileID: 937102570249009705}
+  _gameUnit: {fileID: 1725525001004835966}
+--- !u!114 &6614645780518874420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7560410915213901410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc7003993d064d7097b3bfb7c206e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackController: {fileID: 7744076477491103966}
+  _searchingLoopDelay: 4
 --- !u!1001 &7560410916165518269
 PrefabInstance:
   m_ObjectHideFlags: 0

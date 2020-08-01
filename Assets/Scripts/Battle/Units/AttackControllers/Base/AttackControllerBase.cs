@@ -12,33 +12,40 @@ namespace NunclearGame.Battle
             get { return _isEnabled; }
             set { this._isEnabled = value; }
         }
-        
+
+        [SerializeField] protected GameUnit _gameUnit;
         [SerializeField] protected UnitDamage _unitDamage;
         
+        [SerializeField] protected float _attackDelay = 2f;
+        protected bool _isReadyToAttack;
+        protected float _attackTimer;
+        
+        [Space(5f)]
+        [Header("RuntimeRefs")]
         [SerializeField] protected GameUnit _currentTarget;
-
         public GameUnit CurrentTarget
         {
             get { return _currentTarget; }
             set { this._currentTarget = value; }
         }
         
-        [SerializeField] protected float _attackDelay = 2f;
-        protected bool _isReadyToAttack;
-        protected float _attackTimer;
-
         protected virtual void Awake()
         {
             Assert.IsNotNull(_unitDamage, "_unitDamage != null");
+            Assert.IsNotNull(_gameUnit, "_gameUnit != null");
         }
 
         protected virtual void Update()
         {
+            
             if (!_isEnabled)
+                return;
+            if(_gameUnit == null)
                 return;
             if (_unitDamage == null)
                 return;
-
+            if (_gameUnit.IsDead)
+                return;
             HandleAttack();
 
             ControlTimeDelay();
@@ -60,11 +67,11 @@ namespace NunclearGame.Battle
         {
             if (!_isReadyToAttack)
                 return;
+            if (_currentTarget == null)
+                return;
             
-            if (_currentTarget != null)
-            {
-                _unitDamage.DamageTargetGameUnit(_currentTarget);
-            }
+            _unitDamage.DamageTargetGameUnit(_currentTarget);
+            
             _isReadyToAttack = false;
         }
         protected abstract void HandleAttack();

@@ -19,10 +19,45 @@ namespace NunclearGame.Static
         public static EquipmentHolder EquipmentHolder => EquipmentHolder.Instance;
         public static CommonGui CommonGui => CommonGui.Instance;
 
+        public static class AnimationKeys
+        {
+            public static class PlayerAnimationKeys
+            {
+                public const string IS_PLAYER_HAVE_WEAPON = "IsHaveWeapon";
+                public const string IS_AIM = "IsAim";
+            }
 
+            /// <summary>
+            /// Default keys from common animator for some monsters
+            /// </summary>
+            public static class DefaultAnimationsKeys
+            {
+                public const string IS_DEAD_BOOL = "IS_DEAD";
+                public const string ATTACK_0_TRIGGER = "ATTACK_0";
+                public const string ATTACK_1_TRIGGER = "ATTACK_1";
+                public const string HIT_TRIGGER = "HIT";
+
+                private static string[] _attackTriggers;
+                public static string GetRndAttackTriggerKey()
+                {
+                    if (_attackTriggers == null)
+                    {
+                        _attackTriggers = new[]
+                        {
+                            ATTACK_0_TRIGGER,
+                            ATTACK_1_TRIGGER
+                        };
+                    }
+
+                    return _attackTriggers[Random.Range(0, _attackTriggers.Length)];
+                }
+            }
+        }
+        
         public static class GameTags
         {
             public const string PLAYER_TAG = "Player";
+            public const string METRO_ENEMY_TAG = "MetroEnemy";
         }
         
         public static class ItemValueKeys
