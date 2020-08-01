@@ -38,6 +38,21 @@ namespace NunclearGame.Player
             OnEquipmentChanged?.Invoke(_currentEquipment);
         }
 
+        public bool IsHaveEquippedItemOfType(ItemType type)
+        {
+            EquipmentValue[] equipmentValues = CurrentEquipment.GetAllEquipment();
+            for (int i = 0; i < equipmentValues.Length; i++)
+            {
+                EquipmentValue equipValue = equipmentValues[i];
+                if (equipValue.ItemType == type)
+                {
+                    return equipValue.ItemName != ItemName.NONE;
+                }
+            }
+
+            return false;
+        }
+
         private void UpdateTotalEquipmentCollection(PlayerEquipment equipment)
         {
             TotalEquipmentCollection.Clear();

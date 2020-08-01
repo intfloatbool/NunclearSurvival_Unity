@@ -1,5 +1,6 @@
 ﻿public enum ItemType
-{
+{   
+    NONE = -1,
     //Supply
     FOOD,
     WATER,

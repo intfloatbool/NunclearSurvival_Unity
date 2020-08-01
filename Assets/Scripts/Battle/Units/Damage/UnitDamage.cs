@@ -23,9 +23,14 @@ namespace NunclearGame.Battle
         [SerializeField] protected float _criticalChance = 0.3f;
         
         [SerializeField] protected float _criticalMultipler = 1.5f;
+        
+        /// <summary>
+        /// arg#0 (Int) - damage of attack
+        /// arg#1 (GameUnit) - target of attack
+        /// </summary>
+        public event Action<int, GameUnit> OnAttackTarget;
 
-
-        protected void Awake()
+        protected virtual void Awake()
         {
             if (_isRandomDamage)
             {
@@ -64,6 +69,7 @@ namespace NunclearGame.Battle
             }
             
             gameUnit.MakeDamage(damage);
+            OnAttackTarget?.Invoke(damage, gameUnit);
         }
 
     }

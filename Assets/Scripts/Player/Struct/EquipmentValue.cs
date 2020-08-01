@@ -16,6 +16,11 @@ namespace NunclearGame.Player
             this._itemType = itemType;
             this._itemName = itemName;
         }
+
+        public override string ToString()
+        {
+            return $"Type: {_itemName.ToString()} , Name: {_itemType.ToString()}";
+        }
     }
 }
 
