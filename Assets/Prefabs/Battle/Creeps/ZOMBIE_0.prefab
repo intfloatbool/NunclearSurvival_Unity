@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
-  _isRandomDamage: 1
+  _isRandomDamage: 0
   _minDamage: 6
   _maxDamage: 10
   _criticalChance: 0.3

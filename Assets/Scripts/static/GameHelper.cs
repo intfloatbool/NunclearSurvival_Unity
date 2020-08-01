@@ -18,6 +18,12 @@ namespace NunclearGame.Static
 
         public static EquipmentHolder EquipmentHolder => EquipmentHolder.Instance;
         public static CommonGui CommonGui => CommonGui.Instance;
+
+
+        public static class GameTags
+        {
+            public const string PLAYER_TAG = "Player";
+        }
         
         public static class ItemValueKeys
         {

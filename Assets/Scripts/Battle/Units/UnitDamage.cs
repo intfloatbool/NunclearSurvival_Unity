@@ -2,12 +2,14 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Timeline;
 using Random = UnityEngine.Random;
 
 namespace NunclearGame.Battle
 {
     public class UnitDamage : MonoBehaviour
     {
+        [ConditionalHide("_isRandomDamage", Inverse = true)]
         [SerializeField] protected int _damage = 10;
         
         [SerializeField] protected bool _isRandomDamage;

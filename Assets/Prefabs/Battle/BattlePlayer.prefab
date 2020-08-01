@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3378009388928364537}
   m_Layer: 0
   m_Name: BattlePlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e1582f0dd8e4998ba3c7f6fcc9dd34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nameKey: 
   _currentHp: 0
   _isDead: 0
 --- !u!1001 &7112377330955740820
