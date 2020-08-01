@@ -1,4 +1,5 @@
-﻿using SingletonsPreloaders;
+﻿using NunclearGame.Static;
+using SingletonsPreloaders;
 using UnityEngine;
 
 namespace GameUtils
@@ -7,11 +8,12 @@ namespace GameUtils
     {
         public static string Get(string key, SystemLanguage? language = null)
         {
+            if (GameHelper.TextLocalizer == null)
+                return key;
             var systemLanguage = language ?? Application.systemLanguage;
-            var localized = TextLocalizer.Instance.GetLocalization(key, systemLanguage);
+            var localized = GameHelper.TextLocalizer.GetLocalization(key, systemLanguage);
             if (string.IsNullOrEmpty(localized))
             {
-                Debug.LogError($"Cannot get localization by key {key}!");
                 return key;   
             }
             return localized;

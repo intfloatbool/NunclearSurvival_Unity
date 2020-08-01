@@ -165,3 +165,14 @@ MonoBehaviour:
       _value: 25
     _isCraftable: 0
     _itemCraftParts: []
+  - _itemViewNameKey: basic_frag_grenade_name
+    _descriptionLocKey: basic_frag_grenade_description
+    _itemName: 11
+    _itemType: 5
+    _itemIcon: {fileID: 21300000, guid: 1fba99acca6ce4ab8a71c888a9dbb150, type: 3}
+    _isConstantItem: 1
+    _itemValues:
+    - _valueKey: weaponDamage
+      _value: 50
+    _isCraftable: 0
+    _itemCraftParts: []

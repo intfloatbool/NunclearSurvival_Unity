@@ -52,3 +52,7 @@ MonoBehaviour:
     _itemType: 4
     _relativePrefab: {fileID: 1687704699932376337, guid: 0945ace9222344c0caa5380e1755a020,
       type: 3}
+  - _itemName: 11
+    _itemType: 5
+    _relativePrefab: {fileID: 1687704699932376337, guid: 0945ace9222344c0caa5380e1755a020,
+      type: 3}

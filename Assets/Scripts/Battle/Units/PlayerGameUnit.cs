@@ -15,6 +15,8 @@ namespace NunclearGame.Battle
                 PlayerValues playerValues = GameHelper.GlobalPlayer.PlayerValues;
                 _currentHp = playerValues.CurrentHp;
                 _maxHp = playerValues.MaxHp;
+
+                _nameKey = GameHelper.GlobalPlayer.PlayerNickName;
             }
         }
     }

@@ -870,7 +870,46 @@
 					"Text": "Reliable and powerful weapon"
 				}
 			]
-		}
+		},
+        {
+            "Key": "_infectedCitizen",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Зараженный горожанин"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Infected citizen"
+				}
+			]
+        },
+        {
+            "Key": "basic_frag_grenade_name",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Осколочная граната тип 1"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Frag grenade type 1"
+				}
+			]
+        },
+        {
+            "Key": "basic_frag_grenade_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Простая осколочная граната"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Basic frag grenade"
+				}
+			]
+        }
         
 	]
 }

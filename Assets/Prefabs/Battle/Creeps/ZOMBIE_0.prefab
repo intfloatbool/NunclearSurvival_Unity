@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb8d5daaabd94d7f87fbf501c099430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nameKey: _infectedCitizen
   _currentHp: 100
   _isDead: 0
 --- !u!1001 &7560410916165518269

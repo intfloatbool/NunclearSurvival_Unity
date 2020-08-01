@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Common.Interfaces;
+using GameUtils;
 using NunclearGame.Player;
 using Player;
 using SingletonsPreloaders;
@@ -10,6 +11,7 @@ namespace NunclearGame.Static
     public static class GameHelper
     {
         //Useful managers links
+        public static TextLocalizer TextLocalizer => TextLocalizer.Instance;
         public static MetroHolder MetroHolder => MetroHolder.Instance;
         public static PlayerInfoProviderBase InfoProvider => GlobalPlayer?.PlayerInfoProvider;
         public static GlobalPlayer GlobalPlayer => GlobalPlayer.Instance;

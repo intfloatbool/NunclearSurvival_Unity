@@ -1,10 +1,14 @@
 ﻿using System;
+using Common.Values;
 using UnityEngine;
 
 namespace NunclearGame.Battle
 {
-    public class GameUnit : MonoBehaviour
+    public class GameUnit : MonoBehaviour, INormalizedValueProvider
     {
+        [SerializeField] protected string _nameKey;
+        public string NameKey => _nameKey;
+        
         [SerializeField] protected int _currentHp;
         protected int CurrentHp => _currentHp;
         protected int _maxHp;
@@ -20,6 +24,11 @@ namespace NunclearGame.Battle
         protected virtual void Awake()
         {
             _maxHp = _currentHp;
+        }
+        
+        public float GetNormalizedValue()
+        {
+            return HpPercent;
         }
 
         public virtual void MakeDamage(int dmg)
@@ -38,7 +47,6 @@ namespace NunclearGame.Battle
                 OnDead?.Invoke();
             }
         }
-        
-        
+
     }
 }
