@@ -105,7 +105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerView: {fileID: 3579670281833306994}
   _animator: {fileID: 1022923197421191022}
-  _isHaveWeaponAnimKey: IsHaveWeapon
 --- !u!1 &197310680766533950
 GameObject:
   m_ObjectHideFlags: 0

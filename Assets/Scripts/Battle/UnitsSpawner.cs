@@ -5,7 +5,7 @@ namespace NunclearGame.Battle
 {
     public class UnitsSpawner : MonoBehaviour
     {
-        
+        [SerializeField] private bool _isForceRotateByPoint;
         [SerializeField] private UnitSpawnInfo[] _spawnData;
         public UnitSpawnInfo[] SpawnData
         {
@@ -50,10 +50,14 @@ namespace NunclearGame.Battle
             }
 
             Vector3 spawnPosition = Vector3.zero;
-            
+            Quaternion rotation = unitSpawnInfo.GameUnitPrefab.transform.rotation;
             if (unitSpawnInfo.UnitSpawnPoint != null)
             {
                 spawnPosition = unitSpawnInfo.UnitSpawnPoint.position;
+                if (_isForceRotateByPoint)
+                {
+                    rotation = unitSpawnInfo.UnitSpawnPoint.rotation;
+                }
             }
             else
             {
@@ -62,6 +66,7 @@ namespace NunclearGame.Battle
 
             GameUnit unitInstance = Instantiate(unitSpawnInfo.GameUnitPrefab, unitSpawnInfo.UnitSpawnPoint);
             unitInstance.transform.position = spawnPosition;
+            unitInstance.transform.rotation = rotation;
             
             OnUnitSpawned?.Invoke(unitInstance);
         }

@@ -19,10 +19,15 @@ namespace NunclearGame.Battle
         [SerializeField] protected float _attackDelay = 2f;
         protected bool _isReadyToAttack;
         protected float _attackTimer;
+
+        [Space(5f)]
+        [Header("Behaviour")]
+        [SerializeField] private bool _isNotActiveInStun;
         
         [Space(5f)]
         [Header("RuntimeRefs")]
         [SerializeField] protected GameUnit _currentTarget;
+
         public GameUnit CurrentTarget
         {
             get { return _currentTarget; }
@@ -40,12 +45,20 @@ namespace NunclearGame.Battle
             
             if (!_isEnabled)
                 return;
+
+            if (_currentTarget != null && _currentTarget.IsDead)
+                return;
+            
             if(_gameUnit == null)
                 return;
             if (_unitDamage == null)
                 return;
             if (_gameUnit.IsDead)
                 return;
+
+            if (_gameUnit.IsStunnedNow && _isNotActiveInStun)
+                return;
+            
             HandleAttack();
 
             ControlTimeDelay();
@@ -69,7 +82,6 @@ namespace NunclearGame.Battle
                 return;
             if (_currentTarget == null)
                 return;
-            
             _unitDamage.DamageTargetGameUnit(_currentTarget);
             
             _isReadyToAttack = false;

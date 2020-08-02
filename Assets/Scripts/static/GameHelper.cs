@@ -25,6 +25,8 @@ namespace NunclearGame.Static
             {
                 public const string IS_PLAYER_HAVE_WEAPON = "IsHaveWeapon";
                 public const string IS_AIM = "IsAim";
+                public const string IS_DEAD_BOOL = "IsDead";
+                public const string HAND_PUNCH_TRIGGER = "HandPunch";
             }
 
             /// <summary>

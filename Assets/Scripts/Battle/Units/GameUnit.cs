@@ -17,8 +17,20 @@ namespace NunclearGame.Battle
 
         [SerializeField] protected bool _isDead;
         public bool IsDead => _isDead;
-        
+
+        [Space(5f)]
+        [SerializeField] protected bool _isStunnable;
+        [ConditionalHide("_isStunnable")]
+        [SerializeField] protected float _stunTime = 1.5f;
+        [Space(2f)]
+        [Header("Runtime")]
+        [ConditionalHide("_isStunnable")]
+        [SerializeField] protected bool _isStunnedNow;
+        public bool IsStunnedNow => _isStunnedNow;
+        protected float _stunTimer;
+
         public event Action<int> OnDamaged;
+
         public event Action OnDead;
 
         protected virtual void Awake()
@@ -37,6 +49,9 @@ namespace NunclearGame.Battle
             {
                 return;
             }
+
+            if (_isStunnable)
+                _isStunnedNow = true;
             
             _currentHp -= dmg;
             OnDamaged?.Invoke(dmg);
@@ -44,9 +59,30 @@ namespace NunclearGame.Battle
             {
                 _isDead = true;
                 _currentHp = 0;
+                
+                Debug.Log($"{this.gameObject.name} is DEAD!");
+                
                 OnDead?.Invoke();
             }
         }
 
+        protected virtual void Update()
+        {
+            if (_isStunnable)
+                HandleStun();
+        }
+
+        protected virtual void HandleStun()
+        {
+            if (!_isStunnedNow)
+                return;
+            if (_stunTimer >= _stunTime)
+            {
+                _isStunnedNow = false;
+                _stunTimer = 0;
+            }
+
+            _stunTimer += Time.deltaTime;
+        }
     }
 }

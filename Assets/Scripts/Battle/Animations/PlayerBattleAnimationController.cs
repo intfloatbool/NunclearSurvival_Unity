@@ -7,7 +7,7 @@ namespace NunclearGame.Battle
 {
     public class PlayerBattleAnimationController : UnitAnimationControllerBase
     {
-
+        private bool _isHaveWeapon;
         protected override void Awake()
         {
             base.Awake();
@@ -18,8 +18,8 @@ namespace NunclearGame.Battle
                 PlayerEquipmentController equipmentController = GameHelper.GlobalPlayer.EquipmentController;
                 Assert.IsNotNull(equipmentController, "equipmentController != null");
 
-                bool isHaveWeapon = equipmentController.IsHaveEquippedItemOfType(ItemType.EQUIPMENT_WEAPON);
-                if (isHaveWeapon)
+                _isHaveWeapon = equipmentController.IsHaveEquippedItemOfType(ItemType.EQUIPMENT_WEAPON);
+                if (_isHaveWeapon)
                 {
                     _animator.SetBool(GameHelper.AnimationKeys.PlayerAnimationKeys.IS_AIM, true);
                 }
@@ -28,17 +28,20 @@ namespace NunclearGame.Battle
 
         protected override void OnAttackTarget(int damage, GameUnit target)
         {
-            Debug.LogWarning(new System.NotImplementedException().Message);
+            if (!_isHaveWeapon)
+            {
+                _animator.SetTrigger(GameHelper.AnimationKeys.PlayerAnimationKeys.HAND_PUNCH_TRIGGER);
+            }
         }
 
         protected override void OnUnitDead()
         {
-            Debug.LogWarning(new System.NotImplementedException().Message);
+            _animator.SetBool(GameHelper.AnimationKeys.PlayerAnimationKeys.IS_DEAD_BOOL, true);
         }
 
         protected override void OnUnitDamaged(int damage)
         {
-            Debug.LogWarning(new System.NotImplementedException().Message);
+            
         }
     }
 }

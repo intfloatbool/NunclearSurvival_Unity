@@ -119,6 +119,9 @@ MonoBehaviour:
   _nameKey: _infectedCitizen
   _currentHp: 100
   _isDead: 0
+  _isStunnable: 1
+  _stunTime: 1.5
+  _isStunnedNow: 0
 --- !u!114 &7744076477491103966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +137,8 @@ MonoBehaviour:
   _isEnabled: 1
   _gameUnit: {fileID: 1725525001004835966}
   _unitDamage: {fileID: 937102570249009705}
-  _attackDelay: 2
+  _attackDelay: 2.5
+  _isNotActiveInStun: 1
   _currentTarget: {fileID: 0}
 --- !u!114 &6545614587305527825
 MonoBehaviour:
