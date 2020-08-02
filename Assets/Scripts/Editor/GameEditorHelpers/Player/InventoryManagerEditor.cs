@@ -10,56 +10,75 @@ namespace GameEditorDebugHelpers
     public class InventoryManagerEditor : Editor
     {
         private ItemName _selectedName;
+
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
             GUILayout.Space(2f);
             GUILayout.Label("Add custom item to the Inventory");
             _selectedName = (ItemName) EditorGUILayout.EnumPopup("ItemType to add", _selectedName);
-            GlobalPlayer globalPlayer = (GlobalPlayer)target;
-            if(GUILayout.Button($"Add {_selectedName}"))
+            GlobalPlayer globalPlayer = (GlobalPlayer) target;
+
+            if (GUILayout.Button($"Add {_selectedName}"))
             {
                 globalPlayer.PlayerInventory.AddItem(_selectedName);
             }
-            if(GUILayout.Button($"Add random item"))
+
+            if (GUILayout.Button($"Add random item"))
             {
                 var itemNames = Enum.GetNames(typeof(ItemName));
                 var rndItemIndex = UnityEngine.Random.Range(0, itemNames.Length);
                 globalPlayer.PlayerInventory.AddItem((ItemName) rndItemIndex);
             }
-            
+
             GUILayout.Space(5f);
             GUILayout.Label("Player values:");
             GUILayout.Space(2f);
-            if(GUILayout.Button($"Increase player level +1"))
+
+            if (GUILayout.Button($"Increase player level +1"))
             {
                 globalPlayer.ValuesController.IncreaseLevel();
             }
-            
-            int damageValue = 10;
-            if(GUILayout.Button($"Damage player with: {damageValue}"))
+
+            int damageValue = -10;
+
+            if (GUILayout.Button($"Damage player with: {damageValue}"))
             {
-                globalPlayer.ValuesController.AddDamage(damageValue);
+                // globalPlayer.ValuesController.AddDamage(damageValue);
+                globalPlayer.ValuesController.ChangeHealth(damageValue);
             }
 
             int healValue = 10;
-            if(GUILayout.Button($"Heal player with: {healValue}"))
+
+            if (GUILayout.Button($"Heal player with: {healValue}"))
             {
-                globalPlayer.ValuesController.HealUp(healValue);
+                // globalPlayer.ValuesController.HealUp(healValue);
+                globalPlayer.ValuesController.ChangeHealth(healValue);
             }
             
+            int staminaValue = 10;
+
+            if (GUILayout.Button($"Decrease stamina with: {-staminaValue}"))
+            {
+                globalPlayer.ValuesController.ChangeStamina(staminaValue);
+            }
+
+            if (GUILayout.Button($"Add stamina with: {staminaValue}"))
+            {
+                globalPlayer.ValuesController.ChangeStamina(staminaValue);
+            }
+
             GUILayout.Space(10f);
-            
-            if(GUILayout.Button($"Clear data (requires restart)"))
+
+            if (GUILayout.Button($"Clear data (requires restart)"))
             {
                 var prefsProvider = globalPlayer.PlayerInfoProvider as PlayerPrefsInfoProvider;
+
                 if (prefsProvider != null)
                 {
                     prefsProvider.ClearAllPrefs();
                 }
             }
-            
         }
     }
 }
-

@@ -73,11 +73,10 @@ namespace Player
             int rating = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.RATING_KEY, 0);
             int currentHp = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.CURRENT_HP_KEY, 0);
             int maxStamina = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.MAX_STAMINA_KEY, 0);
+            int currentStamina = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.CURRENT_STAMINA_KEY, 0);
             int playerLvl = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.PLAYER_LEVEL_KEY, 0);
             
-            return new PlayerValues(
-                playerLvl, maxHp, currentHp, maxStamina, rating
-                );
+            return new PlayerValues(playerLvl, maxHp, currentHp, maxStamina, currentStamina, rating);
         }
 
         private void OnItemAdded(ItemName itemName, int currentAmount)
