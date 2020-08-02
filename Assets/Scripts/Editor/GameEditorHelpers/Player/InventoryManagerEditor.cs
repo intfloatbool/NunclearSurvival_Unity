@@ -44,7 +44,6 @@ namespace GameEditorDebugHelpers
 
             if (GUILayout.Button($"Damage player with: {damageValue}"))
             {
-                // globalPlayer.ValuesController.AddDamage(damageValue);
                 globalPlayer.ValuesController.ChangeHealth(damageValue);
             }
 
@@ -52,7 +51,6 @@ namespace GameEditorDebugHelpers
 
             if (GUILayout.Button($"Heal player with: {healValue}"))
             {
-                // globalPlayer.ValuesController.HealUp(healValue);
                 globalPlayer.ValuesController.ChangeHealth(healValue);
             }
             

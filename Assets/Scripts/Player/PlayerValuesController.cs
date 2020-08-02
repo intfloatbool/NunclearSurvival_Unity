@@ -36,44 +36,6 @@ namespace NunclearGame.Player
             OnPlayerValuesChanged?.Invoke(newValues);
         }
 
-        // public void AddDamage(int dmg)
-        // {
-        //     var currentValues = _globalPlayer.PlayerValues;
-        //     int hpAfterDamage = currentValues.CurrentHp - dmg;
-        //     hpAfterDamage = Mathf.Clamp(hpAfterDamage, 0, currentValues.MaxHp);
-        //     
-        //     PlayerValues newValues = new PlayerValues(
-        //         currentValues.PlayerLvl,
-        //         currentValues.MaxHp,
-        //         hpAfterDamage,
-        //         currentValues.MaxStamina,
-        //         currentValues.Rating
-        //     );
-        //
-        //     _globalPlayer.PlayerValues = newValues;
-        //     
-        //     OnPlayerValuesChanged?.Invoke(newValues);
-        // }
-        //
-        // public void HealUp(int healValue)
-        // {
-        //     var currentValues = _globalPlayer.PlayerValues;
-        //     int hpAfterHeal = currentValues.CurrentHp + healValue;
-        //     hpAfterHeal = Mathf.Clamp(hpAfterHeal, 0, currentValues.MaxHp);
-        //     
-        //     PlayerValues newValues = new PlayerValues(
-        //         currentValues.PlayerLvl,
-        //         currentValues.MaxHp,
-        //         hpAfterHeal,
-        //         currentValues.MaxStamina,
-        //         currentValues.Rating
-        //     ); 
-        //     
-        //     _globalPlayer.PlayerValues = newValues;
-        //     
-        //     OnPlayerValuesChanged?.Invoke(newValues);
-        // }
-
         public void ChangeHealth(int value)
         {
             var currentValues = _globalPlayer.PlayerValues;

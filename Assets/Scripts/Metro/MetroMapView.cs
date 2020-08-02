@@ -36,14 +36,11 @@ namespace NunclearGame.Metro
         [Space(5f)] 
         [SerializeField] private List<MetroMapView> _relativeStations;
 
-        private MetroController _metroController;
+        public event Action OnClicked;
 
         private void Awake()
         {
             Assert.IsNotNull(_nameText, "_nameText != null");
-
-            _metroController = FindObjectOfType<MetroController>();
-            Assert.IsNotNull(_metroController, "_metroController != null");
         }
 
         public bool IsRelationStation(MetroMapView metroMapView)
@@ -162,10 +159,7 @@ namespace NunclearGame.Metro
 
         private void OnMouseDown()
         {
-            if (_metroController != null)
-            {
-                _metroController.OnPlayerClickOnMetro(this);
-            }
+            OnClicked?.Invoke();
         }
     }
 }
