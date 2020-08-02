@@ -29,9 +29,12 @@ namespace NunclearGame.Battle
         public bool IsStunnedNow => _isStunnedNow;
         protected float _stunTimer;
 
+        public bool IsInvulnerability { get; set; } = false;
+
         public event Action<int> OnDamaged;
 
         public event Action OnDead;
+        public event Action<GameUnit> OnDeadWithRef;
 
         protected virtual void Awake()
         {
@@ -45,6 +48,9 @@ namespace NunclearGame.Battle
 
         public virtual void MakeDamage(int dmg)
         {
+            if(IsInvulnerability)
+                return;
+            
             if (_isDead)
             {
                 return;
@@ -61,7 +67,7 @@ namespace NunclearGame.Battle
                 _currentHp = 0;
                 
                 Debug.Log($"{this.gameObject.name} is DEAD!");
-                
+                OnDeadWithRef?.Invoke(this);
                 OnDead?.Invoke();
             }
         }

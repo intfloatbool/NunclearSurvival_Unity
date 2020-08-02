@@ -8,6 +8,8 @@ namespace NunclearGame.Battle
     public class PlayerBattleAnimationController : UnitAnimationControllerBase
     {
         private bool _isHaveWeapon;
+
+        private BattleResultController _resultController;
         protected override void Awake()
         {
             base.Awake();
@@ -23,6 +25,31 @@ namespace NunclearGame.Battle
                 {
                     _animator.SetBool(GameHelper.AnimationKeys.PlayerAnimationKeys.IS_AIM, true);
                 }
+            }
+
+            _resultController = FindObjectOfType<BattleResultController>();
+            Assert.IsNotNull(_resultController, "_resultController != null");
+            if (_resultController != null)
+            {
+                _resultController.OnBattleWin += OnBattleWin;
+            }
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            
+            if (_resultController != null)
+            {
+                _resultController.OnBattleWin -= OnBattleWin;
+            }
+        }
+
+        private void OnBattleWin()
+        {
+            if (_isHaveWeapon)
+            {
+                _animator.SetBool(GameHelper.AnimationKeys.PlayerAnimationKeys.IS_AIM, false);
             }
         }
 

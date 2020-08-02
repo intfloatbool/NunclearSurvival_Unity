@@ -14,6 +14,7 @@ namespace NunclearGame.Battle
         }
         
         public event Action<GameUnit> OnUnitSpawned;
+        public event Action OnSpawnDone;
         
         [Space(5f)]
         [Header("DANGER ZONE: DEBUG")]
@@ -33,6 +34,8 @@ namespace NunclearGame.Battle
             {
                 SpawnUnit(_spawnData[i]);
             }
+            
+            OnSpawnDone?.Invoke();
         }
 
         private void SpawnUnit(UnitSpawnInfo unitSpawnInfo)
