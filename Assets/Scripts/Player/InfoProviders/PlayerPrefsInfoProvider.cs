@@ -64,6 +64,7 @@ namespace Player
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.RATING_KEY, playerValues.Rating);
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.CURRENT_HP_KEY, playerValues.CurrentHp);
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.MAX_STAMINA_KEY, playerValues.MaxStamina);
+            PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.CURRENT_STAMINA_KEY, playerValues.CurrentStamina);
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.PLAYER_LEVEL_KEY, playerValues.PlayerLvl);
         }
 

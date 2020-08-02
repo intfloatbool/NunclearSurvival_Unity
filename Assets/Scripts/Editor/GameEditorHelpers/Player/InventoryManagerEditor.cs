@@ -60,7 +60,7 @@ namespace GameEditorDebugHelpers
 
             if (GUILayout.Button($"Decrease stamina with: {-staminaValue}"))
             {
-                globalPlayer.ValuesController.ChangeStamina(staminaValue);
+                globalPlayer.ValuesController.ChangeStamina(-staminaValue);
             }
 
             if (GUILayout.Button($"Add stamina with: {staminaValue}"))

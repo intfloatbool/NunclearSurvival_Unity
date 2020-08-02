@@ -98,7 +98,7 @@ namespace NunclearGame.Player
         {
             var currentValues = _globalPlayer.PlayerValues;
             int staminaAfterChanges = currentValues.CurrentStamina + value;
-            staminaAfterChanges = Mathf.Clamp(staminaAfterChanges, 0, currentValues.MaxHp);
+            staminaAfterChanges = Mathf.Clamp(staminaAfterChanges, 0, currentValues.MaxStamina);
 
             PlayerValues newValues = new PlayerValues(
                 currentValues.PlayerLvl,
