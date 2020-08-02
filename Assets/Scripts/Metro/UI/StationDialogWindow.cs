@@ -17,6 +17,7 @@ namespace NunclearGame.Metro
         [SerializeField] private Image _dangerImg;
         [SerializeField] private TextMeshProUGUI _stationNameValueText;
         [SerializeField] private TextMeshProUGUI _dangerValueText;
+        [SerializeField] private TextMeshProUGUI _energyText;
 
         private void Awake()
         {
@@ -37,6 +38,7 @@ namespace NunclearGame.Metro
             }
 
             _dangerValueText.text = GameLocalization.Get(dangerType.ToString());
+            _energyText.text = metroMapView.EnergyRequired.ToString();
 
             _stationNameValueText.text = GameLocalization.Get(metroMapView.MetroNameKey);
         }

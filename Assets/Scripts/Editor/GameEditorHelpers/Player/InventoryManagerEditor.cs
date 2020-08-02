@@ -40,30 +40,28 @@ namespace GameEditorDebugHelpers
                 globalPlayer.ValuesController.IncreaseLevel();
             }
 
-            int damageValue = -10;
-
-            if (GUILayout.Button($"Damage player with: {damageValue}"))
-            {
-                globalPlayer.ValuesController.ChangeHealth(damageValue);
-            }
-
             int healValue = 10;
+
+            if (GUILayout.Button($"Damage player with: {healValue}"))
+            {
+                globalPlayer.ValuesController.AddHealth(healValue);
+            }
 
             if (GUILayout.Button($"Heal player with: {healValue}"))
             {
-                globalPlayer.ValuesController.ChangeHealth(healValue);
+                globalPlayer.ValuesController.RemoveHealth(healValue);
             }
             
             int staminaValue = 10;
 
             if (GUILayout.Button($"Decrease stamina with: {-staminaValue}"))
             {
-                globalPlayer.ValuesController.ChangeStamina(-staminaValue);
+                globalPlayer.ValuesController.RemoveStamina(staminaValue);
             }
 
             if (GUILayout.Button($"Add stamina with: {staminaValue}"))
             {
-                globalPlayer.ValuesController.ChangeStamina(staminaValue);
+                globalPlayer.ValuesController.AddStamina(staminaValue);
             }
 
             GUILayout.Space(10f);

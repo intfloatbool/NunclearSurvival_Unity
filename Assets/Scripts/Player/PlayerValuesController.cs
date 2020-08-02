@@ -17,6 +17,30 @@ namespace NunclearGame.Player
         }
 
         public event Action<PlayerValues> OnPlayerValuesChanged;
+        
+        public void AddStamina(int value)
+        {
+            value = Mathf.Abs(value);
+            ChangeStamina(value);
+        }
+        
+        public void RemoveStamina(int value)
+        {
+            value = Mathf.Abs(value);
+            ChangeStamina(-value);
+        }
+        
+        public void AddHealth(int value)
+        {
+            value = Mathf.Abs(value);
+            ChangeHealth(value);
+        }
+        
+        public void RemoveHealth(int value)
+        {
+            value = Mathf.Abs(value);
+            ChangeHealth(-value);
+        }
 
         public void IncreaseLevel()
         {
@@ -36,7 +60,7 @@ namespace NunclearGame.Player
             OnPlayerValuesChanged?.Invoke(newValues);
         }
 
-        public void ChangeHealth(int value)
+        private void ChangeHealth(int value)
         {
             var currentValues = _globalPlayer.PlayerValues;
             int hpAfterChanges = currentValues.CurrentHp + value;
@@ -56,7 +80,7 @@ namespace NunclearGame.Player
             OnPlayerValuesChanged?.Invoke(newValues);
         }
 
-        public void ChangeStamina(int value)
+        private void ChangeStamina(int value)
         {
             var currentValues = _globalPlayer.PlayerValues;
             int staminaAfterChanges = currentValues.CurrentStamina + value;

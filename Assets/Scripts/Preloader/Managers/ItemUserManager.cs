@@ -19,8 +19,7 @@ namespace SingletonsPreloaders
                     int? hungryHealValue = itemInfo.GetItemValueByKey(GameHelper.ItemValueKeys.FOOD_NUTRITIONAL);
                     if (hungryHealValue != null)
                     {
-                        // GlobalPlayer.PlayerValuesController.HealUp(hungryHealValue.Value);
-                        GlobalPlayer.PlayerValuesController.ChangeHealth(hungryHealValue.Value);
+                        GlobalPlayer.PlayerValuesController.AddHealth(hungryHealValue.Value);
                     }
                     GlobalPlayer.Inventory.RemoveItem(itemInfo.ItemName);
                     break;

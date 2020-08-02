@@ -9,6 +9,7 @@ namespace NunclearGame.Metro
     public class MetroController : MonoBehaviour
     {
         [SerializeField] private StationDialogWindow _stationDialogWindow;
+
         [Space] [SerializeField] private MetroMapView[] _metroPoints;
 
         private MetroInitializer _metroInitializer;
@@ -16,6 +17,7 @@ namespace NunclearGame.Metro
         private MetroMapView _lastMetroMapView;
 
         private bool _isInteractByClicks = true;
+        private int nextStationEnergyRequired;
 
         public event Action<MetroMapView> OnPlayerTransitionToStation;
 
@@ -39,6 +41,7 @@ namespace NunclearGame.Metro
         {
             if (IsTransitionAvailable(metroMapView))
             {
+                nextStationEnergyRequired = metroMapView.EnergyRequired;
                 StartTransitionToMetroStation(metroMapView);
             }
         }
@@ -46,7 +49,13 @@ namespace NunclearGame.Metro
         private void InitUI()
         {
             _stationDialogWindow.close.onClick.AddListener(HideDialog);
+            _stationDialogWindow.enter.onClick.AddListener(OnEnterStation);
             _stationDialogWindow.gameObject.SetActive(false);
+        }
+
+        private void OnEnterStation()
+        {
+            GlobalPlayer.PlayerValuesController.RemoveStamina(nextStationEnergyRequired);
         }
 
         private void StartTransitionToMetroStation(MetroMapView metroMapView)
@@ -58,6 +67,7 @@ namespace NunclearGame.Metro
                 _metroHolder.SetLastPlayerStation(metroMapView.MetroNameKey);
                 _lastMetroMapView = metroMapView;
                 OnPlayerTransitionToStation?.Invoke(metroMapView);
+                OnEnterStation();
             }
             else
             {
@@ -74,8 +84,8 @@ namespace NunclearGame.Metro
 
             Debug.Log("Station is not clear. Open transition dialog.");
 
-            _stationDialogWindow.gameObject.SetActive(true);
             _stationDialogWindow.UpdateStationDialogByMapView(metroMapView);
+            _stationDialogWindow.gameObject.SetActive(true);
         }
 
         private void HideDialog()
