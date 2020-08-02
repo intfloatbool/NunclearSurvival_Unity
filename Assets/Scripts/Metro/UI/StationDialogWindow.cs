@@ -13,10 +13,9 @@ namespace NunclearGame.Metro
         public Button enter;
         public Button close;
         public Button background;
-
-        [SerializeField] private TextMeshProUGUI _stationNameValueText;
-
+        
         [SerializeField] private Image _dangerImg;
+        [SerializeField] private TextMeshProUGUI _stationNameValueText;
         [SerializeField] private TextMeshProUGUI _dangerValueText;
 
         private void Awake()
