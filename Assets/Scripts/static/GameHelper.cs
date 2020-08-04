@@ -66,6 +66,7 @@ namespace NunclearGame.Static
         {
             public const string FOOD_NUTRITIONAL = "foodNutritional";
             public const string WATER_THIRST = "waterThirstDrink";
+            public const string STAMINA_RECOVERY = "staminaRecovery";
             public const string WEAPON_DAMAGE = "weaponDamage";
             public const string ARMOR = "armorValue";
         }

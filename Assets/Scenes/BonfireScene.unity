@@ -1183,7 +1183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d817046c0d6f5f840960946cb807bd72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _categories: 0000000001000000
+  _categories: 000000000100000006000000
   _inventory: {fileID: 1495688693}
   _btn: {fileID: 210199481}
 --- !u!1 &244841637

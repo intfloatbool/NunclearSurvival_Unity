@@ -44,12 +44,12 @@ namespace GameEditorDebugHelpers
 
             if (GUILayout.Button($"Damage player with: {healValue}"))
             {
-                globalPlayer.ValuesController.AddHealth(healValue);
+                globalPlayer.ValuesController.RemoveHealth(healValue);
             }
 
             if (GUILayout.Button($"Heal player with: {healValue}"))
             {
-                globalPlayer.ValuesController.RemoveHealth(healValue);
+                globalPlayer.ValuesController.AddHealth(healValue);
             }
             
             int staminaValue = 10;
