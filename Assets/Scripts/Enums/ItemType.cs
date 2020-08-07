@@ -1,4 +1,4 @@
-﻿//TODO перезашить на номера с шагом в 100, NONE сделать 0
+﻿//TODO перезашить на номера с шагом в _100_, NONE сделать 0
 //TODO поправить зависимости, энергию поставить после WATER
 public enum ItemType
 {   
@@ -12,5 +12,6 @@ public enum ItemType
     EQUIPMENT_ARMOR,
     EQUIPMENT_WEAPON,
     EQUIPMENT_GRENADE,
-    ENERGY,
+    ENERGETIC,
+    TENT
 }

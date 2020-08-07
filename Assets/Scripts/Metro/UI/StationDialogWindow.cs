@@ -38,7 +38,7 @@ namespace NunclearGame.Metro
             }
 
             _dangerValueText.text = GameLocalization.Get(dangerType.ToString());
-            _energyText.text = metroMapView.EnergyRequired.ToString();
+            _energyText.text = metroMapView.StationProperties.energyRequired.ToString();
 
             _stationNameValueText.text = GameLocalization.Get(metroMapView.MetroNameKey);
         }

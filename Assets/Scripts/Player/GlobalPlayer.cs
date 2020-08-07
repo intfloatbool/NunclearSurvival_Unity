@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using NunclearGame.Player;
+using NunclearGame.Static;
 using UnityEngine;
 using Player;
 using UnityEngine.Assertions;
@@ -134,6 +135,27 @@ namespace SingletonsPreloaders
             _equipmentController.OnEquipmentChanged += UpdateDebugEquipment;
             _equipmentController.Init();
             _equipmentController.OnEquipmentChanged += _playerInfoProvider.SaveEquipment;
+            
+            RestoreEnergy();
+        }
+
+        private void RestoreEnergy()
+        {
+            var lastSessionTime = _playerInfoProvider.CalculateAbsenceTime();
+
+            if (lastSessionTime != null)
+            {
+                var tent = _playerInventory.GetItemByType(ItemType.TENT);
+
+                int? minutesForOneStaminaRecovery = tent.ItemInfo.GetItemValueByKey(GameHelper.ItemValueKeys.MINUTES_FOR_ONE_STAMINA_RECOVERY);
+
+                if (minutesForOneStaminaRecovery != null)
+                {
+                    var recoveryValue = lastSessionTime.Value.Minutes / minutesForOneStaminaRecovery.Value;
+
+                    ValuesController.AddStamina(recoveryValue);
+                }
+            }
         }
 
         private IEnumerator InitPlayerFirstGameLaunch()

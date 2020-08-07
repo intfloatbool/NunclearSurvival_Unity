@@ -41,7 +41,7 @@ namespace NunclearGame.Metro
         {
             if (IsTransitionAvailable(metroMapView))
             {
-                nextStationEnergyRequired = metroMapView.EnergyRequired;
+                nextStationEnergyRequired = metroMapView.StationProperties.energyRequired;
                 StartTransitionToMetroStation(metroMapView);
             }
         }

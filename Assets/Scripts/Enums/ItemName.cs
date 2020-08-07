@@ -1,4 +1,6 @@
-﻿public enum ItemName
+﻿//TODO перезашить на номера с шагом в _10_, NONE сделать 0
+//TODO поправить зависимости
+public enum ItemName
 {
     NONE = -1,
     FOOD_APPLE,
@@ -14,4 +16,5 @@
     WEAPON_AK47,
     GRENADE_BASIC_FRAG,
     ENERGY_DRINK_SIMPLE,
+    REST_TENT_1_LVL,
 }

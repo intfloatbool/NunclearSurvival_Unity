@@ -7,9 +7,11 @@ namespace NunclearGame.Metro
     public class StationProperties
     {
         [SerializeField] private string _name;
+        public int energyRequired = 15;
         public string Name => _name;
         
         [SerializeField] private DangerType _dangerType;
+        
         public DangerType DangerType => _dangerType;
 
         [Space(5f)] [Header("Runtime data will loading and update after start!")] 

@@ -187,3 +187,14 @@ MonoBehaviour:
       _value: 20
     _isCraftable: 0
     _itemCraftParts: []
+  - _itemViewNameKey: rest_tent_1_lvl
+    _descriptionLocKey: rest_tent_1_lvl_description
+    _itemName: 13
+    _itemType: 7
+    _itemIcon: {fileID: 21300000, guid: f73a2760aaaf6654fa3b18f7a76c837a, type: 3}
+    _isConstantItem: 1
+    _itemValues:
+    - _valueKey: minutesForOneStaminaRecovery
+      _value: 12
+    _isCraftable: 0
+    _itemCraftParts: []

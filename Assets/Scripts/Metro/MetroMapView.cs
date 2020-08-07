@@ -12,7 +12,6 @@ namespace NunclearGame.Metro
     public class MetroMapView : MonoBehaviour
     {
         [SerializeField] private string _metroNameKey;
-        [SerializeField] private int _energyRequired = 15;
 
         [SerializeField] private TextMeshPro _nameText;
 
@@ -32,7 +31,6 @@ namespace NunclearGame.Metro
 
         public StationProperties StationProperties => _stationProperties;
         public string MetroNameKey => _metroNameKey;
-        public int EnergyRequired => _energyRequired;
 
         public event Action OnClicked;
 

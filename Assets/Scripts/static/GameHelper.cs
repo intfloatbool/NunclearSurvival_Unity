@@ -67,6 +67,7 @@ namespace NunclearGame.Static
             public const string FOOD_NUTRITIONAL = "foodNutritional";
             public const string WATER_THIRST = "waterThirstDrink";
             public const string STAMINA_RECOVERY = "staminaRecovery";
+            public const string MINUTES_FOR_ONE_STAMINA_RECOVERY = "minutesForOneStaminaRecovery";
             public const string WEAPON_DAMAGE = "weaponDamage";
             public const string ARMOR = "armorValue";
         }
@@ -91,6 +92,7 @@ namespace NunclearGame.Static
             public const string EQUIPMENT_WEAPON = "_equipWeapon";
             public const string EQUIPMENT_ARMOR = "_equipArmor";
             public const string EQUIPMENT_GRENADE = "_equipGrenade";
+            public const string LAST_SESSION = "lastSession";
 
             //Metro stations
             private const string STATION_IS_CLEAR = "isClearKey";

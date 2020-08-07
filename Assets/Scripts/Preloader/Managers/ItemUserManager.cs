@@ -24,7 +24,7 @@ namespace SingletonsPreloaders
                     GlobalPlayer.Inventory.RemoveItem(itemInfo.ItemName);
                     break;
                 }
-                case ItemType.ENERGY:
+                case ItemType.ENERGETIC:
                 {
                     int? staminaRecoveryValue = itemInfo.GetItemValueByKey(GameHelper.ItemValueKeys.STAMINA_RECOVERY);
                     if (staminaRecoveryValue != null)

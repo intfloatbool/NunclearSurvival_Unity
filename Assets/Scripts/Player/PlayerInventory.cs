@@ -28,6 +28,11 @@ namespace Player
         {
             return _currentItems.FirstOrDefault(i => i.ItemName == itemName);
         }
+
+        public InventoryItem GetItemByType(ItemType itemType)
+        {
+            return _currentItems.FirstOrDefault(i => i.ItemInfo.ItemType == itemType);
+        }
         
         public void AddItem(ItemName itemName)
         {

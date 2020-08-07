@@ -429,5 +429,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Preloader
       objectReference: {fileID: 0}
+    - target: {fileID: 3763478905663737663, guid: 8026248f249d47c40b8be6c9665b92e4,
+        type: 3}
+      propertyPath: _managerPrefabs.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3763478905663737663, guid: 8026248f249d47c40b8be6c9665b92e4,
+        type: 3}
+      propertyPath: _managerPrefabs.Array.data[11]
+      value: 
+      objectReference: {fileID: 5462728998533097774, guid: 2745e178b32b29d4b884b2191301512b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8026248f249d47c40b8be6c9665b92e4, type: 3}

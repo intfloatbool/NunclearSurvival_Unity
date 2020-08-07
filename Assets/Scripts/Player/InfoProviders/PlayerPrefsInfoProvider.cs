@@ -10,6 +10,7 @@ namespace Player
     public class PlayerPrefsInfoProvider : PlayerInfoProviderBase
     {
         private readonly string PlayerNameKey = "playerNickName";
+
         public override string LoadPlayerName()
         {
             return PlayerPrefs.GetString(PlayerNameKey);
@@ -182,6 +183,28 @@ namespace Player
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_ARMOR, (int) equipment.Armor.ItemName);
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_WEAPON, (int) equipment.Weapon.ItemName);
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_GRENADE, (int) equipment.Grenade.ItemName);
+        }
+
+        public override void SaveLastTime()
+        {
+            PlayerPrefs.SetString(GameHelper.PlayerPrefsKeys.LAST_SESSION, DateTime.Now.ToString());
+        }
+
+        public override TimeSpan? CalculateAbsenceTime()
+        {
+            if (PlayerPrefs.HasKey(GameHelper.PlayerPrefsKeys.LAST_SESSION))
+            {
+                lastSessionTime = DateTime.Now - DateTime.Parse(PlayerPrefs.GetString(GameHelper.PlayerPrefsKeys.LAST_SESSION));
+                Debug.Log($"you were absent: {lastSessionTime.Minutes} minutes, {lastSessionTime.Seconds} seconds");
+                return lastSessionTime;
+            }
+
+            return null;
+        }
+
+        private void OnApplicationQuit()
+        {
+            SaveLastTime();
         }
     }
 }
