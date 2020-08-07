@@ -142,10 +142,10 @@ namespace SingletonsPreloaders
         private void RestoreEnergy()
         {
             var lastSessionTime = _playerInfoProvider.CalculateAbsenceTime();
+            var tent = _playerInventory.GetItemByType(ItemType.TENT);
 
-            if (lastSessionTime != null)
+            if (lastSessionTime != null && tent != null)
             {
-                var tent = _playerInventory.GetItemByType(ItemType.TENT);
 
                 int? minutesForOneStaminaRecovery = tent.ItemInfo.GetItemValueByKey(GameHelper.ItemValueKeys.MINUTES_FOR_ONE_STAMINA_RECOVERY);
 
