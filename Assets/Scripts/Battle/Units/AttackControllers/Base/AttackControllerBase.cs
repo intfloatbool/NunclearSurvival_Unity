@@ -28,6 +28,9 @@ namespace NunclearGame.Battle
         [Header("RuntimeRefs")]
         [SerializeField] protected GameUnit _currentTarget;
 
+        [SerializeField] private float _damageDelay = 0.5f;
+        public event Action OnAttackStarted;
+        
         public GameUnit CurrentTarget
         {
             get { return _currentTarget; }
@@ -82,9 +85,24 @@ namespace NunclearGame.Battle
                 return;
             if (_currentTarget == null)
                 return;
-            _unitDamage.DamageTargetGameUnit(_currentTarget);
             
+            _unitDamage.DamageTargetGameUnit(_currentTarget);
             _isReadyToAttack = false;
+            
+            OnAttackStarted?.Invoke();
+        }
+
+        public virtual void AttackTargetWithDelay()
+        {
+            if (!_isReadyToAttack)
+                return;
+            if (_currentTarget == null)
+                return;
+            
+            _unitDamage.DamageTargetGameUnitWithDelay(_currentTarget, _damageDelay);
+            _isReadyToAttack = false;
+            
+            OnAttackStarted?.Invoke();
         }
         protected abstract void HandleAttack();
     }

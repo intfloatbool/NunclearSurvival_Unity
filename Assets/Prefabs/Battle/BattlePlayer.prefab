@@ -100,6 +100,9 @@ MonoBehaviour:
   _nameKey: 
   _currentHp: 0
   _isDead: 0
+  _isStunnable: 0
+  _stunTime: 1.5
+  _isStunnedNow: 0
 --- !u!114 &4492654397541161922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,8 +118,10 @@ MonoBehaviour:
   _isEnabled: 1
   _gameUnit: {fileID: 3378009388928364537}
   _unitDamage: {fileID: 6590084694558436029}
-  _currentTarget: {fileID: 0}
   _attackDelay: 2
+  _isNotActiveInStun: 0
+  _currentTarget: {fileID: 0}
+  _damageDelay: 0.5
 --- !u!114 &2973315114556205414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 7819966689162009082}
-  _unitDamage: {fileID: 6590084694558436029}
+  _attackController: {fileID: 4492654397541161922}
   _gameUnit: {fileID: 3378009388928364537}
 --- !u!114 &1573123942407157734
 MonoBehaviour:

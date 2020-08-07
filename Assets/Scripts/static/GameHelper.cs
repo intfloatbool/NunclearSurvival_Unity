@@ -38,8 +38,21 @@ namespace NunclearGame.Static
                 public const string ATTACK_1_TRIGGER = "ATTACK_1";
                 public const string HIT_TRIGGER = "HIT";
 
-                private static string[] _attackTriggers;
+                /// Animation clip names
+                public const string ANIM_ATTACK_0 = "ATTACK_0";
+                public const string ANIM_ATTACK_1 = "ATTACK_1";
+                public const string ANIM_HIT = "HIT";
+                public const string ANIM_DEATH = "DEATH";
 
+                public static string GetAttackClipByTrigger(string triggerName)
+                {
+                    if (triggerName.Equals(ATTACK_0_TRIGGER))
+                        return ANIM_ATTACK_0;
+                    
+                    return ANIM_ATTACK_1;
+                }
+                
+                private static string[] _attackTriggers;
                 public static string GetRndAttackTriggerKey()
                 {
                     if (_attackTriggers == null)
@@ -56,12 +69,18 @@ namespace NunclearGame.Static
             }
         }
 
+        public static class InputKeys
+        {
+            public const string MOUSE_X = "Mouse X";
+            public const string MOUSE_Y = "Mouse Y";
+        }
+        
         public static class GameTags
         {
             public const string PLAYER_TAG = "Player";
             public const string METRO_ENEMY_TAG = "MetroEnemy";
         }
-
+        
         public static class ItemValueKeys
         {
             public const string FOOD_NUTRITIONAL = "foodNutritional";
@@ -71,14 +90,14 @@ namespace NunclearGame.Static
             public const string WEAPON_DAMAGE = "weaponDamage";
             public const string ARMOR = "armorValue";
         }
-
+        
         public static class LocKeys
         {
             public const string NEW_ITEM_DIALOG_HEADER_KEY = "_newItemDialogHeader";
             public const string OKAY_LABEL_KEY = "_okayText";
             public const string DANGER_TEXT = "_dangerText";
         }
-
+        
         public static class PlayerPrefsKeys
         {
             public const string HAS_VALUES_KEY = "p_valuesHasValues";

@@ -1,4 +1,5 @@
-﻿using NunclearGame.Player;
+﻿using System;
+using NunclearGame.Player;
 using NunclearGame.Static;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -12,7 +13,10 @@ namespace NunclearGame.Metro
         [SerializeField] private Vector3 _posOffset = new Vector3(0, 2, 0);
         private PlayerView _playerViewInstance;
 
-        private void Awake()
+        public event Action<PlayerView> OnPlayerViewCreated;
+        public event Action<Vector3> OnPlayerPositionChanged;
+
+        private void Start()
         {
             Assert.IsNotNull(GameHelper.GlobalPlayer, "GameHelper.GlobalPlayer != null");
             if (GameHelper.GlobalPlayer != null)
@@ -48,6 +52,8 @@ namespace NunclearGame.Metro
                 _playerViewInstance.transform.localScale = _playerTransformVariant.localScale;
                 _playerViewInstance.transform.rotation = _playerTransformVariant.rotation;
             }
+            
+            OnPlayerViewCreated?.Invoke(_playerViewInstance);
         }
 
         private void PutPlayerAtMetroStation(MetroMapView mapView)
@@ -56,6 +62,8 @@ namespace NunclearGame.Metro
             {
                 var posToPlace = mapView.transform.position + _posOffset;
                 _playerViewInstance.transform.position = posToPlace;
+                
+                OnPlayerPositionChanged?.Invoke(posToPlace);
             }
         }
     }
