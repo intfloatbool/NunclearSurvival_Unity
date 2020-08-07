@@ -53,7 +53,7 @@ namespace NunclearGame.Battle
             }
         }
 
-        protected override void OnAttackTarget(int damage, GameUnit target)
+        protected override void OnAttackTarget()
         {
             if (!_isHaveWeapon)
             {

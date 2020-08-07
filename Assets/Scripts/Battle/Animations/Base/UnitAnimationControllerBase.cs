@@ -6,14 +6,12 @@ namespace NunclearGame.Battle
     public abstract class UnitAnimationControllerBase : MonoBehaviour
     {
         [SerializeField] protected Animator _animator;
-
-        [SerializeField] protected UnitDamage _unitDamage;
+        [SerializeField] protected AttackControllerBase _attackController;
         [SerializeField] protected GameUnit _gameUnit;
         
         protected virtual void Awake()
         {
             Assert.IsNotNull(_animator, "_animator != null");
-            Assert.IsNotNull(_unitDamage, "_animator != null");
             Assert.IsNotNull(_gameUnit, "_animator != null");
 
             if (_gameUnit != null)
@@ -22,9 +20,9 @@ namespace NunclearGame.Battle
                 _gameUnit.OnDead += OnUnitDead;
             }
 
-            if (_unitDamage != null)
+            if (_attackController != null)
             {
-                _unitDamage.OnAttackTarget += OnAttackTarget;
+                _attackController.OnAttackStarted += OnAttackTarget;
             }
         }
 
@@ -36,13 +34,13 @@ namespace NunclearGame.Battle
                 _gameUnit.OnDead -= OnUnitDead;
             }
 
-            if (_unitDamage != null)
+            if (_attackController != null)
             {
-                _unitDamage.OnAttackTarget -= OnAttackTarget;
+                _attackController.OnAttackStarted -= OnAttackTarget;
             }
         }
 
-        protected abstract void OnAttackTarget(int damage, GameUnit target);
+        protected abstract void OnAttackTarget();
 
         protected abstract void OnUnitDead();
 

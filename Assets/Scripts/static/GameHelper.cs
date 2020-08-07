@@ -39,6 +39,20 @@ namespace NunclearGame.Static
                 public const string ATTACK_1_TRIGGER = "ATTACK_1";
                 public const string HIT_TRIGGER = "HIT";
 
+                /// Animation clip names
+                public const string ANIM_ATTACK_0 = "ATTACK_0";
+                public const string ANIM_ATTACK_1 = "ATTACK_1";
+                public const string ANIM_HIT = "HIT";
+                public const string ANIM_DEATH = "DEATH";
+
+                public static string GetAttackClipByTrigger(string triggerName)
+                {
+                    if (triggerName.Equals(ATTACK_0_TRIGGER))
+                        return ANIM_ATTACK_0;
+                    
+                    return ANIM_ATTACK_1;
+                }
+                
                 private static string[] _attackTriggers;
                 public static string GetRndAttackTriggerKey()
                 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -70,6 +71,16 @@ namespace NunclearGame.Battle
             
             gameUnit.MakeDamage(damage);
             OnAttackTarget?.Invoke(damage, gameUnit);
+        }
+
+        public void DamageTargetGameUnitWithDelay(GameUnit gameUnit, float delay)
+        {
+            StartCoroutine(DamageWithDelay(delay));
+            IEnumerator DamageWithDelay(float delayToDamage)
+            {
+                yield return new WaitForSeconds(delayToDamage);
+                DamageTargetGameUnit(gameUnit);
+            }
         }
 
     }
