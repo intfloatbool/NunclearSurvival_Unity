@@ -32,6 +32,11 @@ namespace NunclearGame.Player
             return _equipViewItems.ToArray();
         }
 
+        public EquipViewItem GetViewItemByType(ItemType itemType)
+        {
+            return _equipViewItems.FirstOrDefault(ev => ev.ItemType == itemType);
+        }
+
         public void EquipItemByType(ItemType itemType, GameObject itemPrefab)
         {
             if (!_viewItemsDict.ContainsKey(itemType))

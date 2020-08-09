@@ -47,7 +47,7 @@ MonoBehaviour:
   _isRandomDamage: 0
   _minDamage: 8
   _maxDamage: 10
-  _criticalChance: 0.3
+  _criticalChance: 0
   _criticalMultipler: 1.5
 --- !u!1 &6972465271059368466
 GameObject:
@@ -122,6 +122,7 @@ MonoBehaviour:
   _isNotActiveInStun: 0
   _currentTarget: {fileID: 0}
   _damageDelay: 0.5
+  _timeToShowAim: 1.2
 --- !u!114 &2973315114556205414
 MonoBehaviour:
   m_ObjectHideFlags: 0

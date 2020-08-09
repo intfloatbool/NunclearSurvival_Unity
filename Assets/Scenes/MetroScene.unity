@@ -2756,8 +2756,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneToGo: 5
-  _isExternalDelay: 1
-  _externalDelay: 1
+  _isExternalDelay: 0
+  _externalDelay: 0
 --- !u!1 &1266216717
 GameObject:
   m_ObjectHideFlags: 0

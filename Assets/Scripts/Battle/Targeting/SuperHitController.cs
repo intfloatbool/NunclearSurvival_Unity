@@ -9,7 +9,20 @@ namespace NunclearGame.Battle
     {
         [SerializeField] private UnitsSpawner _spawner;
         [SerializeField] private SuperHitAim _superHitAim;
+
+        private GameUnit _targetUnit;
+        public SuperHitAim SuperHitAim => _superHitAim;
         private Targetable _currentTargetable;
+        
+        public bool IsAimInProcess
+        {
+            get
+            {
+                if (_superHitAim == null)
+                    return false;
+                return _superHitAim.IsOnProcess;
+            }
+        }
         
         private void Awake()
         {
@@ -36,6 +49,16 @@ namespace NunclearGame.Battle
             {
                 _spawner.OnUnitSpawned -= GetTarget;
             }
+
+            if (_targetUnit != null)
+            {
+                _targetUnit.OnDead -= OnTargetUnitDie;
+            }
+        }
+
+        private void OnTargetUnitDie()
+        {
+            _superHitAim.gameObject.SetActive(false);
         }
 
         private void GetTarget(GameUnit gameUnit)
@@ -46,11 +69,22 @@ namespace NunclearGame.Battle
                 return;
             }
 
+            _targetUnit = gameUnit;
             _currentTargetable = gameUnit.GetComponent<Targetable>();
+            
+            if (_targetUnit != null)
+            {
+                _targetUnit.OnDead += OnTargetUnitDie;
+            }
         }
 
         public void StartRandomTargeting()
         {
+            if (_targetUnit != null && _targetUnit.IsDead)
+            {
+                return;
+            }
+            
             if (_currentTargetable == null)
             {
                 Debug.LogError("Targetable is missing!");

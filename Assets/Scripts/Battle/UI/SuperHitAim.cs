@@ -27,13 +27,15 @@ namespace NunclearGame.Battle.UI
         
         private HitTarget _currentTarget;
         
+        public bool IsOnProcess { get; private set; }
+        
         
         /// <summary>
         /// arg#0 HitTarget = target to attack
         /// arg#1 bool = is aiming done
         /// </summary>
         public event Action<HitTarget, bool> OnAimDoneTargeting;
-        
+
         private void Awake()
         {
             Assert.IsNotNull(_transformScaler, "_transformScaler != null");
@@ -68,6 +70,7 @@ namespace NunclearGame.Battle.UI
             _transformScaler.CurrentScale = _aimDoneScale;
             _aimVisualRoot.gameObject.SetActive(true);
             _isHitReady = false;
+            IsOnProcess = true;
         }
 
         public void StopTargeting()
@@ -79,6 +82,7 @@ namespace NunclearGame.Battle.UI
             _hitReadyImg.gameObject.SetActive(false);
             _currentTarget = null;
             _isHitReady = false;
+            IsOnProcess = false;
         }
 
         private void MoveToTargetLoop()

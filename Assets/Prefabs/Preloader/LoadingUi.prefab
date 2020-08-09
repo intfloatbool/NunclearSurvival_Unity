@@ -477,7 +477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadingTransform: {fileID: 7660669439606249951}
   _loadingSpeed: 5
-  _delayAfterLoading: 1
+  _delayAfterLoading: 0.5
   _loadingBar: {fileID: 323118721}
   _isSceneLoading: 1
   _currentProgress: 0.5
