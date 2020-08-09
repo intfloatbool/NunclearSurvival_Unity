@@ -922,6 +922,58 @@
 					"Text": "CRITICAL DAMAGE!"
 				}
 			]
+		},
+		{
+			"Key": "energy_drink_simple",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Энергетик простой"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Simple energy drink"
+				}
+			]
+		},
+		{
+			"Key": "energy_drink_simple_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Восстанавливает немного энергии"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Restores some energy amount"
+				}
+			]
+		},
+		{
+			"Key": "rest_tent_1_lvl",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Палатка срочника"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Rest tent for newbie"
+				}
+			]
+		},
+		{
+			"Key": "rest_tent_1_lvl_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Базовое место отдыха для сталкеров"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Stalkers basic rest tent"
+				}
+			]
 		}
         
 	]
