@@ -2155,7 +2155,7 @@ RectTransform:
   m_AnchorMin: {x: 0.21243751, y: 0.24300002}
   m_AnchorMax: {x: 0.7868334, y: 0.7627737}
   m_AnchoredPosition: {x: 1.5, y: -3}
-  m_SizeDelta: {x: 3.225586, y: -46.898113}
+  m_SizeDelta: {x: 3.225586, y: -44.026417}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1139522757
 MonoBehaviour:
@@ -3147,7 +3147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnableMoveByPlayer: 1
-  _moveSpeed: 5
+  _moveSpeed: 30
   _metroPlayerShower: {fileID: 946818613}
 --- !u!1 &1480977762
 GameObject:
