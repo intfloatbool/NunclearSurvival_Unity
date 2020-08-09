@@ -660,7 +660,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 210639300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c302f56e1357743ee8d6ce237beaefe1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cbc2095fc9f4e58a822d6dd7146c887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _unitsSpawner: {fileID: 1889349619}
@@ -2827,7 +2827,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnabled: 1
-  _isLerp: 0
   _speed: 6
   _currentScale: {x: 5.6107, y: 5.6107, z: 5.6107}
   _showingScale: {x: 5.6107, y: 5.6107, z: 5.6107}
@@ -3953,6 +3952,7 @@ MonoBehaviour:
       type: 3}
     _unitSpawnPoint: {fileID: 1051572337}
   _isSpawnAtStart: 1
+  _spawnDelay: 1.5
 --- !u!1 &1921463407
 GameObject:
   m_ObjectHideFlags: 0
@@ -4316,7 +4316,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnabled: 1
-  _isLerp: 1
   _speed: 4
   _currentScale: {x: 0, y: 0, z: 0}
   _showingScale: {x: 0.02010518, y: 0.02010518, z: 0.02010518}

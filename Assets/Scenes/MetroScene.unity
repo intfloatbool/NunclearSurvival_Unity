@@ -3143,11 +3143,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1479494607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9847f46ae83e24969afc0046d3bf7fb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 96387d1c678b416f8de596c09102d252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnableMoveByPlayer: 1
-  _moveSpeed: 30
+  _moveSpeed: 5
   _metroPlayerShower: {fileID: 946818613}
 --- !u!1 &1480977762
 GameObject:
