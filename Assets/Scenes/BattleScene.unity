@@ -2021,6 +2021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d418725557acc4d8b8cdf986886ac9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 596240745}
   _transformScaler: {fileID: 1391173226}
   _aimDoneScale: {x: 0.5, y: 0.5, z: 0.5}
   _aimStartScale: {x: 5, y: 5, z: 5}

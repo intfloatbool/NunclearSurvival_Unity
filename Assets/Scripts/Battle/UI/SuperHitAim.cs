@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Common;
+using NunclearGame.Static;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ namespace NunclearGame.Battle.UI
 {
     public class SuperHitAim : MonoBehaviour
     {
+        [SerializeField] private Canvas _canvas;
         [SerializeField] private TransformScaler _transformScaler;
         [SerializeField] private Vector3 _aimDoneScale = new Vector3(0.5f, 0.5f, 0.5f);
         [SerializeField] private Vector3 _aimStartScale = new Vector3(5f, 5f, 5f);
@@ -38,6 +40,7 @@ namespace NunclearGame.Battle.UI
             Assert.IsNotNull(_aimVisualRoot, "_aimVisualRoot != null");
             Assert.IsNotNull(_hitReadyImg, "_hitReadyImg != null");
             Assert.IsNotNull(_targetButton, "_hitReadyImg != null");
+            Assert.IsNotNull(_canvas, "_canvas != null");
 
             if (_targetCamera == null)
             {
@@ -82,9 +85,8 @@ namespace NunclearGame.Battle.UI
         {
             if (_targetCamera == null)
                 return;
-            Vector3 screenPos = _targetCamera.WorldToViewportPoint(_currentTarget.transform.position);
-            _aimVisualRoot.anchorMin = Vector3.Lerp(_aimVisualRoot.anchorMin, screenPos , _aimingSpeed * Time.deltaTime);
-            _aimVisualRoot.anchorMax = Vector3.Lerp(_aimVisualRoot.anchorMax, screenPos , _aimingSpeed * Time.deltaTime);
+            var uiPos = GameHelper.HelpFuncs.WorldToUISpace(_targetCamera, _canvas, _currentTarget.transform.position);
+            _aimVisualRoot.transform.position = uiPos;
         }
         
         private void Update()
