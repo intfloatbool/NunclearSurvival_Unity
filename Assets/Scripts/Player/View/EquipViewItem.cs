@@ -6,12 +6,12 @@ namespace NunclearGame.Player
 {
     public class EquipViewItem : MonoBehaviour, IKeyPreferer<ItemType>
     {
-        [SerializeField] private ItemType _itemtype;
+        [SerializeField] protected ItemType _itemtype;
         public ItemType ItemType => _itemtype;
-        [SerializeField] private Transform _anchor;
-        [SerializeField] private GameObject _currentItemInstance;
-
-        private void Awake()
+        [SerializeField] protected Transform _anchor;
+        [SerializeField] protected GameObject _currentItemInstance;
+        
+        protected virtual void Awake()
         {
             if (_anchor == null)
             {
@@ -20,7 +20,7 @@ namespace NunclearGame.Player
             Assert.IsNotNull(_anchor, "_anchor == null");
         }
 
-        public void SetItem(GameObject itemPrefab)
+        public virtual void SetItem(GameObject itemPrefab)
         {
             if (itemPrefab == null)
             {
