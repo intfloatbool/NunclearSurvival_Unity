@@ -6,6 +6,11 @@ namespace NunclearGame.Battle
 {
     public class GameUnit : MonoBehaviour, INormalizedValueProvider
     {
+        //DEBUG
+        [Header("DEBUG")] 
+        [SerializeField] private bool _isImmortal;
+        
+        [Space(5f)]
         [SerializeField] protected string _nameKey;
         public string NameKey => _nameKey;
         
@@ -48,6 +53,9 @@ namespace NunclearGame.Battle
 
         public virtual void MakeDamage(int dmg)
         {
+            if (_isImmortal)
+                return;
+            
             if(IsInvulnerability)
                 return;
             

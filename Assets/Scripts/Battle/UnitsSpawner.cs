@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace NunclearGame.Battle
@@ -19,9 +20,11 @@ namespace NunclearGame.Battle
         [Space(5f)]
         [Header("DANGER ZONE: DEBUG")]
         [SerializeField] private bool _isSpawnAtStart;
+        [SerializeField] private float _spawnDelay = 1.5f;
 
-        private void Start()
+        private IEnumerator Start()
         {
+            yield return new WaitForSeconds(_spawnDelay);
             if (_isSpawnAtStart)
             {
                 SpawnUnits();

@@ -15,6 +15,8 @@ namespace NunclearGame.Battle
 
         [SerializeField] protected GameUnit _gameUnit;
         [SerializeField] protected UnitDamage _unitDamage;
+        public UnitDamage UnitDamage => _unitDamage;
+        
         
         [SerializeField] protected float _attackDelay = 2f;
         protected bool _isReadyToAttack;

@@ -909,7 +909,20 @@
 					"Text": "Basic frag grenade"
 				}
 			]
-        }
+        },
+		{
+			"Key": "criticalDamageText",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "КРИТИЧЕСКИЙ УРОН!"
+				},
+				{
+					"RegionName": "English",
+					"Text": "CRITICAL DAMAGE!"
+				}
+			]
+		}
         
 	]
 }

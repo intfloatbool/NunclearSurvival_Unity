@@ -24,6 +24,11 @@ namespace NunclearGame.Battle
         [SerializeField] protected float _criticalChance = 0.3f;
         
         [SerializeField] protected float _criticalMultipler = 1.5f;
+        public float? ExternalCritMultipler { get; set; }
+
+        public float DebugMultipler { get; set; } = 1f;
+        
+        public event Action<int> OnCriticalDamage;
         
         /// <summary>
         /// arg#0 (Int) - damage of attack
@@ -43,7 +48,7 @@ namespace NunclearGame.Battle
         {
             int randomValue = Random.Range(0, 100);
             int critChance = Mathf.RoundToInt(_criticalChance * 10f);
-            if (randomValue <= critChance)
+            if (randomValue < critChance)
             {
                 return true;
             }
@@ -67,7 +72,17 @@ namespace NunclearGame.Battle
             {
                 Debug.Log($"Critical damage by {gameObject.name}!");
                 damage = (int) (damage * _criticalMultipler);
+                OnCriticalDamage?.Invoke(damage);
             }
+            
+            if (ExternalCritMultipler != null)
+            {
+                damage = (int) ((float) damage * ExternalCritMultipler.Value);
+                OnCriticalDamage?.Invoke(damage);
+                ExternalCritMultipler = null;
+            }
+
+            damage = (int) (damage * DebugMultipler);
             
             gameUnit.MakeDamage(damage);
             OnAttackTarget?.Invoke(damage, gameUnit);
