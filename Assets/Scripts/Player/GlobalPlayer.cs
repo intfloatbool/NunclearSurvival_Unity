@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using NunclearGame.Player;
 using NunclearGame.Static;
 using UnityEngine;
@@ -142,18 +143,23 @@ namespace SingletonsPreloaders
         private void RestoreEnergy()
         {
             var lastSessionTime = _playerInfoProvider.CalculateAbsenceTime();
-            var tent = _playerInventory.GetItemByType(ItemType.TENT);
+            var tents = _playerInventory.GetItemsByType(ItemType.TENT);
 
-            if (lastSessionTime != null && tent != null)
+            if (tents != null)
             {
+                // TODO заменить на поиск установленного тента
+                var tent = tents[0];
 
-                int? minutesForOneStaminaRecovery = tent.ItemInfo.GetItemValueByKey(GameHelper.ItemValueKeys.MINUTES_FOR_ONE_STAMINA_RECOVERY);
-
-                if (minutesForOneStaminaRecovery != null)
+                if (lastSessionTime != null && tent != null)
                 {
-                    var recoveryValue = lastSessionTime.Value.Minutes / minutesForOneStaminaRecovery.Value;
+                    int? minutesForOneStaminaRecovery = tent.ItemInfo.GetItemValueByKey(GameHelper.ItemValueKeys.MINUTES_FOR_ONE_STAMINA_RECOVERY);
 
-                    ValuesController.AddStamina(recoveryValue);
+                    if (minutesForOneStaminaRecovery != null)
+                    {
+                        var recoveryValue = lastSessionTime.Value.Minutes / minutesForOneStaminaRecovery.Value;
+
+                        ValuesController.AddStamina(recoveryValue);
+                    }
                 }
             }
         }

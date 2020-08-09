@@ -29,9 +29,9 @@ namespace Player
             return _currentItems.FirstOrDefault(i => i.ItemName == itemName);
         }
 
-        public InventoryItem GetItemByType(ItemType itemType)
+        public List<InventoryItem> GetItemsByType(ItemType itemType)
         {
-            return _currentItems.FirstOrDefault(i => i.ItemInfo.ItemType == itemType);
+            return _currentItems.Where(i => i.ItemInfo.ItemType == itemType).ToList();
         }
         
         public void AddItem(ItemName itemName)
