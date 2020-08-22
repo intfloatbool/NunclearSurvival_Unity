@@ -1,6 +1,7 @@
 ﻿using SingletonsPreloaders;
 using System.Collections;
 using System.Collections.Generic;
+using Common.Dependencies;
 using UnityEngine;
 
 public class Preloader : MonoBehaviour
@@ -18,6 +19,11 @@ public class Preloader : MonoBehaviour
         foreach(var managerPrefab in _managerPrefabs)
         {
             var manager = Instantiate(managerPrefab);
+            var singletonDep = manager.GetComponent<ISingletonDependency>();
+            if (singletonDep != null)
+            {
+                singletonDep.SelfRegister();
+            }
             DontDestroyOnLoad(manager);
         }
 
