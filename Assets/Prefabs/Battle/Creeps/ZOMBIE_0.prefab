@@ -169,7 +169,7 @@ MonoBehaviour:
   _attackDelay: 2.5
   _isNotActiveInStun: 1
   _currentTarget: {fileID: 0}
-  _damageDelay: 0.3
+  _damageDelay: 0.6
   _isDelay: 1
 --- !u!114 &6545614587305527825
 MonoBehaviour:

@@ -17,7 +17,7 @@ namespace NunclearGame.Battle
             _animator.SetBool(GameHelper.AnimationKeys.DefaultAnimationsKeys.IS_DEAD_BOOL, true);
         }
 
-        protected override void OnUnitDamaged(int damage)
+        protected override void OnUnitStunned()
         {
             _animator.Play(GameHelper.AnimationKeys.DefaultAnimationsKeys.ANIM_HIT);
             _animator.SetTrigger(GameHelper.AnimationKeys.DefaultAnimationsKeys.HIT_TRIGGER);

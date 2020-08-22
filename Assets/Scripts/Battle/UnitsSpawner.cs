@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using NunclearGame.Static;
 using UnityEngine;
 
 namespace NunclearGame.Battle
@@ -16,6 +17,8 @@ namespace NunclearGame.Battle
         
         public event Action<GameUnit> OnUnitSpawned;
         public event Action OnSpawnDone;
+
+        public event Action<GameUnit> OnPlayerSpawn;
         
         [Space(5f)]
         [Header("DANGER ZONE: DEBUG")]
@@ -73,6 +76,11 @@ namespace NunclearGame.Battle
             GameUnit unitInstance = Instantiate(unitSpawnInfo.GameUnitPrefab, unitSpawnInfo.UnitSpawnPoint);
             unitInstance.transform.position = spawnPosition;
             unitInstance.transform.rotation = rotation;
+
+            if (unitInstance.tag.Equals(GameHelper.GameTags.PLAYER_TAG))
+            {
+                OnPlayerSpawn?.Invoke(unitInstance);
+            }
             
             OnUnitSpawned?.Invoke(unitInstance);
         }
