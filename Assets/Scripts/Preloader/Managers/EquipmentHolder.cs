@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Common.Dependencies;
 using NunclearGame.Items;
 using NunclearGame.Static;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.Assertions;
 
 namespace SingletonsPreloaders
 {
-    public class EquipmentHolder : UnitySingletonBase<EquipmentHolder>
+    public class EquipmentHolder : UnitySingletonBase<EquipmentHolder>, ISingletonDependency
     {
         [SerializeField] private EquipmentItemInfo[] _equipmentItemInfoCollection;
         private Dictionary<ItemName, EquipmentItemInfo> _itemsDict;
@@ -64,6 +65,11 @@ namespace SingletonsPreloaders
             _itemsDict.TryGetValue(itemName, out itemInfo);
 
             return itemInfo;
+        }
+
+        public void SelfRegister()
+        {
+            DepResolver.RegisterDependency(this);
         }
     }
 }
