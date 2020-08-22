@@ -169,7 +169,7 @@ MonoBehaviour:
   _attackDelay: 2.5
   _isNotActiveInStun: 1
   _currentTarget: {fileID: 0}
-  _damageDelay: 0.3
+  _damageDelay: 0.6
   _isDelay: 1
 --- !u!114 &6545614587305527825
 MonoBehaviour:
@@ -228,9 +228,12 @@ MonoBehaviour:
   _audioSource: {fileID: 8567936997475963267}
   _gameUnit: {fileID: 1725525001004835966}
   _unitDamage: {fileID: 937102570249009705}
-  _deathSound: {fileID: 8300000, guid: 24ab678c0718a49a881d77fab64478cd, type: 3}
-  _damagedSound: {fileID: 8300000, guid: bd581a83fa0474390b3ddc1c7bdbb4ad, type: 3}
-  _attackSound: {fileID: 8300000, guid: f68f2f57b37a34e29b1c66011caa592d, type: 3}
+  _deathSounds:
+  - {fileID: 8300000, guid: 24ab678c0718a49a881d77fab64478cd, type: 3}
+  _damagedSounds:
+  - {fileID: 8300000, guid: bd581a83fa0474390b3ddc1c7bdbb4ad, type: 3}
+  _attackSounds:
+  - {fileID: 8300000, guid: f68f2f57b37a34e29b1c66011caa592d, type: 3}
 --- !u!82 &8567936997475963267
 AudioSource:
   m_ObjectHideFlags: 0

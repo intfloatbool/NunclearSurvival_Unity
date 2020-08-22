@@ -31,7 +31,11 @@ namespace NunclearGame.Battle
         [Header("Runtime")]
         [ConditionalHide("_isStunnable")]
         [SerializeField] protected bool _isStunnedNow;
-        public bool IsStunnedNow => _isStunnedNow;
+
+        public bool IsStunnedNow
+        {
+            get { return _isStunnedNow; }
+        }
         protected float _stunTimer;
 
         public bool IsInvulnerability { get; set; } = false;
@@ -41,9 +45,20 @@ namespace NunclearGame.Battle
         public event Action OnDead;
         public event Action<GameUnit> OnDeadWithRef;
 
+        public event Action OnUnitStunned;
+
         protected virtual void Awake()
         {
             _maxHp = _currentHp;
+        }
+
+        public void MakeStun()
+        {
+            if (_isStunnable)
+            {
+                _isStunnedNow = true;
+                OnUnitStunned?.Invoke();
+            }
         }
         
         public float GetNormalizedValue()
@@ -63,9 +78,6 @@ namespace NunclearGame.Battle
             {
                 return;
             }
-
-            if (_isStunnable)
-                _isStunnedNow = true;
             
             _currentHp -= dmg;
             OnDamaged?.Invoke(dmg);

@@ -11,9 +11,9 @@ namespace NunclearGame.Battle
 
         [Space(5f)]
         [Header("Clips")]
-        [SerializeField] private AudioClip _deathSound;
-        [SerializeField] private AudioClip _damagedSound;
-        [SerializeField] private AudioClip _attackSound;
+        [SerializeField] private AudioClip[] _deathSounds;
+        [SerializeField] private AudioClip[] _damagedSounds;
+        [SerializeField] private AudioClip[] _attackSounds;
 
         private void Awake()
         {
@@ -47,19 +47,30 @@ namespace NunclearGame.Battle
             }
         }
 
+        private AudioClip GetRandomSound(AudioClip[] clips)
+        {
+            return clips[Random.Range(0, clips.Length)];
+        }
+        
         private void OnUnitDamaged(int dmg)
         {
-            PlaySound(_damagedSound);
+            if(_damagedSounds.Length <= 0)
+                return;
+            PlaySound(GetRandomSound(_damagedSounds));
         }
 
         private void OnUnitDeath()
         {
-            PlaySound(_deathSound);
+            if(_deathSounds.Length <= 0)
+                return;
+            PlaySound(GetRandomSound(_deathSounds));
         }
 
         private void OnUnitAttack(int dmg, GameUnit target)
         {
-            PlaySound(_attackSound);
+            if(_attackSounds.Length <= 0)
+                return;
+            PlaySound(GetRandomSound(_attackSounds));
         }
 
         private void PlaySound(AudioClip sound)

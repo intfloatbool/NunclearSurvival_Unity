@@ -65,10 +65,11 @@ namespace NunclearGame.Battle
         {
             _animator.SetBool(GameHelper.AnimationKeys.PlayerAnimationKeys.IS_DEAD_BOOL, true);
         }
+        
 
-        protected override void OnUnitDamaged(int damage)
+        protected override void OnUnitStunned()
         {
-            
+            Debug.LogWarning("Player cannot be stunned?");
         }
     }
 }

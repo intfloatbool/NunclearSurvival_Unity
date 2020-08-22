@@ -16,7 +16,7 @@ namespace NunclearGame.Battle
 
             if (_gameUnit != null)
             {
-                _gameUnit.OnDamaged += OnUnitDamaged;
+                _gameUnit.OnUnitStunned += OnUnitStunned;
                 _gameUnit.OnDead += OnUnitDead;
             }
 
@@ -30,7 +30,7 @@ namespace NunclearGame.Battle
         {
             if (_gameUnit != null)
             {
-                _gameUnit.OnDamaged -= OnUnitDamaged;
+                _gameUnit.OnUnitStunned -= OnUnitStunned;
                 _gameUnit.OnDead -= OnUnitDead;
             }
 
@@ -44,7 +44,7 @@ namespace NunclearGame.Battle
 
         protected abstract void OnUnitDead();
 
-        protected abstract void OnUnitDamaged(int damage);
+        protected abstract void OnUnitStunned();
 
     }
 }
