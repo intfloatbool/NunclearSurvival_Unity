@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
+  _selfUnit: {fileID: 0}
   _isRandomDamage: 0
   _minDamage: 8
   _maxDamage: 10
@@ -166,7 +167,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6972465271059368466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65c1b0ced7eab48d7a7304a3c3a00deb, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cc1d89618c94eada19557e005f8809e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 2087271371424224898}

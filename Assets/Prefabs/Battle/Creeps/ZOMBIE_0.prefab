@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
+  _selfUnit: {fileID: 0}
   _isRandomDamage: 0
   _minDamage: 6
   _maxDamage: 10
@@ -209,20 +210,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7560410915213901410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c4ea7a6b9c8438f82c020d5bd6a9b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hitEffect: {fileID: 1706800633983799624}
---- !u!114 &5475797497937582295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7560410915213901410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65c1b0ced7eab48d7a7304a3c3a00deb, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cc1d89618c94eada19557e005f8809e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 8567936997475963267}
@@ -234,6 +222,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bd581a83fa0474390b3ddc1c7bdbb4ad, type: 3}
   _attackSounds:
   - {fileID: 8300000, guid: f68f2f57b37a34e29b1c66011caa592d, type: 3}
+--- !u!114 &5475797497937582295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7560410915213901410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08478116aaf74b318c6cae55f6f74eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitEffect: {fileID: 1706800633983799624}
 --- !u!82 &8567936997475963267
 AudioSource:
   m_ObjectHideFlags: 0
