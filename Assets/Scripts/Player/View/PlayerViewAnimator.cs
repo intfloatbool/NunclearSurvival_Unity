@@ -23,13 +23,22 @@ namespace NunclearGame.Player
             {
                 _animator = GetComponentInChildren<Animator>();
             }
-            
+
             Assert.IsNotNull(_animator, "_animator != null");
 
             if (_playerView != null)
             {
                 _playerView.OnItemViewEquipped += PlayerItemEquipped;
                 _playerView.OnItemUnequipped += PlayerItemUnequipped;
+            }
+
+            var equipmentController = GameHelper.GlobalPlayer.EquipmentController;
+
+            var isHaveWeapon = equipmentController.IsHaveEquippedItemOfType(ItemType.EQUIPMENT_WEAPON);
+
+            if (isHaveWeapon)
+            {
+                _animator.SetBool(GameHelper.AnimationKeys.PlayerAnimationKeys.IS_PLAYER_HAVE_WEAPON, true);
             }
         }
 
@@ -46,11 +55,11 @@ namespace NunclearGame.Player
         {
             if (_animator == null)
                 return;
+
             if (itemType == ItemType.EQUIPMENT_WEAPON)
             {
                 _animator.SetBool(GameHelper.AnimationKeys.PlayerAnimationKeys.IS_PLAYER_HAVE_WEAPON, true);
             }
-            
         }
 
         private void PlayerItemUnequipped(ItemType itemType)
