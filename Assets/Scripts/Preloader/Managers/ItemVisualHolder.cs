@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Common.Dependencies;
 using Items;
 using UnityEngine;
 
 namespace SingletonsPreloaders
 {
-    public class ItemVisualHolder : UnitySingletonBase<ItemVisualHolder>
+    public class ItemVisualHolder : UnitySingletonBase<ItemVisualHolder>, ISingletonDependency
     {
         [SerializeField] private ItemVisualData[] _itemVisualData;
         private Dictionary<ItemName, ItemVisualData> _itemVisualDataDict;
@@ -33,6 +34,11 @@ namespace SingletonsPreloaders
             base.Awake();
 
             _itemVisualDataDict = _itemVisualData.ToDictionary(item => item.GetKey());
+        }
+
+        public void SelfRegister()
+        {
+            DepResolver.RegisterDependency(this);
         }
     }
 }

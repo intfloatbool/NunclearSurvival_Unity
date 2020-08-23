@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using Common.Dependencies;
 using NunclearGame.Player;
 using NunclearGame.Static;
 using UnityEngine;
@@ -9,7 +10,7 @@ using UnityEngine.Assertions;
 
 namespace SingletonsPreloaders
 {
-    public class GlobalPlayer : UnitySingletonBase<GlobalPlayer>
+    public class GlobalPlayer : UnitySingletonBase<GlobalPlayer>, ISingletonDependency
     {
 
         [SerializeField] private PlayerView _playerViewPrefab;
@@ -227,6 +228,11 @@ namespace SingletonsPreloaders
             }
 
             return itemFromInventory;
+        }
+
+        public void SelfRegister()
+        {
+            DepResolver.RegisterDependency(this);
         }
     }
 }

@@ -1,9 +1,10 @@
-﻿using NunclearGame.Static;
+﻿using Common.Dependencies;
+using NunclearGame.Static;
 using UnityEngine;
 
 namespace SingletonsPreloaders
 {
-    public class ItemUserManager : UnitySingletonBase<ItemUserManager>
+    public class ItemUserManager : UnitySingletonBase<ItemUserManager>, ISingletonDependency
     {
         protected override ItemUserManager GetInstance() => this;
 
@@ -42,6 +43,11 @@ namespace SingletonsPreloaders
                     break;
                 }
             }
+        }
+
+        public void SelfRegister()
+        {
+            DepResolver.RegisterDependency(this);
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Common.Dependencies;
 using UnityEngine;
 
 namespace SingletonsPreloaders
 {
-    public class SpritesHolder : UnitySingletonBase<SpritesHolder>
+    public class SpritesHolder : UnitySingletonBase<SpritesHolder>, ISingletonDependency
     {
         [System.Serializable]
         public class NamedSprite
@@ -45,6 +46,11 @@ namespace SingletonsPreloaders
             }
 
             return sprite;
+        }
+
+        public void SelfRegister()
+        {
+            DepResolver.RegisterDependency(this);
         }
     }
 

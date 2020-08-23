@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Common.Dependencies;
 using NunclearGame.Enums;
 using NunclearGame.Metro;
 using NunclearGame.Static;
@@ -7,10 +8,8 @@ using UnityEngine;
 
 namespace SingletonsPreloaders
 {
-    public class MetroHolder : UnitySingletonBase<MetroHolder>
+    public class MetroHolder : UnitySingletonBase<MetroHolder>, ISingletonDependency
     {
-        
-        
         [System.Serializable]
         private struct ColorByDanger
         {
@@ -272,6 +271,11 @@ namespace SingletonsPreloaders
         {
             var colorByDanger = GetColorByDanger(dangerType);
             return new StationDangerIconInfo(_dangerSprite, colorByDanger);
+        }
+
+        public void SelfRegister()
+        {
+            DepResolver.RegisterDependency(this);
         }
     }
 }

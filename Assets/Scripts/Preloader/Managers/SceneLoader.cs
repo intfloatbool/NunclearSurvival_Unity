@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using System;
+using Common.Dependencies;
+using Common.Interfaces.Collections;
 
 namespace SingletonsPreloaders
 {
-    public class SceneLoader : UnitySingletonBase<SceneLoader>
+    public class SceneLoader : UnitySingletonBase<SceneLoader>, ISingletonDependency
     {
         [SerializeField] private float _delayAfterLoading = 2f;
         public event Action<SceneType> OnSceneBeginDownloading = (sceneType) => { };
@@ -55,6 +57,11 @@ namespace SingletonsPreloaders
             yield return new WaitForSeconds(_delayAfterLoading);
             OnSceneFinishDownloading(sceneType);
             _currentSceneLoadingCoroutine = null;
+        }
+
+        public void SelfRegister()
+        {
+            DepResolver.RegisterDependency(this);
         }
     }
 }

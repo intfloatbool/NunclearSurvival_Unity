@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Common.Dependencies;
 using UnityEngine;
 using GameUtils;
 
 namespace SingletonsPreloaders
 {
-    public class TextLocalizer : UnitySingletonBase<TextLocalizer>
+    public class TextLocalizer : UnitySingletonBase<TextLocalizer>, ISingletonDependency
     {
         [SerializeField] private bool _isForcedLanguage = false;
         [SerializeField] private SystemLanguage _forcedLanguage = SystemLanguage.English;
@@ -68,6 +69,11 @@ namespace SingletonsPreloaders
                 return text;
             }
             return key;
+        }
+
+        public void SelfRegister()
+        {
+            DepResolver.RegisterDependency(this);
         }
     }
 }
