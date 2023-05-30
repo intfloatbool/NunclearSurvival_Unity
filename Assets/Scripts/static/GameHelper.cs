@@ -86,6 +86,8 @@ namespace NunclearGame.Static
         {
             public const string FOOD_NUTRITIONAL = "foodNutritional";
             public const string WATER_THIRST = "waterThirstDrink";
+            public const string STAMINA_RECOVERY = "staminaRecovery";
+            public const string MINUTES_FOR_ONE_STAMINA_RECOVERY = "minutesForOneStaminaRecovery";
             public const string WEAPON_DAMAGE = "weaponDamage";
             public const string ARMOR = "armorValue";
         }
@@ -104,23 +106,25 @@ namespace NunclearGame.Static
             public const string MAX_HP_KEY = "p_valuesMaxHp";
             public const string CURRENT_HP_KEY = "p_valuesCurrentHp";
             public const string MAX_STAMINA_KEY = "p_valuesMaxStamina";
+            public const string CURRENT_STAMINA_KEY = "p_valuesCurrentStamina";
             public const string RATING_KEY = "p_valuesRating";
 
             public const string EQUIPMENT_WEAPON = "_equipWeapon";
             public const string EQUIPMENT_ARMOR = "_equipArmor";
             public const string EQUIPMENT_GRENADE = "_equipGrenade";
-            
+            public const string LAST_SESSION = "lastSession";
+
             //Metro stations
             private const string STATION_IS_CLEAR = "isClearKey";
+
             public static string GetIsClearStationKey(string stationKey)
             {
                 return stationKey + STATION_IS_CLEAR;
             }
 
             public const string PLAYER_LAST_STATION_KEY = "_playerLastStationKey";
-
         }
-        
+
         public static class PlayerHelper
         {
             public static PlayerValues CreateDefaultValues()
@@ -129,14 +133,17 @@ namespace NunclearGame.Static
                 int defaultMaxHp = 175;
                 int defaultCurrentHp = defaultMaxHp;
                 int defaultMaxStamina = 150;
+                int defaultCurrentStamina = defaultMaxStamina;
                 int defaultRating = 0;
+
                 return new PlayerValues(
                     defaultPlayerLvl,
                     defaultMaxHp,
                     defaultCurrentHp,
                     defaultMaxStamina,
+                    defaultCurrentStamina,
                     defaultRating
-                    );
+                );
             }
         }
 
@@ -171,22 +178,23 @@ namespace NunclearGame.Static
                 if (sourceItem == null)
                 {
                     Debug.LogError("Missing item!");
+
                     continue;
                 }
 
                 var itemKey = sourceItem.GetKey();
+
                 if (dict.ContainsKey(itemKey))
                 {
                     Debug.LogError("Dict already has key!");
                 }
                 else
                 {
-                    dict.Add(itemKey, sourceItem);   
+                    dict.Add(itemKey, sourceItem);
                 }
             }
 
             return dict;
         }
     }
-
 }

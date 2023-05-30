@@ -1,4 +1,5 @@
-﻿using NunclearGame.Metro;
+﻿using System;
+using NunclearGame.Metro;
 using NunclearGame.Player;
 using UnityEngine;
 
@@ -6,6 +7,12 @@ namespace Player
 {
     public abstract class PlayerInfoProviderBase : MonoBehaviour
     {
+        public TimeSpan lastSessionTime
+        {
+            get;
+            protected set;
+        }
+        
         public abstract string LoadPlayerName();
         public abstract void SetPlayerName(string freshName);
         public abstract PlayerInventory LoadInventory();
@@ -22,5 +29,7 @@ namespace Player
 
         public abstract PlayerEquipment LoadEquipment();
         public abstract void SaveEquipment(PlayerEquipment equipment);
+        public abstract void SaveLastTime();
+        public abstract TimeSpan? CalculateAbsenceTime();
     }
 }

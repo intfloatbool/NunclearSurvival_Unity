@@ -10,6 +10,7 @@ namespace Player
     public class PlayerPrefsInfoProvider : PlayerInfoProviderBase
     {
         private readonly string PlayerNameKey = "playerNickName";
+
         public override string LoadPlayerName()
         {
             return PlayerPrefs.GetString(PlayerNameKey);
@@ -64,6 +65,7 @@ namespace Player
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.RATING_KEY, playerValues.Rating);
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.CURRENT_HP_KEY, playerValues.CurrentHp);
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.MAX_STAMINA_KEY, playerValues.MaxStamina);
+            PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.CURRENT_STAMINA_KEY, playerValues.CurrentStamina);
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.PLAYER_LEVEL_KEY, playerValues.PlayerLvl);
         }
 
@@ -73,11 +75,10 @@ namespace Player
             int rating = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.RATING_KEY, 0);
             int currentHp = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.CURRENT_HP_KEY, 0);
             int maxStamina = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.MAX_STAMINA_KEY, 0);
+            int currentStamina = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.CURRENT_STAMINA_KEY, 0);
             int playerLvl = PlayerPrefs.GetInt(GameHelper.PlayerPrefsKeys.PLAYER_LEVEL_KEY, 0);
             
-            return new PlayerValues(
-                playerLvl, maxHp, currentHp, maxStamina, rating
-                );
+            return new PlayerValues(playerLvl, maxHp, currentHp, maxStamina, currentStamina, rating);
         }
 
         private void OnItemAdded(ItemName itemName, int currentAmount)
@@ -182,6 +183,28 @@ namespace Player
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_ARMOR, (int) equipment.Armor.ItemName);
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_WEAPON, (int) equipment.Weapon.ItemName);
             PlayerPrefs.SetInt(GameHelper.PlayerPrefsKeys.EQUIPMENT_GRENADE, (int) equipment.Grenade.ItemName);
+        }
+
+        public override void SaveLastTime()
+        {
+            PlayerPrefs.SetString(GameHelper.PlayerPrefsKeys.LAST_SESSION, DateTime.Now.ToString());
+        }
+
+        public override TimeSpan? CalculateAbsenceTime()
+        {
+            if (PlayerPrefs.HasKey(GameHelper.PlayerPrefsKeys.LAST_SESSION))
+            {
+                lastSessionTime = DateTime.Now - DateTime.Parse(PlayerPrefs.GetString(GameHelper.PlayerPrefsKeys.LAST_SESSION));
+                Debug.Log($"you were absent: {lastSessionTime.Minutes} minutes, {lastSessionTime.Seconds} seconds");
+                return lastSessionTime;
+            }
+
+            return null;
+        }
+
+        private void OnApplicationQuit()
+        {
+            SaveLastTime();
         }
     }
 }

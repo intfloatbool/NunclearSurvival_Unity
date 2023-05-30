@@ -12,12 +12,10 @@ namespace NunclearGame.BonfireSceneUI
         [SerializeField] private InfoElement _staminaElement;
         [SerializeField] private InfoElement _rankElement;
 
-
         private void Awake()
         {
             GlobalPlayer.PlayerValuesController.OnPlayerValuesChanged += InitPlayerValuesView;
         }
-        
 
         private void OnDestroy()
         {
@@ -27,16 +25,15 @@ namespace NunclearGame.BonfireSceneUI
         private void OnEnable()
         {
             var globalPlayer = GlobalPlayer.Instance;
+
             if (globalPlayer != null)
             {
                 InitPlayerValuesView(globalPlayer.PlayerValues);
             }
-            
         }
 
         private void InitPlayerValuesView(PlayerValues playerValues)
         {
-            
             if (_levelElement != null)
             {
                 _levelElement.ValueText.text = playerValues.PlayerLvl.ToString();
@@ -45,16 +42,25 @@ namespace NunclearGame.BonfireSceneUI
             if (_hpElement != null)
             {
                 var fillAmount = (float) playerValues.CurrentHp / (float) playerValues.MaxHp;
+
                 if (_hpElement.FilledImg != null)
                 {
                     _hpElement.FilledImg.fillAmount = fillAmount;
                 }
+
                 _hpElement.ValueText.text = $"{playerValues.CurrentHp} / {playerValues.MaxHp}";
             }
 
             if (_staminaElement != null)
             {
-                _staminaElement.ValueText.text = playerValues.MaxStamina.ToString();
+                var fillAmount = (float) playerValues.CurrentStamina / (float) playerValues.MaxStamina;
+                
+                if (_staminaElement.FilledImg != null)
+                {
+                    _staminaElement.FilledImg.fillAmount = fillAmount;
+                }
+                
+                _staminaElement.ValueText.text = $"{playerValues.CurrentStamina} / {playerValues.MaxStamina}";
             }
 
             if (_rankElement != null)

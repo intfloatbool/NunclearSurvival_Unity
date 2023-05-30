@@ -12,7 +12,8 @@ namespace NunclearGame.Battle
     {
         [ConditionalHide("_isRandomDamage", Inverse = true)]
         [SerializeField] protected int _damage = 10;
-        
+
+        [SerializeField] protected GameUnit _selfUnit;
         [SerializeField] protected bool _isRandomDamage;
 
         [ConditionalHide("_isRandomDamage")] 
@@ -22,10 +23,9 @@ namespace NunclearGame.Battle
         
         [Range(0, 1f)]
         [SerializeField] protected float _criticalChance = 0.3f;
-        
         [SerializeField] protected float _criticalMultipler = 1.5f;
         public float? ExternalCritMultipler { get; set; }
-
+        
         public float DebugMultipler { get; set; } = 1f;
         
         public event Action<int> OnCriticalDamage;
@@ -38,6 +38,15 @@ namespace NunclearGame.Battle
 
         protected virtual void Awake()
         {
+            if (_selfUnit == null)
+            {
+                _selfUnit = GetComponent<GameUnit>();
+                if (_selfUnit == null)
+                {
+                    _selfUnit = GetComponentInParent<GameUnit>();
+                }
+            }
+            Assert.IsNotNull(_selfUnit, "_selfUnit != null");
             if (_isRandomDamage)
             {
                 Assert.IsTrue(_maxDamage > _minDamage, "_maxDamage > _minDamage");
@@ -72,12 +81,14 @@ namespace NunclearGame.Battle
             {
                 Debug.Log($"Critical damage by {gameObject.name}!");
                 damage = (int) (damage * _criticalMultipler);
+                gameUnit.MakeStun();
                 OnCriticalDamage?.Invoke(damage);
             }
             
             if (ExternalCritMultipler != null)
             {
                 damage = (int) ((float) damage * ExternalCritMultipler.Value);
+                gameUnit.MakeStun();
                 OnCriticalDamage?.Invoke(damage);
                 ExternalCritMultipler = null;
             }
@@ -93,7 +104,18 @@ namespace NunclearGame.Battle
             StartCoroutine(DamageWithDelay(delay));
             IEnumerator DamageWithDelay(float delayToDamage)
             {
-                yield return new WaitForSeconds(delayToDamage);
+                for (float i = 0f; i < delayToDamage; i += Time.deltaTime)
+                {
+                    if (_selfUnit != null)
+                    {
+                        while (_selfUnit.IsStunnedNow)
+                        {
+                            i = 0f;
+                            yield return null;
+                        }
+                    }
+                    yield return null;
+                }
                 DamageTargetGameUnit(gameUnit);
             }
         }

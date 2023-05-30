@@ -1,9 +1,10 @@
-﻿using NunclearGame.Static;
+﻿using Common.Dependencies;
+using NunclearGame.Static;
 using UnityEngine;
 
 namespace SingletonsPreloaders
 {
-    public class ItemUserManager : UnitySingletonBase<ItemUserManager>
+    public class ItemUserManager : UnitySingletonBase<ItemUserManager>, ISingletonDependency
     {
         protected override ItemUserManager GetInstance() => this;
 
@@ -19,27 +20,34 @@ namespace SingletonsPreloaders
                     int? hungryHealValue = itemInfo.GetItemValueByKey(GameHelper.ItemValueKeys.FOOD_NUTRITIONAL);
                     if (hungryHealValue != null)
                     {
-                        GlobalPlayer.PlayerValuesController.HealUp(hungryHealValue.Value);
+                        GlobalPlayer.PlayerValuesController.AddHealth(hungryHealValue.Value);
+                    }
+                    GlobalPlayer.Inventory.RemoveItem(itemInfo.ItemName);
+                    break;
+                }
+                case ItemType.ENERGETIC:
+                {
+                    int? staminaRecoveryValue = itemInfo.GetItemValueByKey(GameHelper.ItemValueKeys.STAMINA_RECOVERY);
+                    if (staminaRecoveryValue != null)
+                    {
+                        GlobalPlayer.PlayerValuesController.AddStamina(staminaRecoveryValue.Value);
                     }
                     GlobalPlayer.Inventory.RemoveItem(itemInfo.ItemName);
                     break;
                 }
                 case ItemType.EQUIPMENT_WEAPON:
-                {
-                    GlobalPlayer.PlayerEquipmentController.Equip(itemInfo);
-                    break;
-                }
                 case ItemType.EQUIPMENT_ARMOR:
-                {
-                    GlobalPlayer.PlayerEquipmentController.Equip(itemInfo);
-                    break;
-                }
                 case ItemType.EQUIPMENT_GRENADE:
                 {
                     GlobalPlayer.PlayerEquipmentController.Equip(itemInfo);
                     break;
                 }
             }
+        }
+
+        public void SelfRegister()
+        {
+            DepResolver.RegisterDependency(this);
         }
     }
 }

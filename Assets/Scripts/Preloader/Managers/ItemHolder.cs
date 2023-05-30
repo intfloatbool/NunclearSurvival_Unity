@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using Common.Dependencies;
+using Common.Interfaces.Collections;
 using UnityEngine;
 
 namespace SingletonsPreloaders
 {
-    public class ItemHolder : UnitySingletonBase<ItemHolder>
+    public class ItemHolder : UnitySingletonBase<ItemHolder>, ISingletonDependency
     {
         [SerializeField] private List<ItemInfo> _itemInfos;
         public List<ItemInfo> ItemInfos => _itemInfos;
@@ -36,6 +38,11 @@ namespace SingletonsPreloaders
         public ItemInfo GetItemInfoByKey(ItemName itemName)
         {
             return _itemInfoDict.ContainsKey(itemName) ? _itemInfoDict[itemName] : null;
+        }
+
+        public void SelfRegister()
+        {
+            DepResolver.RegisterDependency(this);
         }
     }
 }

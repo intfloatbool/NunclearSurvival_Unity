@@ -12,7 +12,6 @@ namespace NunclearGame.Metro
     public class MetroMapView : MonoBehaviour
     {
         [SerializeField] private string _metroNameKey;
-        public string MetroNameKey => _metroNameKey;
 
         [SerializeField] private TextMeshPro _nameText;
 
@@ -20,30 +19,24 @@ namespace NunclearGame.Metro
         [SerializeField] private ColorChangerBase[] _relativeColorChangersByPlayerIsHere;
         [SerializeField] private GameObject[] _clearedRelativeObjects;
         [SerializeField] private GameObject[] _notClearedRelativeObjects;
-        
-        private StationProperties _stationProperties;
-        public StationProperties StationProperties => _stationProperties;
-        
-        private string _localizedName;
 
-        private string _debugName;
-        
-        [Space(5f)] 
-        [SerializeField] private bool _isUseGizmosHelpers = true;
-
+        [Space(5f)] [SerializeField] private bool _isUseGizmosHelpers = true;
         [SerializeField] private Color _gizmosRelationLinesColor = Color.yellow;
-        
-        [Space(5f)] 
-        [SerializeField] private List<MetroMapView> _relativeStations;
+        [Space(5f)] [SerializeField] private List<MetroMapView> _relativeStations;
 
-        private MetroController _metroController;
+        private StationProperties _stationProperties;
+
+        private string _localizedName;
+        private string _debugName;
+
+        public StationProperties StationProperties => _stationProperties;
+        public string MetroNameKey => _metroNameKey;
+
+        public event Action OnClicked;
 
         private void Awake()
         {
             Assert.IsNotNull(_nameText, "_nameText != null");
-
-            _metroController = FindObjectOfType<MetroController>();
-            Assert.IsNotNull(_metroController, "_metroController != null");
         }
 
         public bool IsRelationStation(MetroMapView metroMapView)
@@ -75,15 +68,21 @@ namespace NunclearGame.Metro
             if (GameHelper.MetroHolder == null)
             {
                 Debug.LogError($"{nameof(GameHelper.MetroHolder)} is MISSING!");
+
                 return;
             }
-            
+
             Color colorByDanger = GameHelper.MetroHolder.GetColorByDanger(_stationProperties.DangerType);
+
             for (int i = 0; i < _relativeColorChangersByDanger.Length; i++)
             {
                 var colorChanger = _relativeColorChangersByDanger[i];
-                if(colorChanger == null)
+
+                if (colorChanger == null)
+                {
                     continue;
+                }
+
                 colorChanger.SetColor(colorByDanger);
             }
         }
@@ -93,18 +92,23 @@ namespace NunclearGame.Metro
             if (GameHelper.MetroHolder == null)
             {
                 Debug.LogError("Metro holder is missing!");
+
                 return;
             }
 
             Color placedColor = isPlayerHere
                 ? GameHelper.MetroHolder.PlayerHereColor
                 : GameHelper.MetroHolder.PlayerNotHereColor;
-            
+
             for (int i = 0; i < _relativeColorChangersByPlayerIsHere.Length; i++)
             {
                 var colorChanger = _relativeColorChangersByPlayerIsHere[i];
-                if(colorChanger == null)
+
+                if (colorChanger == null)
+                {
                     continue;
+                }
+
                 colorChanger.SetColor(placedColor);
             }
         }
@@ -122,12 +126,14 @@ namespace NunclearGame.Metro
                 gameObjectInCol.SetActive(isActive);
             }
         }
-        
-        
+
         private void OnDrawGizmos()
         {
-            if(!_isUseGizmosHelpers)
+            if (!_isUseGizmosHelpers)
+            {
                 return;
+            }
+
             AutoNameSetting();
             DrawRelationsGizmo();
         }
@@ -137,7 +143,7 @@ namespace NunclearGame.Metro
         {
             _debugName = null;
         }
-        
+
         private void AutoNameSetting()
         {
             if (string.IsNullOrEmpty(_debugName))
@@ -154,6 +160,7 @@ namespace NunclearGame.Metro
         private void DrawRelationsGizmo()
         {
             Gizmos.color = _gizmosRelationLinesColor;
+
             foreach (MetroMapView relativeStation in _relativeStations)
             {
                 Gizmos.DrawLine(transform.position, relativeStation.transform.position);
@@ -162,10 +169,7 @@ namespace NunclearGame.Metro
 
         private void OnMouseDown()
         {
-            if (_metroController != null)
-            {
-                _metroController.OnPlayerClickOnMetro(this);
-            }
+            OnClicked?.Invoke();
         }
     }
 }

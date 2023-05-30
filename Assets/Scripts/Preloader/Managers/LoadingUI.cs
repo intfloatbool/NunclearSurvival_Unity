@@ -1,10 +1,11 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
+using Common.Dependencies;
 
 namespace SingletonsPreloaders
 {
-    public class LoadingUI : UnitySingletonBase<LoadingUI>
+    public class LoadingUI : UnitySingletonBase<LoadingUI>, ISingletonDependency
     {
         [SerializeField] private Transform _loadingTransform;
         [SerializeField] private float _loadingSpeed = 5f;
@@ -75,5 +76,9 @@ namespace SingletonsPreloaders
         }
 
         protected override LoadingUI GetInstance() => this;
+        public void SelfRegister()
+        {
+            DepResolver.RegisterDependency(this);
+        }
     }
 }

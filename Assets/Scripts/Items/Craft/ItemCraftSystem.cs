@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Common.Dependencies;
 using Player;
 using UnityEngine;
 
 namespace SingletonsPreloaders
 {
-    public class ItemCraftSystem : UnitySingletonBase<ItemCraftSystem>
+    public class ItemCraftSystem : UnitySingletonBase<ItemCraftSystem>, ISingletonDependency
     {
         [Header("Debug tests")] 
         [SerializeField] private ItemName _itemToCraftDebug;
@@ -72,6 +73,10 @@ namespace SingletonsPreloaders
             }
             return null;
         }
-        
+
+        public void SelfRegister()
+        {
+            DepResolver.RegisterDependency(this);
+        }
     }
 }
