@@ -43,5 +43,10 @@ public class InventoryItem
             return _cachedInfo;
         }
     }
+
+    public InventoryItem Clone()
+    {
+        return MemberwiseClone() as InventoryItem;
+    }
     
 }

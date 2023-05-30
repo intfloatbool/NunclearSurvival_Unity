@@ -428,6 +428,501 @@
 					"Text": "Exit to main menu"
 				}
 			]
+		},
+        {
+			"Key": "_playerLevelLabel",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Уровень"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Level"
+				}
+			]
+		},
+        {
+			"Key": "_playerRankLabel",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Рейтинг"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Rating"
+				}
+			]
+		},
+        {
+			"Key": "_playerHealthLabel",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Здоровье"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Health"
+				}
+			]
+		},
+        {
+			"Key": "_playerStaminaLabel",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Сила"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Power"
+				}
+			]
+		},
+        {
+			"Key": "_craftBtn",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "СДЕЛАТЬ"
+				},
+				{
+					"RegionName": "English",
+					"Text": "CRAFT"
+				}
+			]
+		},
+        {
+			"Key": "_clearBonfireBtn",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "ОЧИСТИТЬ"
+				},
+				{
+					"RegionName": "English",
+					"Text": "CLEAR"
+				}
+			]
+		}, 
+        {
+			"Key": "_newItemDialogHeader",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Новый предмет!"
+				},
+				{
+					"RegionName": "English",
+					"Text": "New item!"
+				}
+			]
+		},
+        {
+			"Key": "_okayText",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Ок!"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Ok!"
+				}
+			]
+		},
+        {
+			"Key": "weapon_axe_simple",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Простой топор"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Simple axe"
+				}
+			]
+		},
+        {
+			"Key": "weapon_axe_simple_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Простой топор, поможет в обороне и на охоте"
+				},
+				{
+					"RegionName": "English",
+					"Text": "A simple ax, will help in defense and hunting"
+				}
+			]
+		},
+        {
+			"Key": "armor_simple_iron_cuirass",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Железная броня"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Iron armor"
+				}
+			]
+		},
+        {
+			"Key": "armor_simple_iron_cuirass_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Легкая броня из железа"
+				},
+				{
+					"RegionName": "English",
+					"Text": "A simple iron armor"
+				}
+			]
+		},
+        {
+			"Key": "makar_pistol_name",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Пистолет Макаров"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Makarov pistol"
+				}
+			]
+		},
+        {
+			"Key": "makar_pistol_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Простой и надежный пистолет"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Simple and reliable pistol"
+				}
+			]
+		},
+        {
+			"Key": "metro_btn_key",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Метро"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Metro"
+				}
+			]
+		},
+        {
+			"Key": "metroMapTransitionSceneKey",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Спуск в метро"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Metro entring"
+				}
+			]
+		},
+        {
+			"Key": "backToBonfireText",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Вернуться к костру"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Back to the Bonfire"
+				}
+			]
+		},
+        {
+			"Key": "m_st_Leninskaya",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Ленинская"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Leninskaya"
+				}
+			]
+		},
+        {
+			"Key": "m_st_Orehova",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Орехова"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Orehova"
+				}
+			]
+		},
+        {
+			"Key": "m_st_Vodovka",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Водовка"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Vodovka"
+				}
+			]
+		},
+        {
+			"Key": "m_st_Khanyakina",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Ханякина"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Khanyakina"
+				}
+			]
+		},
+        {
+			"Key": "m_st_Permskaya",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Пермская"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Permskaya"
+				}
+			]
+		},
+        {
+			"Key": "m_st_Knyazev",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Князев"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Knyazev"
+				}
+			]
+		},
+        {
+			"Key": "VERY_LOW",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Очень слабая"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Very low"
+				}
+			]
+		},
+        {
+			"Key": "LOW",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Слабая"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Low"
+				}
+			]
+		},
+        {
+			"Key": "MIDDLE",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Средняя"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Medium"
+				}
+			]
+		},
+        {
+			"Key": "HARD",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Высокая"
+				},
+				{
+					"RegionName": "English",
+					"Text": "High"
+				}
+			]
+		},
+        {
+			"Key": "VERY_HARD",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Очень высокая"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Very high"
+				}
+			]
+		},   
+        {
+			"Key": "_enterKey",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Войти"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Enter"
+				}
+			]
+		},
+        {
+			"Key": "_dangerText",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Опасность"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Danger"
+				}
+			]
+		},
+        {
+			"Key": "_closeBtnKey",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Закрыть"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Close"
+				}
+			]
+		},
+        {
+			"Key": "_StationEnterKey",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Вход в станцию"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Enter the station"
+				}
+			]
+		},
+        {
+			"Key": "ak47_weapon_name",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "АК-47"
+				},
+				{
+					"RegionName": "English",
+					"Text": "AK-47"
+				}
+			]
+		},
+        {
+			"Key": "ak47_weapon_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Надежный и мощный автомат"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Reliable and powerful weapon"
+				}
+			]
+		},
+        {
+            "Key": "_infectedCitizen",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Зараженный горожанин"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Infected citizen"
+				}
+			]
+        },
+        {
+            "Key": "basic_frag_grenade_name",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Осколочная граната тип 1"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Frag grenade type 1"
+				}
+			]
+        },
+        {
+            "Key": "basic_frag_grenade_description",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "Простая осколочная граната"
+				},
+				{
+					"RegionName": "English",
+					"Text": "Basic frag grenade"
+				}
+			]
+        },
+		{
+			"Key": "criticalDamageText",
+			"TextByRegions": [
+				{
+					"RegionName": "Russian",
+					"Text": "КРИТИЧЕСКИЙ УРОН!"
+				},
+				{
+					"RegionName": "English",
+					"Text": "CRITICAL DAMAGE!"
+				}
+			]
 		}
+        
 	]
 }

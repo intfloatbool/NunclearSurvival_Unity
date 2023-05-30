@@ -67,7 +67,6 @@ namespace SingletonsPreloaders
                 var text = item.GetTextByRegion(language);
                 return text;
             }
-            Debug.LogWarning($"Cannot get localization by  key: {key}! Not exists!");
             return key;
         }
     }

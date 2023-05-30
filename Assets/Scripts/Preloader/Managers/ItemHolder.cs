@@ -6,6 +6,7 @@ namespace SingletonsPreloaders
     public class ItemHolder : UnitySingletonBase<ItemHolder>
     {
         [SerializeField] private List<ItemInfo> _itemInfos;
+        public List<ItemInfo> ItemInfos => _itemInfos;
         private Dictionary<ItemName, ItemInfo> _itemInfoDict = new Dictionary<ItemName, ItemInfo>();
         protected override ItemHolder GetInstance() => this;
 

@@ -48,3 +48,11 @@ MonoBehaviour:
     Sprite: {fileID: 21300000, guid: eacc8d026f311824abe10514485176be, type: 3}
   - Name: missing_
     Sprite: {fileID: 21300000, guid: cdefe57921e1e3e4fbcce825b4b4223d, type: 3}
+  - Name: foodNutritional
+    Sprite: {fileID: 21300000, guid: b6c7d27f0d59fc044b552da7076847a6, type: 3}
+  - Name: waterThirstDrink
+    Sprite: {fileID: 21300000, guid: 905aefa8652570842be8659ac40217a5, type: 3}
+  - Name: weaponDamage
+    Sprite: {fileID: 21300000, guid: ac45507ea1c6d4b1dbbcc743d8977a7e, type: 3}
+  - Name: armorValue
+    Sprite: {fileID: 21300000, guid: b617fc9ef2a7e49109d631ae28581b1d, type: 3}

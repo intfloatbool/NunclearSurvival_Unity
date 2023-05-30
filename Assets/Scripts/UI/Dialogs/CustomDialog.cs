@@ -4,6 +4,7 @@ using StaticHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NunclearGame.Dialogs;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +36,7 @@ namespace GameUI
         [Space(3f)]
         [SerializeField] private Transform _dialogRoot;
         [SerializeField] private Transform _dialogBacgrkound;
+        [SerializeField] private Transform _descriptionRoot;
         [SerializeField] private RectTransform _headArea;
 
         [Space(5f)] 
@@ -44,11 +46,22 @@ namespace GameUI
         [Header("Parents for dialog items")]
         [SerializeField] private Transform _btnParent;
 
+        [Space(5f)] 
+        [SerializeField] private ValueUI _valueUIprefab;
+        [SerializeField] private Transform _valuesContainer;
+        [SerializeField] private Transform _valuesParent;
+        
         [Space(5f)]
         [Header("Runtime references")]
         [SerializeField] private List<DialogButton> _buttons = new List<DialogButton>();
 
         private RectTransform _rectTransform;
+        private List<ValueUI> _curreltValues = new List<ValueUI>();
+
+        /// <summary>
+        /// arg#0 (bool) - is dialog showed?
+        /// </summary>
+        public event Action<bool> OnDialogSetActivate;
 
         private void Start()
         {
@@ -99,8 +112,12 @@ namespace GameUI
             return this;
         }
 
-        public CustomDialog SetDialogDescription(string descriptionKey)
+        public CustomDialog SetDialogDescription(string descriptionKey, bool isActive = true)
         {
+            _descriptionRoot.gameObject.SetActive(isActive);
+            if (string.IsNullOrEmpty(descriptionKey))
+                return this;
+            
             _descriptionText.text = GameLocalization.Get(descriptionKey);
             return this;
         }
@@ -147,9 +164,36 @@ namespace GameUI
             return this;
         }
 
+        public CustomDialog ShowValuesContainer()
+        {
+
+            SetActiveValuesContainer(true);
+            return this;
+        }
+
+        public CustomDialog AddValueInContainer(int valueNum, Sprite valueIcon = null)
+        {
+            var propertyValue = Instantiate(_valueUIprefab, _valuesParent);
+            propertyValue.Init(valueNum.ToString(), valueIcon);
+            propertyValue.gameObject.SetActive(true);
+            _curreltValues.Add(propertyValue);
+            return this;
+        }
+
+        private void SetActiveValuesContainer(bool isActive)
+        {
+            _valuesContainer.gameObject.SetActive(isActive);
+            if (!isActive)
+            {
+                _curreltValues.ForEach(v => Destroy(v.gameObject));
+                _curreltValues.Clear();
+            }
+        }
+
         public CustomDialog ResetDialog()
         {
             ResetButtons();
+            SetActiveValuesContainer(false);
             LayoutRebuilder.ForceRebuildLayoutImmediate(_rectTransform);
             return this;
         }
@@ -158,6 +202,8 @@ namespace GameUI
         {        
             _dialogRoot.gameObject.SetActive(false);
             _dialogBacgrkound.gameObject.SetActive(false);
+            
+            OnDialogSetActivate?.Invoke(false);
             return this;
         }
 
@@ -174,7 +220,8 @@ namespace GameUI
             //call 2 times to align layout group + content size filter
             LayoutRebuilder.ForceRebuildLayoutImmediate(_headArea);          
             LayoutRebuilder.ForceRebuildLayoutImmediate(_headArea);
-
+            
+            OnDialogSetActivate?.Invoke(true);
             return this;
         }
 
@@ -204,7 +251,9 @@ namespace GameUI
             }
             ResetDialog();
             SetHeader(confirmHeaderTextKey);
-            SetDialogDescription(confirmBodyTextKey);
+            bool isHaveDescription = !string.IsNullOrEmpty(confirmBodyTextKey);
+            SetDialogDescription(confirmBodyTextKey, isActive: isHaveDescription);
+
             AddButton(LocalizationHelpers.NO_LOC_KEY, null, CustomDialog.DialogPartType.SIMPLE);
             AddButton(LocalizationHelpers.YES_LOC_KEY, onConfirmAction, CustomDialog.DialogPartType.ACCESS);
             ShowDialog();

@@ -16,8 +16,12 @@ namespace Player
         /// ItemName -  enum type of item
         /// int - current amount of item
         /// </summary>
-        public event Action<ItemName, int> OnItemAdded = (itemName, amount) => { };
-        public event Action<ItemName> OnItemRemoved = (itemName) => { };
+        public event Action<ItemName, int> OnItemAdded;
+
+        public event Action<InventoryItem> OnItemAddedRef;
+        public event Action<ItemName> OnItemRemoved;
+
+        public event Action OnItemsUpdated;
 
 
         public InventoryItem GetItemByName(ItemName itemName)
@@ -33,6 +37,12 @@ namespace Player
             if(sameItem != null)
             {
                 var itemInfo = sameItem.ItemInfo;
+                if (itemInfo == null)
+                {
+                    Debug.LogError($"Item info is missing for {itemName.ToString()} !");
+                    return;
+                    
+                }
                 if(itemInfo.IsConstantItem)
                 {
                     sameItem = new InventoryItem()
@@ -57,7 +67,9 @@ namespace Player
                 _currentItems.Add(sameItem);
             }
 
-            OnItemAdded(sameItem.ItemName, sameItem.Amount);
+            OnItemAdded?.Invoke(sameItem.ItemName, sameItem.Amount);
+            OnItemAddedRef?.Invoke(sameItem);
+            OnItemsUpdated?.Invoke();
         }
 
         public void RemoveItem(ItemName itemName)
@@ -71,7 +83,8 @@ namespace Player
                     _currentItems.Remove(sameItem);
                 }
 
-                OnItemRemoved(itemName);
+                OnItemRemoved?.Invoke(itemName);
+                OnItemsUpdated?.Invoke();
 
             }
             else

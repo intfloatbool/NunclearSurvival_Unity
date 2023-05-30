@@ -8,7 +8,7 @@ namespace NunclearGame.BonfireSceneUI
     {
         [SerializeField] private OverviewElement _relationOverview;
         private OverviewManager _overviewManager;
-
+        
         private void Awake()
         {
             _overviewManager = FindObjectOfType<OverviewManager>();

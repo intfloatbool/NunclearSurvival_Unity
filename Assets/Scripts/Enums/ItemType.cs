@@ -1,5 +1,6 @@
 ﻿public enum ItemType
-{
+{   
+    NONE = -1,
     //Supply
     FOOD,
     WATER,
@@ -8,7 +9,5 @@
     //Equipment
     EQUIPMENT_ARMOR,
     EQUIPMENT_WEAPON,
-    //COMMON
-    RECIPE,
-    COOK_ITEM
+    EQUIPMENT_GRENADE
 }

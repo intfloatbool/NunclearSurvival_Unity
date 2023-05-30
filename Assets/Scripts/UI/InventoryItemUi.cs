@@ -58,19 +58,26 @@ public class InventoryItemUi : GameButtonBase
             ExternalOnClickAction(this);
             return;
         }
-        _itemHandler.MakeActionWithItem(this);
+        _itemHandler?.MakeActionWithItem(this);
     }
 
     public void OnItemDrag()
     {
         IsDragged = true;
-        _itemHandler.OnItemDrag(this);
+        if (_itemHandler != null)
+        {
+            _itemHandler.OnItemDrag(this);
+        }
+        
     }
 
     public void OnItemUp()
     {
         IsDragged = false;
-        _itemHandler.OnItemUp(this);       
+        if (_itemHandler != null)
+        {
+            _itemHandler.OnItemUp(this);   
+        }
     }
 
     public InventoryItemUi Clone(Transform parent = null)

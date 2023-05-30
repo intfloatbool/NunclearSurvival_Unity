@@ -44,10 +44,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0e88d33738c97449702b223371b551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerViewPrefab: {fileID: 3579670281833306994, guid: cfb3a22c896724bfaa43256076966345,
+    type: 3}
   _playerInfoProvider: {fileID: 6415777739134962465}
   _playerNickName: 
+  _playerValuesDebugInfo:
+    _playerLvl: 0
+    _maxHp: 0
+    _currentHp: 0
+    _maxStamina: 0
+    _rating: 0
+  _currentEquipment:
+    _weapon:
+      _itemType: 0
+      _itemName: 0
+    _armor:
+      _itemType: 0
+      _itemName: 0
+    _grenade:
+      _itemType: 0
+      _itemName: 0
   _playerInventory:
     _currentItems: []
+  _basicItemsForPlayer: 0000000000000000060000000600000001000000010000000400000009000000
 --- !u!1 &8677054604151986169
 GameObject:
   m_ObjectHideFlags: 0

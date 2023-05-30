@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
+using System.Linq;
+using NunclearGame.Items;
+using Player;
+using UnityEngine.Assertions;
 
 public class UiInventory : MonoBehaviour, IItemHandler
 {
@@ -38,11 +42,29 @@ public class UiInventory : MonoBehaviour, IItemHandler
     [SerializeField] private InventoryItemUi _draggedItem;
     private PointerEventData m_PointerEventData;
 
-    public event Action OnItemsUpdated = () => {};
-
+    private PlayerInventory _playerInventory;
+    
+    public event Action OnItemsUpdated;
+    
     private void Awake()
     {
+        _playerInventory = GlobalPlayer.Instance?.PlayerInventory;
+        Assert.IsNotNull(_playerInventory, "_playerInventory != null");
+        if (_playerInventory != null)
+        {
+            _playerInventory.OnItemsUpdated += UpdateItems;
+            _playerInventory.OnItemsUpdated += UpdateLastCategories;
+        }
         TryRemoveDebugItemsBeforLoad();
+    }
+
+    private void OnDestroy()
+    {
+        if (_playerInventory != null)
+        {
+            _playerInventory.OnItemsUpdated -= UpdateItems;
+            _playerInventory.OnItemsUpdated -= UpdateLastCategories;
+        }
     }
 
     public void ShowItemsByCategory(params ItemType[] itemTypes)
@@ -65,6 +87,10 @@ public class UiInventory : MonoBehaviour, IItemHandler
         ShowCurrentItems();
     }
 
+    public InventoryItemUi GetItemByName(ItemName itemName)
+    {
+        return _allItems.FirstOrDefault(iui => iui.CurrentItemInfo.ItemName == itemName);
+    }
     
     private void ShowCurrentItems()
     {
@@ -106,7 +132,7 @@ public class UiInventory : MonoBehaviour, IItemHandler
             AddItem(playerItem);
         }
 
-        OnItemsUpdated();
+        OnItemsUpdated?.Invoke();
     }
 
     public void AddItem(InventoryItem item)
@@ -172,11 +198,38 @@ public class UiInventory : MonoBehaviour, IItemHandler
             .AddButton(_dropItemLocKey, OnItemDrop, CustomDialog.DialogPartType.DANGER)
             .AddButton(_useItemLocKey, OnItemUse, CustomDialog.DialogPartType.ACCESS)           
             .ShowDialog();
+
+        if (itemInfo.GetItemValues().Any())
+        {
+            var paramsWithSprite = GetItemParamViewInfo(itemInfo);
+            foreach (var spritableParam in paramsWithSprite)
+            {
+                dialog.AddValueInContainer(spritableParam.Item1.Value, spritableParam.Item2);
+            }
+
+            dialog.ShowValuesContainer();
+        }
     }
+
+    private IEnumerable<Tuple<ItemValue, Sprite>> GetItemParamViewInfo(ItemInfo itemInfo)
+    {
+        var itemParamsTuples = new List<Tuple<ItemValue, Sprite>>();
+        var itemParams = itemInfo.GetItemValues();
+        foreach (var itemValue in itemParams)
+        {
+            var key = itemValue.ValueKey;
+            var sprite = SpritesHolder.Instance.GetSpriteByKey(key);
+            
+            itemParamsTuples.Add(new Tuple<ItemValue, Sprite>(itemValue, sprite));
+        }
+
+        return itemParamsTuples;
+    }
+    
 
     private void OnItemUse()
     {
-        //TODO: Complete futher logic!
+        ItemUserManager.Instance?.UseItem(_lastClickedItem);
         Debug.Log("Item use! - " + _lastClickedItem.ItemViewNameKey);
     }
 
